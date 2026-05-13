@@ -297,19 +297,10 @@
          ═══════════════════════════════════════════════════════ -->
     <article class="project section" id="echo-show-security" data-animate>
       <div class="container">
-        <!-- Layered stacked mockup layout -->
-        <div style="position:relative;height:500px;margin-bottom:var(--space-12);display:flex;align-items:flex-end;justify-content:center;">
-          <!-- Left mockup - Activity detected (bottom left) -->
-          <div style="position:absolute;left:0;bottom:80px;width:45%;max-width:400px;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);z-index:1;border:8px solid #333;">
-            <img
-              src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623bfdcfb9b5cdafd0695a29_echosecuritypanel_screen1.png"
-              alt="Echo Show Guard — activity detected" loading="lazy" decoding="async"
-              style="width:100%;height:auto;display:block;"
-            >
-          </div>
-
-          <!-- Center mockup - Welcome home (top center) -->
-          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:50%;max-width:450px;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);z-index:3;border:8px solid #333;">
+        <!-- Two-column layout: left full height, right stacked -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-12);align-items:start;">
+          <!-- Left column - Single image full height -->
+          <div style="width:100%;border-radius:var(--radius-md);overflow:hidden;">
             <img
               src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623bfe40d3222f69c05f1258_echosecuritypanel_screen2.png"
               alt="Echo Show Guard — welcome home" loading="lazy" decoding="async"
@@ -317,13 +308,25 @@
             >
           </div>
 
-          <!-- Right mockup - Ring integration (bottom right) -->
-          <div style="position:absolute;right:0;bottom:100px;width:50%;max-width:420px;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);z-index:2;border:8px solid #333;">
-            <img
-              src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623bfe45e815d803899bca11_echosecuritypanel_screen3.png"
-              alt="Echo Show Guard — ring integration" loading="lazy" decoding="async"
-              style="width:100%;height:auto;display:block;"
-            >
+          <!-- Right column - Two images stacked vertically -->
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);height:100%;">
+            <!-- Top image -->
+            <div style="width:100%;border-radius:var(--radius-md);overflow:hidden;">
+              <img
+                src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623bfdcfb9b5cdafd0695a29_echosecuritypanel_screen1.png"
+                alt="Echo Show Guard — activity detected" loading="lazy" decoding="async"
+                style="width:100%;height:auto;display:block;"
+              >
+            </div>
+
+            <!-- Bottom image -->
+            <div style="width:100%;border-radius:var(--radius-md);overflow:hidden;">
+              <img
+                src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623bfe45e815d803899bca11_echosecuritypanel_screen3.png"
+                alt="Echo Show Guard — ring integration" loading="lazy" decoding="async"
+                style="width:100%;height:auto;display:block;"
+              >
+            </div>
           </div>
         </div>
 
