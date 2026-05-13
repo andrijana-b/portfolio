@@ -1,53 +1,108 @@
 /**
- * animations.js
- * Scroll-reveal using IntersectionObserver.
- * Adds `.is-visible` to elements with [data-animate] or [data-animate-stagger]
- * when they enter the viewport. Fires once per element, then stops observing.
+ * animations.js — Motion design system
+ *
+ * 1. Scroll-reveal    IntersectionObserver → [data-animate], [data-stagger]
+ * 2. Auto-stagger     .project__row and .stats-row children cascade in
+ * 3. Parallax         Full-bleed images get subtle vertical offset on scroll
+ *                     (desktop only, rAF-throttled, passive listener)
  */
 
 (function () {
   'use strict';
 
-  /**
-   * Check if the user prefers reduced motion.
-   * If so, skip all JS-driven animation setup — CSS handles the fallback.
-   */
-  const prefersReducedMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  ).matches;
+  /* ── Bail out if user prefers reduced motion ─────────────── */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  if (prefersReducedMotion) return;
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
-  /**
-   * IntersectionObserver config:
-   * - threshold 0.12  → trigger when 12% of the element is visible
-   * - rootMargin      → shrink the bottom of the viewport by 60px
-   *                     so elements animate slightly before they fully enter
-   */
-  const observer = new IntersectionObserver(
+
+  /* ══════════════════════════════════════════════════════════
+     1. SCROLL REVEAL — IntersectionObserver
+     ══════════════════════════════════════════════════════════ */
+
+  const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target); // fire once only
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
       });
     },
     {
-      threshold: 0.12,
-      rootMargin: '0px 0px -60px 0px',
+      threshold:   isMobile ? 0.06 : 0.10,
+      rootMargin:  isMobile ? '0px 0px -20px 0px' : '0px 0px -80px 0px',
     }
   );
 
-  /**
-   * Observe every element marked for animation.
-   * Both individual [data-animate] and parent [data-animate-stagger]
-   * nodes are observed — children are handled by CSS alone once the
-   * parent receives `.is-visible`.
-   */
-  const targets = document.querySelectorAll(
-    '[data-animate], [data-animate-stagger]'
-  );
+  /* Observe existing [data-animate] and [data-stagger] elements */
+  document.querySelectorAll('[data-animate], [data-stagger]').forEach((el) => {
+    revealObserver.observe(el);
+  });
 
-  targets.forEach((el) => observer.observe(el));
+
+  /* ══════════════════════════════════════════════════════════
+     2. AUTO-STAGGER — project rows and stat blocks
+        Adds [data-stagger] at runtime so HTML stays lean
+     ══════════════════════════════════════════════════════════ */
+
+  document.querySelectorAll('.project__row, .stats-row').forEach((el) => {
+    /* Skip if already managed */
+    if (el.hasAttribute('data-stagger') || el.hasAttribute('data-animate')) return;
+    el.setAttribute('data-stagger', '');
+    revealObserver.observe(el);
+  });
+
+
+  /* ══════════════════════════════════════════════════════════
+     3. PARALLAX — full-bleed images, desktop only
+        Translates the <img> vertically as the section scrolls.
+        Range: ±30px · scale(1.08) provides the headroom.
+     ══════════════════════════════════════════════════════════ */
+
+  if (!isMobile) {
+    const parallaxSections = Array.from(
+      document.querySelectorAll('.full-bleed')
+    );
+
+    let rafId   = null;
+    let lastScrollY = -1;
+
+    function applyParallax() {
+      rafId = null;
+      const scrollY    = window.scrollY;
+      const viewportH  = window.innerHeight;
+
+      /* Skip if scroll hasn't changed (resize or forced call) */
+      if (scrollY === lastScrollY) return;
+      lastScrollY = scrollY;
+
+      parallaxSections.forEach((section) => {
+        const img = section.querySelector('img');
+        if (!img) return;
+
+        const rect     = section.getBoundingClientRect();
+        const inView   = rect.bottom > 0 && rect.top < viewportH;
+        if (!inView) return;
+
+        /* progress 0 = section top at viewport bottom
+                    1 = section bottom at viewport top  */
+        const progress = (viewportH - rect.top) / (viewportH + rect.height);
+        /* offset range: -30px → +30px */
+        const offset   = (progress - 0.5) * 60;
+
+        img.style.transform = `translateY(${offset.toFixed(2)}px) scale(1.08)`;
+      });
+    }
+
+    /* Passive scroll listener, rAF-throttled */
+    window.addEventListener('scroll', () => {
+      if (rafId === null) {
+        rafId = requestAnimationFrame(applyParallax);
+      }
+    }, { passive: true });
+
+    /* Run once on load to position images correctly */
+    applyParallax();
+  }
+
 })();

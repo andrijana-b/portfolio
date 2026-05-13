@@ -1,75 +1,185 @@
 /* ============================================================
-   animations.css — Keyframes, scroll-reveal states, stagger
+   animations.css — Motion design system
+   Durations: 300ms (micro) · 500ms (standard) · 700ms (hero/large)
+   Easing: cubic-bezier(0.25, 1, 0.5, 1) — ease-out-quart feel
    ============================================================ */
+
+
+/* ── Custom easing ─────────────────────────────────────────── */
+
+:root {
+  --ease-quart:   cubic-bezier(0.25, 1, 0.5, 1);   /* standard reveals  */
+  --ease-expo:    cubic-bezier(0.16, 1, 0.3, 1);   /* hero / large       */
+  --ease-back:    cubic-bezier(0.34, 1.56, 0.64, 1); /* subtle overshoot */
+}
 
 
 /* ── Keyframes ─────────────────────────────────────────────── */
 
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes subtle-scale {
-  from {
-    transform: scale(0.98);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes slide-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+@keyframes hero-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 
-/* ── Hero entrance (CSS-only, fires on page load) ───────────── */
-
-.hero__name {
-  animation: fade-up var(--duration-enter) var(--ease-out) 80ms both;
-}
+/* ── Hero entrance — CSS-only, fires immediately on load ────── */
 
 .hero__tagline {
-  animation: fade-up var(--duration-enter) var(--ease-out) 280ms both;
+  animation: hero-fade-up 700ms var(--ease-expo) 60ms both;
+}
+
+/* Info grid fades in after tagline */
+.hero__info {
+  animation: hero-fade-in 600ms var(--ease-quart) 400ms both;
 }
 
 
-/* ── Header animations ─────────────────────────────────────── */
+/* ── Scroll-reveal base ─────────────────────────────────────── */
+/* Default: fade + rise 36px · 600ms */
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity  600ms var(--ease-quart),
+    transform 600ms var(--ease-quart);
+  will-change: opacity, transform;
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+
+/* Variant: pure fade (images inside full-bleed) */
+[data-animate="fade"] {
+  transform: none;
+  transition: opacity 700ms var(--ease-quart);
+}
+
+/* Variant: subtle scale reveal (feature images) */
+[data-animate="scale"] {
+  transform: scale(0.97) translateY(20px);
+  transition:
+    opacity  600ms var(--ease-expo),
+    transform 600ms var(--ease-expo);
+}
+
+[data-animate="scale"].is-visible {
+  transform: scale(1) translateY(0);
+}
+
+/* Variant: faster, lighter (secondary elements) */
+[data-animate="fast"] {
+  transform: translateY(20px);
+  transition:
+    opacity  400ms var(--ease-quart),
+    transform 400ms var(--ease-quart);
+}
+
+
+/* ── Stagger system ─────────────────────────────────────────── */
+/* Parent [data-stagger] — children animate sequentially        */
+
+[data-stagger] > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity  500ms var(--ease-quart),
+    transform 500ms var(--ease-quart);
+  will-change: opacity, transform;
+}
+
+[data-stagger].is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+
+/* Stagger delays — 100ms steps */
+[data-stagger].is-visible > *:nth-child(1) { transition-delay:   0ms; }
+[data-stagger].is-visible > *:nth-child(2) { transition-delay: 100ms; }
+[data-stagger].is-visible > *:nth-child(3) { transition-delay: 200ms; }
+[data-stagger].is-visible > *:nth-child(4) { transition-delay: 300ms; }
+[data-stagger].is-visible > *:nth-child(5) { transition-delay: 400ms; }
+[data-stagger].is-visible > *:nth-child(6) { transition-delay: 500ms; }
+
+
+/* ── Parallax container ─────────────────────────────────────── */
+/* JS writes transform directly to the <img> inside .full-bleed  */
+
+.full-bleed {
+  overflow: hidden;
+}
+
+.full-bleed img {
+  transform: translateY(0) scale(1.08); /* scale reserves parallax headroom */
+  will-change: transform;
+  transition: none; /* JS-driven: no CSS transition */
+}
+
+
+/* ── Hover micro-interactions ───────────────────────────────── */
+
+/* Images — very subtle scale */
+.project img {
+  transition: transform 600ms var(--ease-quart);
+}
+
+.project img:hover {
+  transform: scale(1.02);
+}
+
+/* Stats — lift on hover */
+.stat {
+  transition: transform 350ms var(--ease-quart);
+  cursor: default;
+}
+
+.stat:hover {
+  transform: translateY(-5px);
+}
+
+/* Project number — dims on project hover */
+.project__num {
+  transition: opacity 300ms var(--ease-quart);
+}
+
+.project:hover .project__num {
+  opacity: 0.4;
+}
+
+/* Project title — subtle colour shift */
+.project__title {
+  transition: opacity 300ms var(--ease-quart);
+}
+
+.project:hover .project__title {
+  opacity: 0.85;
+}
+
+
+/* ── Header interactions ────────────────────────────────────── */
 
 .site-header__name {
-  transition: color var(--duration-fast) var(--ease-out);
+  transition: opacity 300ms var(--ease-quart);
 }
 
 .site-header__name:hover {
-  color: var(--color-accent);
+  opacity: 0.7;
 }
 
 .site-header__link {
   position: relative;
-  transition: color var(--duration-fast) var(--ease-out);
+  transition: color 300ms var(--ease-quart);
 }
 
-.site-header__link:hover {
-  color: var(--color-text-primary);
-}
-
-/* Subtle underline animation on hover */
 .site-header__link::after {
   content: '';
   position: absolute;
@@ -77,8 +187,12 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--color-accent);
-  transition: width var(--duration-fast) var(--ease-out);
+  background: var(--color-text-primary);
+  transition: width 300ms var(--ease-quart);
+}
+
+.site-header__link:hover {
+  color: var(--color-text-primary);
 }
 
 .site-header__link:hover::after {
@@ -86,35 +200,12 @@
 }
 
 
-/* ── Project card hover animations ─────────────────────────── */
-
-.project {
-  transition: transform var(--duration-base) var(--ease-out);
-}
-
-.project:hover {
-  transform: translateY(-2px);
-}
-
-
-/* ── Image animations ──────────────────────────────────────── */
-
-img {
-  transition: transform var(--duration-base) var(--ease-out),
-              filter var(--duration-base) var(--ease-out);
-}
-
-.project img:hover {
-  transform: scale(1.01);
-}
-
-
-/* ── Link animations ───────────────────────────────────────── */
+/* ── Link underline animations ──────────────────────────────── */
 
 .project__link,
 .hero__info-link {
   position: relative;
-  transition: color var(--duration-fast) var(--ease-out);
+  transition: color 300ms var(--ease-quart);
 }
 
 .project__link::after,
@@ -125,8 +216,13 @@ img {
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--color-accent);
-  transition: width var(--duration-fast) var(--ease-out);
+  background: var(--color-text-primary);
+  transition: width 350ms var(--ease-quart);
+}
+
+.project__link:hover,
+.hero__info-link:hover {
+  color: var(--color-text-primary);
 }
 
 .project__link:hover::after,
@@ -134,17 +230,12 @@ img {
   width: 100%;
 }
 
-.project__link:hover,
-.hero__info-link:hover {
-  color: var(--color-accent);
-}
 
-
-/* ── Footer link animations ────────────────────────────────── */
+/* ── Footer link animations ─────────────────────────────────── */
 
 .site-footer__link {
   position: relative;
-  transition: color var(--duration-fast) var(--ease-out);
+  transition: color 300ms var(--ease-quart);
 }
 
 .site-footer__link::after {
@@ -154,8 +245,8 @@ img {
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--color-accent);
-  transition: width var(--duration-fast) var(--ease-out);
+  background: var(--color-text-primary);
+  transition: width 350ms var(--ease-quart);
 }
 
 .site-footer__link:hover {
@@ -167,96 +258,90 @@ img {
 }
 
 
-/* ── Scroll-reveal — base hidden state ──────────────────────── */
-/* Applied to elements observed by IntersectionObserver in animations.js */
-
-[data-animate] {
-  opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity var(--duration-enter) var(--ease-out),
-    transform var(--duration-enter) var(--ease-out);
-}
-
-[data-animate].is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* ── Stagger — for groups of children ──────────────────────── */
-
-[data-animate-stagger] > * {
-  opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity var(--duration-slow) var(--ease-out),
-    transform var(--duration-slow) var(--ease-out);
-}
-
-[data-animate-stagger].is-visible > *:nth-child(1) { transition-delay:   0ms; }
-[data-animate-stagger].is-visible > *:nth-child(2) { transition-delay:  80ms; }
-[data-animate-stagger].is-visible > *:nth-child(3) { transition-delay: 160ms; }
-[data-animate-stagger].is-visible > *:nth-child(4) { transition-delay: 240ms; }
-[data-animate-stagger].is-visible > *:nth-child(5) { transition-delay: 320ms; }
-[data-animate-stagger].is-visible > *:nth-child(6) { transition-delay: 400ms; }
-
-[data-animate-stagger].is-visible > * {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* ── Smooth transitions for state changes ──────────────────── */
+/* ── Global smooth transitions ──────────────────────────────── */
 
 a {
-  transition: color var(--duration-fast) var(--ease-out);
-}
-
-button {
-  transition: all var(--duration-base) var(--ease-out);
+  transition: color 300ms var(--ease-quart),
+              opacity 300ms var(--ease-quart);
 }
 
 
-/* ── Reduced motion — respect user preference ───────────────── */
+/* ── Mobile — simplified for performance ────────────────────── */
+
+@media (max-width: 767px) {
+  .hero__tagline {
+    animation-duration: 500ms;
+  }
+
+  .hero__info {
+    animation-duration: 400ms;
+    animation-delay: 250ms;
+  }
+
+  [data-animate] {
+    transform: translateY(18px);
+    transition:
+      opacity  400ms var(--ease-quart),
+      transform 400ms var(--ease-quart);
+  }
+
+  [data-animate="scale"] {
+    transform: scale(0.99) translateY(12px);
+  }
+
+  [data-stagger] > * {
+    transform: translateY(14px);
+    transition:
+      opacity  350ms var(--ease-quart),
+      transform 350ms var(--ease-quart);
+  }
+
+  /* Collapse stagger delays on mobile — animate together */
+  [data-stagger].is-visible > *:nth-child(n) {
+    transition-delay: 0ms;
+  }
+
+  /* No hover lift on touch devices */
+  .stat:hover {
+    transform: none;
+  }
+
+  .project img:hover {
+    transform: none;
+  }
+}
+
+
+/* ── Reduced motion — full disable ──────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__name,
-  .hero__tagline {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0.01ms !important;
+  }
+
+  .hero__tagline,
+  .hero__info {
     animation: none;
     opacity: 1;
     transform: none;
   }
 
   [data-animate],
-  [data-animate-stagger] > * {
-    animation: none;
-    transition: none;
+  [data-stagger] > * {
     opacity: 1;
     transform: none;
-  }
-
-  .site-header__name,
-  .site-header__link,
-  .project,
-  img,
-  .project__link,
-  .hero__info-link,
-  .site-footer__link,
-  a,
-  button {
     transition: none;
+    will-change: auto;
   }
 
-  .site-header__name:hover,
-  .site-header__link:hover,
-  .project:hover,
-  .project img:hover,
-  .project__link:hover,
-  .hero__info-link:hover,
-  .site-footer__link:hover {
+  .full-bleed img {
     transform: none;
-    color: inherit;
+    will-change: auto;
   }
 
   .site-header__link::after,
