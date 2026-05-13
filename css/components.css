@@ -342,9 +342,10 @@
 }
 
 
-/* ── Partnership Ads — stat values use accent colour ──────── */
+/* ── Partnership Ads & Echo Setup — stat values use accent colour ──── */
 
-#partnership-ads .stat__value {
+#partnership-ads .stat__value,
+#echo-device-setup .stat__value {
   color: var(--color-accent);
 }
 
