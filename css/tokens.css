@@ -1,0 +1,78 @@
+/* ============================================================
+   tokens.css — Design tokens (CSS custom properties)
+   All values in the codebase reference these variables.
+   Never hard-code colours, font sizes, or spacing elsewhere.
+   ============================================================ */
+
+:root {
+  /* ── Colours — dark theme (matching live site) ─────────── */
+  --color-bg:              #000000;
+  --color-surface:         #111111;
+  --color-text-primary:    #ffffff;
+  --color-text-secondary:  #a0a0a0;
+  --color-text-body:       #D8D8D8;  /* body copy in hero + projects */
+  --color-text-muted:      #555555;
+  --color-border:          #1f1f1f;
+  --color-link:            #ffffff;
+  --color-link-hover:      #a0a0a0;
+  --color-accent:          #d44dba;  /* pink/magenta — project titles */
+
+  /* ── Font families ─────────────────────────────────────── */
+  --font-display: 'Cardo', Georgia, serif;        /* hero name */
+  --font-sans:    'Montserrat', sans-serif;       /* labels, section headers */
+  --font-body:    'Inter', system-ui, sans-serif; /* body copy */
+  --font-alt:     'Roboto', sans-serif;           /* dates, numbers */
+
+  /* ── Type scale ────────────────────────────────────────── */
+  --text-xs:   0.75rem;     /* 12px */
+  --text-sm:   0.875rem;    /* 14px */
+  --text-base: 1rem;        /* 16px */
+  --text-md:   1.125rem;    /* 18px */
+  --text-lg:   1.5rem;      /* 24px */
+  --text-xl:   2rem;        /* 32px */
+  --text-2xl:  3rem;        /* 48px */
+  --text-hero: clamp(3rem, 8vw, 7rem); /* fluid hero name */
+
+  /* ── Line heights ──────────────────────────────────────── */
+  --leading-tight:  1.1;
+  --leading-snug:   1.3;
+  --leading-normal: 1.6;
+  --leading-loose:  1.85;
+
+  /* ── Letter spacing ────────────────────────────────────── */
+  --tracking-tight:   -0.02em;
+  --tracking-normal:   0em;
+  --tracking-wide:     0.08em;   /* uppercase section labels */
+  --tracking-widest:   0.15em;
+
+  /* ── Spacing (8px base scale) ──────────────────────────── */
+  --space-1:   0.5rem;    /*   8px */
+  --space-2:   1rem;      /*  16px */
+  --space-3:   1.5rem;    /*  24px */
+  --space-4:   2rem;      /*  32px */
+  --space-6:   3rem;      /*  48px */
+  --space-8:   4rem;      /*  64px */
+  --space-10:  5rem;      /*  80px */
+  --space-12:  6rem;      /*  96px */
+  --space-16:  8rem;      /* 128px */
+  --space-20: 10rem;      /* 160px */
+  --space-24: 12rem;      /* 192px */
+
+  /* ── Layout ────────────────────────────────────────────── */
+  --container-max: 1600px;
+  --container-pad: 2rem;    /* 32px — fixed page margin */
+  --grid-gap:      2rem;
+
+  /* ── Animation ─────────────────────────────────────────── */
+  --duration-fast:  200ms;
+  --duration-base:  400ms;
+  --duration-slow:  700ms;
+  --duration-enter: 900ms;
+  --ease-out:       cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:    cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ── Borders & misc ────────────────────────────────────── */
+  --border-hairline: 1px solid var(--color-border);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}

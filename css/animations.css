@@ -1,0 +1,85 @@
+/* ============================================================
+   animations.css — Keyframes, scroll-reveal states, stagger
+   ============================================================ */
+
+
+/* ── Hero entrance (CSS-only, fires on page load) ───────────── */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__name {
+  animation: fade-up var(--duration-enter) var(--ease-out) 80ms both;
+}
+
+.hero__tagline {
+  animation: fade-up var(--duration-enter) var(--ease-out) 280ms both;
+}
+
+
+/* ── Scroll-reveal — base hidden state ──────────────────────── */
+/* Applied to elements observed by IntersectionObserver in animations.js */
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity var(--duration-enter) var(--ease-out),
+    transform var(--duration-enter) var(--ease-out);
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ── Stagger — for groups of children ──────────────────────── */
+
+[data-animate-stagger] > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+}
+
+[data-animate-stagger].is-visible > *:nth-child(1) { transition-delay:   0ms; }
+[data-animate-stagger].is-visible > *:nth-child(2) { transition-delay:  80ms; }
+[data-animate-stagger].is-visible > *:nth-child(3) { transition-delay: 160ms; }
+[data-animate-stagger].is-visible > *:nth-child(4) { transition-delay: 240ms; }
+[data-animate-stagger].is-visible > *:nth-child(5) { transition-delay: 320ms; }
+[data-animate-stagger].is-visible > *:nth-child(6) { transition-delay: 400ms; }
+
+[data-animate-stagger].is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ── Reduced motion — respect user preference ───────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__name,
+  .hero__tagline {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  [data-animate],
+  [data-animate-stagger] > * {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
