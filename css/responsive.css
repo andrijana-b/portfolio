@@ -1,34 +1,93 @@
 /* ============================================================
-   responsive.css — Mobile-first media query overrides
+   responsive.css — Fluid responsive design system
+   Breakpoints: Mobile 390px | Tablet 768px | Laptop 1280px | Desktop 1440px+
    ============================================================ */
 
 
-/* ── Mobile: < 768px ────────────────────────────────────────── */
+/* ── MOBILE FIRST: 390px–767px ────────────────────────────────── */
 
 @media (max-width: 767px) {
 
-  /* ── Type scale overrides for mobile ─────────────────────── */
+  /* ── Container padding ──────────────────────────────────── */
+  .container {
+    padding-inline: var(--container-pad-mobile);
+  }
+
+  /* ── Header ────────────────────────────────────────────── */
+  .site-header__name {
+    font-size: var(--text-sm);
+  }
+
+  .site-header__nav {
+    gap: var(--space-3);
+  }
+
+  .site-header__link {
+    font-size: 0.75rem;
+  }
+
+  /* ── Hero section ──────────────────────────────────────── */
+  .hero {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-6);
+  }
 
   .hero__tagline {
-    font-size: 2.25rem;     /* 36px */
+    font-size: 2.25rem;
     line-height: 1.2;
+    margin-bottom: var(--space-8);
+  }
+
+  .hero__info {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .hero__info-about {
+    max-width: 100%;
+  }
+
+  .hero__info-middle {
+    gap: 1.5rem;
   }
 
   .hero__bio,
   .hero__info-link,
   .hero__info-value {
-    font-size: 1.125rem;    /* 18px */
-    line-height: 1.75rem;   /* 28px */
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  /* ── Projects section ──────────────────────────────────── */
+  .project {
+    padding-block: var(--space-8);
   }
 
   .project__num {
-    font-size: 1.75rem;     /* 28px */
+    font-size: 2rem;
     line-height: 1.2;
   }
 
   .project__title {
-    font-size: 1.75rem;     /* 28px */
+    font-size: 1.5rem;
     line-height: 1.2;
+  }
+
+  .project__row,
+  .project__row--wide {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .project__info {
+    grid-column: auto;
+  }
+
+  .project__desc,
+  .project__meta,
+  .project__link {
+    font-size: 0.95rem;
+    line-height: 1.5rem;
   }
 
   .stat__value {
@@ -36,51 +95,12 @@
     line-height: 1.2;
   }
 
-  .project__desc,
-  .project__meta,
-  .project__link,
   .stat__label {
-    font-size: 1rem;        /* 16px */
-    line-height: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.4rem;
   }
 
-  .testimonial__quote {
-    font-size: 1.5rem;
-  }
-
-  /* ── Layout overrides ─────────────────────────────────────── */
-
-  .hero__info {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
-
-  .project__row,
-  .project__row--wide {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
-
-  .project__row .col-span-2 {
-    grid-column: span 1;
-  }
-
-  .project__two-col,
-  .project__two-col--wide-left,
-  .project__two-col--wide-right {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
-
-  .project__three-col {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
-
-  .project {
-    padding-block: var(--space-10);  /* tighter on mobile */
-  }
-
+  /* ── Image grids ───────────────────────────────────────── */
   .phones {
     justify-content: flex-start;
   }
@@ -99,16 +119,130 @@
   }
 
   .image-grid--five {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* ── Testimonial ────────────────────────────────────────── */
+  .testimonial__quote {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  /* ── Footer ────────────────────────────────────────────── */
+  .site-footer__inner {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .site-footer__copy,
+  .site-footer__link {
+    font-size: 0.75rem;
+  }
+}
+
+
+/* ── TABLET: 768px–1279px ──────────────────────────────────────── */
+
+@media (min-width: 768px) and (max-width: 1279px) {
+
+  /* ── Container ─────────────────────────────────────────── */
+  .container {
+    max-width: 90vw;
+    padding-inline: 1.5rem;
+  }
+
+  /* ── Hero section ──────────────────────────────────────── */
+  .hero__tagline {
+    font-size: 3rem;
+    line-height: 1.2;
+  }
+
+  .hero__info {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .hero__bio,
+  .hero__info-link,
+  .hero__info-value {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .hero__info-about {
+    max-width: 100%;
+  }
+
+  /* ── Projects ──────────────────────────────────────────── */
+  .project__row,
+  .project__row--wide {
+    grid-template-columns: auto 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .project__num {
+    font-size: 2.5rem;
+  }
+
+  .project__title {
+    font-size: 2rem;
+  }
+
+  /* ── Image grids ───────────────────────────────────────── */
+  .image-grid--five {
     grid-template-columns: repeat(3, 1fr);
   }
 
   .stats-row {
     grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  .site-footer__inner {
-    flex-direction: column;
-    align-items: flex-start;
+
+/* ── LAPTOP: 1280px–1439px ────────────────────────────────────── */
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+
+  .container {
+    max-width: var(--container-laptop);
+  }
+
+  .project__row,
+  .project__row--wide {
+    grid-template-columns: 300px 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* ── DESKTOP: 1440px+ ──────────────────────────────────────────────── */
+
+@media (min-width: 1440px) {
+
+  .container {
+    max-width: var(--container-desktop);
+    padding-inline: var(--container-pad);
+  }
+
+  .project__row,
+  .project__row--wide {
+    grid-template-columns: 403px 403px 403px 403px;
+    gap: 32px;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

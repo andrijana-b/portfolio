@@ -58,10 +58,24 @@
   --space-20: 10rem;      /* 160px */
   --space-24: 12rem;      /* 192px */
 
-  /* ── Layout ────────────────────────────────────────────── */
-  --container-max: 1600px;
-  --container-pad: 2rem;    /* 32px — fixed page margin */
-  --grid-gap:      2rem;
+  /* ── Layout — Responsive breakpoints ──────────────────── */
+  /* Desktop (1440px+): 1708px container, 32px margins */
+  /* Laptop (1280px): 1216px container, 32px margins */
+  /* Tablet (768px): full width with adaptive padding */
+  /* Mobile (390px–480px): single column, compact spacing */
+
+  --container-desktop: 1708px;
+  --container-laptop:  1216px;
+  --container-pad:     2rem;    /* 32px */
+  --container-pad-mobile: 1rem; /* 16px */
+  --grid-gap:          2rem;
+  --grid-gap-mobile:   1.5rem;
+
+  /* Responsive breakpoints */
+  --bp-mobile:   390px;
+  --bp-tablet:   768px;
+  --bp-laptop:   1280px;
+  --bp-desktop:  1440px;
 
   /* ── Animation ─────────────────────────────────────────── */
   --duration-fast:  200ms;

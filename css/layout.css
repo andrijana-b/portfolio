@@ -2,11 +2,13 @@
    layout.css — Page-level containers and section spacing
    ============================================================ */
 
-/* ── Container ─────────────────────────────────────────────── */
+/* ── Container — Responsive widths with max-width ────────────── */
 .container {
-  max-width: var(--container-max);
+  width: 100%;
+  max-width: var(--container-desktop);
   margin-inline: auto;
   padding-inline: var(--container-pad);
+  box-sizing: border-box;
 }
 
 /* ── Section defaults ──────────────────────────────────────── */
