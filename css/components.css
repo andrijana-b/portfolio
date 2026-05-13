@@ -42,8 +42,8 @@
 
 .site-header__name {
   font-family: var(--font-body);
-  font-size: var(--text-sm);
-  font-weight: 400;
+  font-size: var(--text-md);
+  font-weight: 500;
   color: var(--color-text-primary);
   letter-spacing: var(--tracking-normal);
 }
@@ -432,8 +432,9 @@
 }
 
 .site-footer__copy {
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  color: var(--color-text-body);
+  font-weight: 500;
 }
 
 .site-footer__links {
