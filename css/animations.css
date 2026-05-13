@@ -3,7 +3,7 @@
    ============================================================ */
 
 
-/* ── Hero entrance (CSS-only, fires on page load) ───────────── */
+/* ── Keyframes ─────────────────────────────────────────────── */
 
 @keyframes fade-up {
   from {
@@ -16,12 +16,154 @@
   }
 }
 
+@keyframes subtle-scale {
+  from {
+    transform: scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* ── Hero entrance (CSS-only, fires on page load) ───────────── */
+
 .hero__name {
   animation: fade-up var(--duration-enter) var(--ease-out) 80ms both;
 }
 
 .hero__tagline {
   animation: fade-up var(--duration-enter) var(--ease-out) 280ms both;
+}
+
+
+/* ── Header animations ─────────────────────────────────────── */
+
+.site-header__name {
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.site-header__name:hover {
+  color: var(--color-accent);
+}
+
+.site-header__link {
+  position: relative;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.site-header__link:hover {
+  color: var(--color-text-primary);
+}
+
+/* Subtle underline animation on hover */
+.site-header__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width var(--duration-fast) var(--ease-out);
+}
+
+.site-header__link:hover::after {
+  width: 100%;
+}
+
+
+/* ── Project card hover animations ─────────────────────────── */
+
+.project {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.project:hover {
+  transform: translateY(-2px);
+}
+
+
+/* ── Image animations ──────────────────────────────────────── */
+
+img {
+  transition: transform var(--duration-base) var(--ease-out),
+              filter var(--duration-base) var(--ease-out);
+}
+
+.project img:hover {
+  transform: scale(1.01);
+}
+
+
+/* ── Link animations ───────────────────────────────────────── */
+
+.project__link,
+.hero__info-link {
+  position: relative;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.project__link::after,
+.hero__info-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width var(--duration-fast) var(--ease-out);
+}
+
+.project__link:hover::after,
+.hero__info-link:hover::after {
+  width: 100%;
+}
+
+.project__link:hover,
+.hero__info-link:hover {
+  color: var(--color-accent);
+}
+
+
+/* ── Footer link animations ────────────────────────────────── */
+
+.site-footer__link {
+  position: relative;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.site-footer__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width var(--duration-fast) var(--ease-out);
+}
+
+.site-footer__link:hover {
+  color: var(--color-text-primary);
+}
+
+.site-footer__link:hover::after {
+  width: 100%;
 }
 
 
@@ -65,6 +207,17 @@
 }
 
 
+/* ── Smooth transitions for state changes ──────────────────── */
+
+a {
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+button {
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+
 /* ── Reduced motion — respect user preference ───────────────── */
 
 @media (prefers-reduced-motion: reduce) {
@@ -81,5 +234,35 @@
     transition: none;
     opacity: 1;
     transform: none;
+  }
+
+  .site-header__name,
+  .site-header__link,
+  .project,
+  img,
+  .project__link,
+  .hero__info-link,
+  .site-footer__link,
+  a,
+  button {
+    transition: none;
+  }
+
+  .site-header__name:hover,
+  .site-header__link:hover,
+  .project:hover,
+  .project img:hover,
+  .project__link:hover,
+  .hero__info-link:hover,
+  .site-footer__link:hover {
+    transform: none;
+    color: inherit;
+  }
+
+  .site-header__link::after,
+  .project__link::after,
+  .hero__info-link::after,
+  .site-footer__link::after {
+    display: none;
   }
 }
