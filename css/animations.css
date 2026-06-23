@@ -180,13 +180,13 @@
   background: linear-gradient(to right, var(--color-text-primary) 0%, var(--color-text-primary) 0%, transparent 0%);
   background-position: 0 100%;
   background-repeat: no-repeat;
-  background-size: 0% 1px;
+  background-size: 0% 2px;
   transition: color 300ms var(--ease-quart), background-size 350ms var(--ease-quart);
 }
 
 .site-header__link:hover {
   color: var(--color-text-primary);
-  background-size: 100% 1px;
+  background-size: 100% 2px;
 }
 
 
@@ -198,14 +198,14 @@
   background: linear-gradient(to right, var(--color-text-primary) 0%, var(--color-text-primary) 0%, transparent 0%);
   background-position: 0 100%;
   background-repeat: no-repeat;
-  background-size: 0% 1px;
+  background-size: 0% 2px;
   transition: color 300ms var(--ease-quart), background-size 350ms var(--ease-quart);
 }
 
 .project__link:hover,
 .hero__info-link:hover {
   color: var(--color-text-primary);
-  background-size: 100% 1px;
+  background-size: 100% 2px;
 }
 
 
@@ -216,13 +216,13 @@
   background: linear-gradient(to right, var(--color-text-primary) 0%, var(--color-text-primary) 0%, transparent 0%);
   background-position: 0 100%;
   background-repeat: no-repeat;
-  background-size: 0% 1px;
+  background-size: 0% 2px;
   transition: color 300ms var(--ease-quart), background-size 350ms var(--ease-quart);
 }
 
 .site-footer__link:hover {
   color: var(--color-text-primary);
-  background-size: 100% 1px;
+  background-size: 100% 2px;
 }
 
 
