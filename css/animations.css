@@ -177,26 +177,16 @@
 
 .site-header__link {
   position: relative;
-  transition: color 300ms var(--ease-quart);
-}
-
-.site-header__link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--color-text-primary);
-  transition: width 300ms var(--ease-quart);
+  background: linear-gradient(to right, var(--color-text-primary) 0%, var(--color-text-primary) 0%, transparent 0%);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: color 300ms var(--ease-quart), background-size 350ms var(--ease-quart);
 }
 
 .site-header__link:hover {
   color: var(--color-text-primary);
-}
-
-.site-header__link:hover::after {
-  width: 100%;
+  background-size: 100% 1px;
 }
 
 
@@ -205,29 +195,17 @@
 .project__link,
 .hero__info-link {
   position: relative;
-  transition: color 300ms var(--ease-quart);
-}
-
-.project__link::after,
-.hero__info-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--color-text-primary);
-  transition: width 350ms var(--ease-quart);
+  background: linear-gradient(to right, var(--color-text-primary) 0%, var(--color-text-primary) 0%, transparent 0%);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: color 300ms var(--ease-quart), background-size 350ms var(--ease-quart);
 }
 
 .project__link:hover,
 .hero__info-link:hover {
   color: var(--color-text-primary);
-}
-
-.project__link:hover::after,
-.hero__info-link:hover::after {
-  width: 100%;
+  background-size: 100% 1px;
 }
 
 
@@ -235,26 +213,16 @@
 
 .site-footer__link {
   position: relative;
-  transition: color 300ms var(--ease-quart);
-}
-
-.site-footer__link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--color-text-primary);
-  transition: width 350ms var(--ease-quart);
+  background: linear-gradient(to right, var(--color-text-primary) 0%, var(--color-text-primary) 0%, transparent 0%);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: color 300ms var(--ease-quart), background-size 350ms var(--ease-quart);
 }
 
 .site-footer__link:hover {
   color: var(--color-text-primary);
-}
-
-.site-footer__link:hover::after {
-  width: 100%;
+  background-size: 100% 1px;
 }
 
 
@@ -344,10 +312,10 @@ a {
     will-change: auto;
   }
 
-  .site-header__link::after,
-  .project__link::after,
-  .hero__info-link::after,
-  .site-footer__link::after {
-    display: none;
+  .site-header__link,
+  .project__link,
+  .hero__info-link,
+  .site-footer__link {
+    background: none;
   }
 }
