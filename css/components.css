@@ -33,11 +33,16 @@
   font-weight: 400;
   color: var(--color-text-secondary);
   text-decoration: none;
-  transition: color var(--duration-fast) var(--ease-out);
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out), text-decoration-thickness var(--duration-fast) var(--ease-out), font-weight var(--duration-fast) var(--ease-out);
 }
 
 .site-header__link:hover {
   color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-text-primary);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  font-weight: 600;
 }
 
 .site-header__name {
@@ -120,11 +125,14 @@
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-color: var(--color-border);
-  transition: color var(--duration-fast) var(--ease-out);
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out), text-decoration-thickness var(--duration-fast) var(--ease-out), font-weight var(--duration-fast) var(--ease-out);
 }
 
 .hero__info-link:hover {
   color: var(--color-text-primary);
+  text-decoration-color: var(--color-text-primary);
+  text-decoration-thickness: 2px;
+  font-weight: 600;
 }
 
 .hero__info-value {
@@ -448,9 +456,15 @@
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--color-text-body);
-  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out), text-decoration-thickness var(--duration-fast) var(--ease-out), font-weight var(--duration-fast) var(--ease-out);
 }
 
 .site-footer__link:hover {
   color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-text-primary);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  font-weight: 600;
 }
