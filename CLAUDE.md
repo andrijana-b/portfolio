@@ -52,3 +52,13 @@ js/
 ## Content structure (`index.html`)
 
 Sections in order: sticky header nav → hero (tagline + 3-col info grid) → 6 project case studies → testimonial → footer.
+
+## Git workflow
+
+**Do not commit or push automatically.** Always wait for explicit approval:
+1. Make code changes and verify them in the browser
+2. Show the changes and explain what was done
+3. Wait for the user to review and approve
+4. Only commit and push when the user explicitly asks ("git commit" or "commit and push")
+
+This ensures the user has full control over what gets committed to the repository.
