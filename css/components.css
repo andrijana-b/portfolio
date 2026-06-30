@@ -14,11 +14,11 @@
   background: var(--color-bg);
 }
 
-/* Inner container: name left, nav links right */
+/* Inner container: nav links right */
 .site-header .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .site-header__nav {
@@ -46,11 +46,7 @@
 }
 
 .site-header__name {
-  font-family: var(--font-body);
-  font-size: var(--text-md);
-  font-weight: 500;
-  color: var(--color-text-primary);
-  letter-spacing: var(--tracking-normal);
+  display: none;
 }
 
 
@@ -280,8 +276,9 @@
 
 .full-bleed--tall img {
   max-height: 70vh;
-  object-fit: cover;
-  object-position: center top;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 

@@ -32,6 +32,10 @@
   padding-bottom: 0;
 }
 
+.hero.section--flush-top {
+  padding-top: 4rem;
+}
+
 /* ── Generic divider ───────────────────────────────────────── */
 .divider {
   border: none;
