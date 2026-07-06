@@ -267,7 +267,8 @@
   background: var(--color-surface);
 }
 
-.full-bleed img {
+.full-bleed img,
+.full-bleed video {
   width: 100%;
   height: auto;
   display: block;
@@ -279,6 +280,83 @@
   width: 100%;
   object-fit: contain;
   object-position: center;
+}
+
+
+/* ── Device showcase (phone mockup + blurred glow) ─────────── */
+
+.device-showcase {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--color-bg);
+  padding: var(--space-24) 0;
+}
+
+.device-showcase__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 28% 35%, rgba(213, 255, 145, 0.75), transparent 55%),
+    radial-gradient(circle at 72% 62%, rgba(172, 116, 194, 0.8), transparent 55%),
+    radial-gradient(circle at 50% 85%, rgba(212, 77, 186, 0.65), transparent 50%);
+  filter: blur(90px);
+  transform: scale(1.2);
+}
+
+.device-showcase__laptop {
+  position: relative;
+  z-index: 1;
+  width: min(900px, 82vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.device-showcase__screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #000000;
+  border: 14px solid #131416;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+}
+
+.device-showcase__camera {
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2a2b2d;
+  z-index: 2;
+}
+
+.device-showcase__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  transform: scale(1.06);
+}
+
+.device-showcase__base {
+  position: relative;
+  width: 112%;
+  height: 16px;
+  background: linear-gradient(to bottom, #2b2c2e, #17181a);
+  clip-path: polygon(4% 0%, 96% 0%, 100% 100%, 0% 100%);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 

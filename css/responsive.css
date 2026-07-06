@@ -122,6 +122,24 @@
     line-height: 1.4rem;
   }
 
+  /* ── Device showcase ───────────────────────────────────── */
+  .device-showcase {
+    padding: var(--space-12) 0;
+  }
+
+  .device-showcase__laptop {
+    width: 92vw;
+  }
+
+  .device-showcase__screen {
+    border-width: 8px;
+    border-radius: 10px;
+  }
+
+  .device-showcase__base {
+    height: 10px;
+  }
+
   /* ── Image grids ───────────────────────────────────────── */
   .phones {
     justify-content: flex-start;
