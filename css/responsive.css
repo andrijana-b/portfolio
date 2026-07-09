@@ -32,6 +32,15 @@
     padding-bottom: var(--space-6);
   }
 
+  /* Drop the fixed desktop height so the image sizes to its own
+     aspect ratio at full container width — no top/bottom letterbox
+     gaps from a box taller than the image needs on a narrow screen. */
+  .full-bleed--tall img.full-bleed__photo {
+    height: auto;
+    max-height: none;
+    object-fit: cover;
+  }
+
   .hero__header {
     flex-direction: column;
     align-items: flex-start;
@@ -85,6 +94,10 @@
     padding-block: var(--space-8);
   }
 
+  .full-bleed--spaced {
+    margin-bottom: var(--space-4);
+  }
+
   .project__num {
     font-size: 2rem;
     line-height: 1.2;
@@ -124,7 +137,7 @@
 
   /* ── Device showcase ───────────────────────────────────── */
   .device-showcase {
-    padding: var(--space-12) 0;
+    padding: var(--space-4) 0;
   }
 
   .device-showcase__laptop {
@@ -163,12 +176,35 @@
     gap: var(--space-4);
   }
 
+  .image-grid--three {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .setup-media-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .security-media-grid {
+    grid-template-columns: 1fr;
+    margin-bottom: var(--space-6);
+  }
+
+  .security-media-grid__left {
+    align-self: auto;
+  }
+
   .stats-row {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 
   /* ── Testimonial ────────────────────────────────────────── */
+  .testimonial {
+    padding-block: var(--space-4);
+  }
+
   .testimonial__quote {
     font-size: 1.5rem;
     line-height: 1.2;
@@ -221,10 +257,36 @@
   }
 
   /* ── Projects ──────────────────────────────────────────── */
+  /* Only 3 tracks fit at this width, but most rows hold 4 items
+     (num, info, + two content pieces) — so the number and info
+     share row 1, and the two trailing items reflow onto row 2,
+     side by side, instead of the 4th item wrapping into the
+     narrow "num" column. */
   .project__row,
   .project__row--wide {
     grid-template-columns: auto 1fr 1fr;
     gap: 1.5rem;
+    row-gap: var(--space-6);
+  }
+
+  .project__row > .project__num {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .project__row > .project__info {
+    grid-column: 2 / span 2;
+    grid-row: 1;
+  }
+
+  .project__row > *:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .project__row > *:nth-child(4) {
+    grid-column: 3;
+    grid-row: 2;
   }
 
   .project__num {
@@ -317,3 +379,5 @@
     max-height: 80vh;
   }
 }
+
+

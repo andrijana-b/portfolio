@@ -106,7 +106,7 @@
 
 .hero__cta-buttons {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-2);
   margin-top: var(--space-8);
 }
 
@@ -114,7 +114,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: 4px 8px 4px 16px;
+  padding: 4px 6px 4px 10px;
   height: 50px;
   border-radius: 8px;
   font-family: var(--font-body);
@@ -269,6 +269,10 @@
 
 .full-bleed--photo-wrap {
   background: var(--color-bg);
+}
+
+.full-bleed--spaced {
+  margin-bottom: var(--space-12);
 }
 
 .full-bleed img,
@@ -600,6 +604,53 @@
 
 .image-grid--two {
   grid-template-columns: repeat(2, 1fr);
+}
+
+
+/* ── Echo Device Setup — two-image column + 3-image grid ───── */
+
+.setup-media-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-12);
+  margin-bottom: var(--space-12);
+}
+
+.setup-media-grid__stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+
+/* ── Echo Show Security — split media layout ───────────────── */
+
+.security-media-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+  align-items: start;
+}
+
+.security-media-grid__left {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  align-self: end;
+}
+
+.security-media-grid__right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  height: 100%;
+}
+
+.security-media-grid__item {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
 .image-grid--five {

@@ -19,9 +19,9 @@
   <link rel="stylesheet" href="css/reset.css?v=2">
   <link rel="stylesheet" href="css/typography.css?v=2">
   <link rel="stylesheet" href="css/layout.css?v=3">
-  <link rel="stylesheet" href="css/components.css?v=18">
+  <link rel="stylesheet" href="css/components.css?v=22">
   <link rel="stylesheet" href="css/animations.css?v=2">
-  <link rel="stylesheet" href="css/responsive.css?v=9">
+  <link rel="stylesheet" href="css/responsive.css?v=13">
 </head>
 
 <body>
@@ -67,10 +67,6 @@
               <p class="hero__info-label">Connect</p>
               <a class="hero__info-link" href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               <a class="hero__info-link" href="mailto:a.bakracheski@gmail.com">Email</a>
-            </div>
-            <div>
-              <p class="hero__info-label">Based</p>
-              <span class="hero__info-value">Amsterdam, Netherlands</span>
             </div>
           </div>
 
@@ -224,7 +220,7 @@
     <article class="project section" id="alexa-communications" data-animate>
       <div class="container">
         <!-- Full-width image at top -->
-        <div class="full-bleed full-bleed--tall" style="margin-bottom: var(--space-12);" data-animate="scale">
+        <div class="full-bleed full-bleed--tall full-bleed--spaced" data-animate="scale">
           <img
             src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623cce35d92a09e0c51b2595_comms_theia_calling_full_cropped.png"
             alt="Alexa Communications tab redesign" loading="lazy" decoding="async"
@@ -277,14 +273,14 @@
       <div class="container">
 
         <!-- Two-image column + 3-image grid -->
-        <div style="display:grid;grid-template-columns:1fr 2fr;gap:var(--space-12);margin-bottom:var(--space-12);">
+        <div class="setup-media-grid">
           <!-- Left column: Searching and Connecting stacked -->
-          <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+          <div class="setup-media-grid__stack">
             <img src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623f8ee3856247c6503789af_oobe_screen1_searchingfordevice.gif" alt="Searching for device" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:var(--radius-md);">
             <img src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623f921e81a54a44bc772110_oobe_screen1_wifiloading.gif" alt="Connecting to wifi" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:var(--radius-md);">
           </div>
           <!-- Right: 3-image grid -->
-          <div class="image-grid image-grid--three" style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);">
+          <div class="image-grid image-grid--three">
             <img src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623bfc58a6ef648ca5e3985a_oobe_screen2.png" alt="Device selection" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:1.5rem;">
             <img src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623e62b14e0c5f9a789429b6_echosetupscreen3_video_1_reduced2.gif" alt="Plug in check" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:1.5rem;">
             <img src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623ce363b4be5411c64fc4bb_oobe_screen4.png" alt="Echo smart speaker" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:var(--radius-md);">
@@ -335,9 +331,9 @@
     <article class="project section" id="echo-show-security" data-animate>
       <div class="container">
         <!-- Two-column layout: left full height, right stacked -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-12);align-items:start;">
+        <div class="security-media-grid">
           <!-- Left column - Single image aligned to bottom -->
-          <div style="width:100%;border-radius:var(--radius-md);overflow:hidden;align-self:end;">
+          <div class="security-media-grid__left">
             <img
               src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623bfe40d3222f69c05f1258_echosecuritypanel_screen2.png"
               alt="Echo Show Guard — welcome home" loading="lazy" decoding="async"
@@ -346,9 +342,9 @@
           </div>
 
           <!-- Right column - Two images stacked vertically -->
-          <div style="display:flex;flex-direction:column;gap:var(--space-4);height:100%;">
+          <div class="security-media-grid__right">
             <!-- Top image -->
-            <div style="width:100%;border-radius:var(--radius-md);overflow:hidden;">
+            <div class="security-media-grid__item">
               <img
                 src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623bfdcfb9b5cdafd0695a29_echosecuritypanel_screen1.png"
                 alt="Echo Show Guard — activity detected" loading="lazy" decoding="async"
@@ -357,7 +353,7 @@
             </div>
 
             <!-- Bottom image -->
-            <div style="width:100%;border-radius:var(--radius-md);overflow:hidden;">
+            <div class="security-media-grid__item">
               <img
                 src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623bfe45e815d803899bca11_echosecuritypanel_screen3.png"
                 alt="Echo Show Guard — ring integration" loading="lazy" decoding="async"
