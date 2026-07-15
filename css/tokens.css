@@ -16,6 +16,8 @@
   --color-link:            #ffffff;
   --color-link-hover:      #a0a0a0;
   --color-accent:          #d44dba;  /* pink/magenta — project titles */
+  --color-accent-green:    #9cb86d;  /* matches "See the work" CTA button */
+  --color-accent-purple:   #b596c2;  /* matches "Contact" CTA button */
 
   /* ── Font families ─────────────────────────────────────── */
   --font-display: 'Cardo', Georgia, serif;        /* hero name */

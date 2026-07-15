@@ -39,7 +39,7 @@
 .site-header__link:hover {
   color: var(--color-text-primary);
   text-decoration: underline;
-  text-decoration-color: var(--color-text-primary);
+  text-decoration-color: var(--color-accent-green);
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
   font-weight: 600;
@@ -184,6 +184,48 @@
   border-radius: 8px !important;
 }
 
+/* ── Hero stat cards ───────────────────────────────────────── */
+
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.hero__stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.hero__stat-value {
+  font-family: var(--font-body);
+  font-size: 2.25rem;    /* 36px */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+.hero__stat-value--green {
+  color: var(--color-accent-green);
+}
+
+.hero__stat-value--purple {
+  color: var(--color-accent-purple);
+}
+
+.hero__stat-label {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
 /* ── Info Grid — 3 columns ─────────────────────────────────── */
 
 .hero__info {
@@ -243,7 +285,7 @@
 
 .hero__info-link:hover {
   color: var(--color-text-primary);
-  text-decoration-color: var(--color-text-primary);
+  text-decoration-color: var(--color-accent-green);
   text-decoration-thickness: 2px;
   font-weight: 600;
 }
@@ -452,11 +494,12 @@
   text-underline-offset: 4px;
   text-decoration-color: var(--color-border);
   margin-top: var(--space-3);
-  transition: color var(--duration-fast) var(--ease-out);
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
 }
 
 .project__link:hover {
   color: var(--color-text-primary);
+  text-decoration-color: var(--color-accent-green);
 }
 
 
@@ -473,6 +516,14 @@
 /* Variant: col3 spans to col4 (when only 3 pieces of content) */
 .project__row .col-span-2 {
   grid-column: span 2;
+}
+
+/* Aligns a column's first section-label with a sibling column's
+   first section-label, when that sibling sits below a title+meta
+   block. Only meaningful once columns sit side by side — reset to
+   0 below the laptop breakpoint in responsive.css. */
+.project__info--offset-title {
+  margin-top: 0;
 }
 
 /* Variant: number + wide content taking 3 remaining cols */
@@ -732,7 +783,7 @@
 .site-footer__link:hover {
   color: var(--color-text-primary);
   text-decoration: underline;
-  text-decoration-color: var(--color-text-primary);
+  text-decoration-color: var(--color-accent-green);
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
   font-weight: 600;
