@@ -120,7 +120,8 @@
     gap: var(--space-4);
   }
 
-  .project__info {
+  .project__info,
+  .project__row .col-span-2 {
     grid-column: auto;
   }
 
