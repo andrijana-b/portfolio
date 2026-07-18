@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="css/reset.css?v=2">
   <link rel="stylesheet" href="css/typography.css?v=2">
   <link rel="stylesheet" href="css/layout.css?v=3">
-  <link rel="stylesheet" href="css/components.css?v=37">
+  <link rel="stylesheet" href="css/components.css?v=42">
   <link rel="stylesheet" href="css/animations.css?v=2">
   <link rel="stylesheet" href="css/responsive.css?v=16">
 </head>
@@ -241,7 +241,7 @@
     </article>
 
 
-    <article class="project section" id="echo-show-security" data-animate>
+    <article class="project section project--pdp-showcase" id="echo-show-security" data-animate>
       <div class="container">
         <!-- Two-column layout: left full height, right stacked -->
         <div class="security-media-grid security-media-grid--pdp">
@@ -277,12 +277,34 @@
           <div class="security-media-grid__right">
             <!-- Top image -->
             <div class="security-media-grid__item">
-              <img src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623bfdcfb9b5cdafd0695a29_echosecuritypanel_screen1.png" alt="Echo Show Guard — activity detected" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;">
-            </div>
-
-            <!-- Bottom image -->
-            <div class="security-media-grid__item">
-              <img src="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/623bfe45e815d803899bca11_echosecuritypanel_screen3.png" alt="Echo Show Guard — ring integration" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;">
+              <div class="plp-compare" data-plp-compare>
+                <div class="plp-compare__bezel">
+                  <div class="pdp-compare__camera"></div>
+                  <div class="plp-compare__screen">
+                    <div class="pdp-compare__browser-bar">
+                      <span class="pdp-compare__dot pdp-compare__dot--red"></span>
+                      <span class="pdp-compare__dot pdp-compare__dot--yellow"></span>
+                      <span class="pdp-compare__dot pdp-compare__dot--green"></span>
+                      <span class="pdp-compare__url">verstegen.nl/kruiden-specerijen</span>
+                    </div>
+                    <div class="plp-compare__area" data-plp-compare-area>
+                      <div class="plp-compare__pane plp-compare__pane--after">
+                        <img src="documents/verstegen-plp-new.png" alt="Verstegen new PLP design" loading="lazy" decoding="async">
+                      </div>
+                      <div class="plp-compare__pane plp-compare__pane--before">
+                        <img src="documents/verstegen-plp-old.png" alt="Verstegen old PLP design" loading="lazy" decoding="async">
+                      </div>
+                      <div class="plp-compare__divider"></div>
+                      <div class="plp-compare__handle"></div>
+                      <div class="plp-compare__strip" data-plp-compare-strip></div>
+                      <span class="plp-compare__badge plp-compare__badge--before">Before</span>
+                      <span class="plp-compare__badge plp-compare__badge--after">After</span>
+                      <span class="plp-compare__hint">↑<br>Drag to compare<br>↓</span>
+                    </div>
+                  </div>
+                  <div class="pdp-compare__home-indicator"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -567,6 +589,7 @@
 
   <script defer src="js/animations.js?v=2"></script>
   <script defer src="js/pdp-compare.js"></script>
+  <script defer src="js/plp-compare.js"></script>
   <script defer src="js/main.js?v=2"></script>
 </body>
 </html>

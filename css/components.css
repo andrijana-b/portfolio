@@ -456,6 +456,10 @@
   padding-block: 9rem;  /* 144px — generous vertical separation */
 }
 
+.project--pdp-showcase {
+  padding-top: 0;
+}
+
 .project__num {
   font-family: var(--font-body);
   font-size: 3rem;        /* 48px */
@@ -724,8 +728,8 @@
 }
 
 .security-media-grid--pdp {
-  grid-template-columns: 3fr 2fr;
-  gap: var(--space-2);
+  grid-template-columns: 5fr 4fr;
+  gap: 24px;
 }
 
 .security-media-grid__right {
@@ -962,6 +966,193 @@
 
 @media (prefers-reduced-motion: reduce) {
   .pdp-compare__bezel {
+    animation: none;
+  }
+}
+
+
+/* ── PLP before/after comparison slider (horizontal divider) ── */
+
+.plp-compare {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.plp-compare__bezel {
+  width: 100%;
+  max-width: 620px;
+  background: #1c1c1e;
+  border-radius: 36px;
+  padding: 0 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+  animation: pdp-compare-pulse 6s var(--ease-in-out) infinite;
+}
+
+.plp-compare__screen {
+  width: 100%;
+  aspect-ratio: 620 / 856;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.plp-compare__area {
+  position: relative;
+  flex: 1 1 auto;
+  overflow: hidden;
+  background: #fff;
+}
+
+.plp-compare__pane {
+  position: absolute;
+  inset: 0;
+  overflow-y: hidden;
+}
+
+.plp-compare__pane img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.plp-compare__pane--after {
+  z-index: 1;
+  overflow-y: auto;
+}
+
+.plp-compare__pane--before {
+  z-index: 2;
+}
+
+.plp-compare__divider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 3px;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.plp-compare__handle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform var(--duration-fast) var(--ease-out);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+.plp-compare__handle::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c9c9c9;
+}
+
+.plp-compare__area.is-hint .plp-compare__handle {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.plp-compare__area.is-dragging .plp-compare__handle {
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+.plp-compare__strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 36px;
+  transform: translateY(-50%);
+  cursor: default;
+  touch-action: none;
+  z-index: 5;
+}
+
+.plp-compare__area.is-manual .plp-compare__strip {
+  cursor: ns-resize;
+}
+
+.plp-compare__badge {
+  position: absolute;
+  left: 18px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  transition: opacity var(--duration-fast) var(--ease-out);
+  pointer-events: none;
+  z-index: 6;
+}
+
+.plp-compare__badge--before {
+  top: 14px;
+  background: rgba(120, 120, 120, 0.5);
+  color: #fff;
+}
+
+.plp-compare__badge--after {
+  bottom: 14px;
+  background: rgba(213, 255, 145, 0.55);
+  color: #1c1c1e;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.plp-compare__hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 14px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.4;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease-out);
+  z-index: 7;
+}
+
+.plp-compare__hint.is-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plp-compare__bezel {
     animation: none;
   }
 }
