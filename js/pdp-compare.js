@@ -36,6 +36,7 @@
       const pct = frac * 100;
       oldImg.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
       divider.style.left = `${pct}%`;
+      strip.style.left = `${pct}%`;
       const handle = root.querySelector('.pdp-compare__handle');
       if (handle) handle.style.left = `${pct}%`;
 

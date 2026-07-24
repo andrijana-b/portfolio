@@ -39,6 +39,7 @@
       const pct = frac * 100;
       beforePane.style.clipPath = `inset(0 0 ${100 - pct}% 0)`;
       divider.style.top = `${pct}%`;
+      strip.style.top = `${pct}%`;
       const handle = root.querySelector('.plp-compare__handle');
       if (handle) handle.style.top = `${pct}%`;
 
