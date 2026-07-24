@@ -554,14 +554,6 @@
   grid-column: span 2;
 }
 
-/* Aligns a column's first section-label with a sibling column's
-   first section-label, when that sibling sits below a title+meta
-   block. Only meaningful once columns sit side by side — reset to
-   0 below the laptop breakpoint in responsive.css. */
-.project__info--offset-title {
-  margin-top: 0;
-}
-
 /* Variant: number + wide content taking 3 remaining cols */
 .project__row--wide {
   grid-template-columns: 64px 838px 403px;

@@ -329,8 +329,8 @@
     gap: 1.5rem;
   }
 
-  .project__info--offset-title {
-    margin-top: 9.625rem;
+  #verstegen .col-span-2 > .section-label:first-child {
+    margin-top: 19.75rem;
   }
 
   .stats-row {
@@ -354,8 +354,8 @@
     gap: 32px;
   }
 
-  .project__info--offset-title {
-    margin-top: 8.25rem;
+  #verstegen .col-span-2 > .section-label:first-child {
+    margin-top: 17rem;
   }
 
   .stats-row {
