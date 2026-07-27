@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script>window.OM_SCENES = '[{"name":"Compare","dur":6,"oldLabel":"BEFORE","newLabel":"AFTER"}]';</script>
+<script>window.OM_PLAYBACK = '{"mode":"times","count":1}';</script>
+<script>window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"oldLabel":"BEFORE","newLabel":"AFTER"}/*EDITMODE-END*/;</script>
+</helmet>
+<x-import component-from-global-scope="TOPSComparisonApp" from="./animations-v2.jsx ./tweaks-panel.jsx ./tops-compare-scene.jsx ./tops-comparison-app.jsx" hint-size="1920,1080" style="width:100%;height:100%;display:block"></x-import>
+
+</x-dc>
+</body>
+</html>
