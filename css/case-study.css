@@ -254,7 +254,7 @@ body.case-study-page .hero__cta-button--secondary:hover svg {
 .cs-sidebar__link:hover,
 .cs-sidebar__link.is-active {
   color: var(--color-text-primary);
-  border-left-color: var(--color-accent-green);
+  border-left-color: var(--color-accent);
 }
 
 .cs-content {
