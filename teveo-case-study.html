@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="css/layout.css?v=3">
   <link rel="stylesheet" href="css/components.css?v=42">
   <link rel="stylesheet" href="css/animations.css?v=2">
-  <link rel="stylesheet" href="css/case-study.css?v=7">
+  <link rel="stylesheet" href="css/case-study.css?v=13">
   <link rel="stylesheet" href="css/responsive.css?v=16">
 </head>
 
@@ -29,9 +29,8 @@
   <!-- ─── SITE HEADER ───────────────────────────────────────── -->
   <header class="site-header cs-header">
     <div class="container">
-      <a class="cs-header__name" href="index.html">Andrijana Bakracheski</a>
+      <span class="cs-header__name">Andrijana Bakracheski</span>
       <nav class="site-header__nav">
-        <a class="site-header__link" href="index.html#spectacles">← All projects</a>
         <a class="site-header__link" href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a class="site-header__link" href="mailto:a.bakracheski@gmail.com">Email</a>
         <a class="site-header__link" href="documents/Andrijana Bakracheski_CV.pdf" download>CV</a>
@@ -68,7 +67,7 @@
             </div>
             <div>
               <span class="cs-hero__meta-label">Focus</span>
-              <span class="cs-hero__meta-value">Shopping experience, homepage, plp, pdp</span>
+              <span class="cs-hero__meta-value">Shopping experience, product detail page</span>
             </div>
           </div>
 
@@ -106,9 +105,7 @@
           <a href="#key-insights" class="cs-sidebar__link">03 · Key insights</a>
           <a href="#process" class="cs-sidebar__link">04 · Process &amp; ideation</a>
           <a href="#implementation" class="cs-sidebar__link">05 · Key updates</a>
-          <a href="#metrics" class="cs-sidebar__link">06 · Results &amp; validation</a>
-          <a href="#contributions" class="cs-sidebar__link">07 · Key contributions</a>
-          <a href="#outcome" class="cs-sidebar__link">08 · Outcome</a>
+          <a href="#outcome" class="cs-sidebar__link">06 · Reflection</a>
         </nav>
       </aside>
 
@@ -142,14 +139,7 @@
         <section class="cs-section" id="desk-research" data-animate>
           <p class="cs-section__eyebrow">02 · Desk Research</p>
           <h2 class="cs-section__title">Learning from direct competitors</h2>
-          <p class="cs-section__body">I reviewed the current TEVEO app against the redesigned website and against common patterns in mobile sportswear and fashion retail. I looked at how two direct competitors treat their apps as more than a smaller website:</p>
-
-          <h3 style="font-size: 18px; font-weight: 600; margin: 24px 0 16px 0; color: var(--color-text-primary);">Key gaps identified in the app</h3>
-          <ul class="cs-list">
-            <li><strong style="font-weight: 500;">No unisex entry point.</strong> Categories and imagery still assume a female shopper, leaving a first-time male visitor without a clear path in. A visitor arriving from TEVEO's current unisex marketing found no obvious route into the range that was being advertised to him. This was a dead end within the first screen.</li>
-            <li><strong style="font-weight: 500;">Trust signals missing on mobile.</strong> Reviews, guarantees, and payment or security badges appear on web but are not carried into the app.</li>
-            <li><strong style="font-weight: 500;">No support for repeat visits.</strong> There is no "previously viewed" feature, every session starts from zero, which affects undecided buyers most.</li>
-          </ul>
+          <p class="cs-section__body">I reviewed the current TEVEO app against the redesigned website and against common patterns in mobile sportswear retail. I looked at how two direct competitors treat their apps.</p>
 
           <div class="cs-card-grid" style="grid-template-columns: repeat(2, 1fr);">
             <div class="cs-card">
@@ -178,6 +168,13 @@
               </ul>
             </div>
           </div>
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 24px 0 16px 0; color: var(--color-text-primary);">Key gaps identified in the Teveo app</h3>
+          <ul class="cs-list">
+            <li><strong style="font-weight: 500;">No unisex entry point.</strong> Categories and imagery still assume a female shopper, leaving a first-time male visitor without a clear path in. A visitor arriving from TEVEO's current unisex marketing found no obvious route into the range that was being advertised to him. This was a dead end within the first screen.</li>
+            <li><strong style="font-weight: 500;">Trust signals missing on mobile.</strong> Reviews, guarantees, and payment or security badges appear on web but are not carried into the app.</li>
+            <li><strong style="font-weight: 500;">No support for repeat visits.</strong> There is no "previously viewed" feature, every session starts from zero, which affects undecided buyers most.</li>
+          </ul>
         </section>
 
         <section class="cs-section" id="key-insights" data-animate>
@@ -187,11 +184,11 @@
           <div class="cs-card-grid cs-card-grid--2col">
             <div class="cs-card">
               <h3 class="cs-card__title">Time is precious</h3>
-              <p class="cs-card__description">No one has time to fill out numerous fields. Swift, intuitive onboarding isn't a nice-to-have, it's the product.</p>
+              <p class="cs-card__description">Mobile shoppers expect instant access to what they need. Fast search, clear navigation, and relevant recommendations make finding products faster and easier.</p>
             </div>
             <div class="cs-card">
-              <h3 class="cs-card__title">Why should I?</h3>
-              <p class="cs-card__description">Users need a clear explanation of why information is requested. Unexplained fields create friction and distrust.</p>
+              <h3 class="cs-card__title">Value before action</h3>
+              <p class="cs-card__description">People need a clear reason to engage. Every feature, banner, or recommendation should add value, not interrupt the path to purchase.</p>
             </div>
             <div class="cs-card">
               <h3 class="cs-card__title">Personal shopping</h3>
@@ -208,97 +205,217 @@
           <p class="cs-section__eyebrow">04 · Process & ideation</p>
           <h2 class="cs-section__title">How the redesign came together</h2>
 
-          <p class="cs-section__body">Placeholder text describing the design process. This section explains your methodology, workshops, sketches, and how you developed the initial concepts. Replace this with your actual process narrative and insights.</p>
+          <p class="cs-section__body">The Product Detail Page was one of the most important areas to rethink because it is where browsing turns into a purchase decision. Instead of redesigning it based on assumptions, I started by looking at what users needed to feel confident enough to buy.</p>
+          <p class="cs-section__body">The webshop redesign had already revealed key conversion principles: users need clarity, trust, and enough product information at the right moment. The app PDP needed to bring those same principles into a smaller, more focused mobile experience.</p>
 
           <div class="cs-image-grid">
-            <img src="https://via.placeholder.com/400x300?text=Process+Image+1" alt="Process placeholder 1" style="background: #e0e0e0; border-radius: var(--radius-md);">
-            <img src="https://via.placeholder.com/400x300?text=Process+Image+2" alt="Process placeholder 2" style="background: #e0e0e0; border-radius: var(--radius-md);">
+            <div class="pdp-scroll-item">
+              <div class="pdp-scroll" data-pdp-scroll>
+                <div class="pdp-scroll__frame">
+                  <div class="pdp-scroll__ground-shadow"></div>
+                  <div class="pdp-scroll__bezel"></div>
+                  <div class="pdp-scroll__button pdp-scroll__button--mute"></div>
+                  <div class="pdp-scroll__button pdp-scroll__button--vol-up"></div>
+                  <div class="pdp-scroll__button pdp-scroll__button--vol-down"></div>
+                  <div class="pdp-scroll__button pdp-scroll__button--power"></div>
+                  <div class="pdp-scroll__screen">
+                    <div class="pdp-scroll__glass"></div>
+                    <div class="pdp-scroll__island">
+                      <div class="pdp-scroll__camera"></div>
+                    </div>
+                    <div class="pdp-scroll__scroll-area" data-pdp-scroll-area>
+                      <div class="pdp-scroll__clamp" data-pdp-scroll-clamp>
+                        <img class="pdp-scroll__img" data-pdp-scroll-img data-natural-w="1179" data-natural-h="6828" data-native-cutoff="6480" src="documents/teveo-pdp-scroll-mockup-old.png" alt="TEVEO Leggings product detail page design, previous version">
+                      </div>
+                    </div>
+                    <div class="pdp-scroll__home-indicator"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="pdp-scroll-item__label">Before</p>
+            </div>
+            <div class="pdp-scroll-item">
+              <div class="pdp-scroll" data-pdp-scroll>
+                <div class="pdp-scroll__frame">
+                  <div class="pdp-scroll__ground-shadow"></div>
+                  <div class="pdp-scroll__bezel"></div>
+                  <div class="pdp-scroll__button pdp-scroll__button--mute"></div>
+                  <div class="pdp-scroll__button pdp-scroll__button--vol-up"></div>
+                  <div class="pdp-scroll__button pdp-scroll__button--vol-down"></div>
+                  <div class="pdp-scroll__button pdp-scroll__button--power"></div>
+                  <div class="pdp-scroll__screen">
+                    <div class="pdp-scroll__glass"></div>
+                    <div class="pdp-scroll__island">
+                      <div class="pdp-scroll__camera"></div>
+                    </div>
+                    <div class="pdp-scroll__scroll-area" data-pdp-scroll-area>
+                      <img class="pdp-scroll__img" data-pdp-scroll-img data-natural-w="1179" data-natural-h="11403" data-native-cutoff="11080" src="documents/teveo-pdp-scroll-mockup.png" alt="TEVEO product detail page design">
+                    </div>
+                    <div class="pdp-scroll__cta">
+                      <div class="pdp-scroll__cta-button">ADD TO CART</div>
+                    </div>
+                    <div class="pdp-scroll__home-indicator"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="pdp-scroll-item__label">After</p>
+            </div>
           </div>
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 40px 0 16px 0; color: var(--color-text-primary);">Understanding the existing friction</h3>
+          <p class="cs-section__body">I analysed the current app PDP and compared it with the redesigned webshop experience to identify gaps:</p>
+          <ul class="cs-list">
+            <li>Important product information was not always visible at the right moment</li>
+            <li>Users had to work harder to understand product benefits and differences</li>
+            <li>Trust-building elements were limited during the decision-making process</li>
+            <li>No structured sizing guidance exists on the product page</li>
+          </ul>
+          <p class="cs-section__body" style="margin-top: var(--space-4);">The goal was not to add more content, but to make the existing information easier to find and act on.</p>
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 40px 0 16px 0; color: var(--color-text-primary);">Designing around purchase confidence</h3>
+          <p class="cs-section__body">The redesign focused on answering the questions users naturally have before buying:</p>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Is this the right product for me?</strong><br>→ Improved product presentation, clearer categories, and stronger visual hierarchy helped users understand the product faster.</p>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Will this fit me?</strong><br>→ Sizing information and guidance were prioritised closer to the purchase decision to reduce uncertainty.</p>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Can I trust this product?</strong><br>→ Reviews, product benefits, and reassurance elements were brought forward to support confidence.</p>
+          <p class="cs-section__body"><strong style="font-weight: 500;">What makes this product worth buying?</strong><br>→ Product details were structured around customer benefits instead of only listing specifications.</p>
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 40px 0 16px 0; color: var(--color-text-primary);">Moving from information display to decision support</h3>
+          <p class="cs-section__body">The biggest shift was treating the PDP as more than a product information page. Its role is to guide users through a decision.</p>
+          <p class="cs-section__body">Every section had a purpose:</p>
+          <ul class="cs-list">
+            <li>Images create desire and show the product in context</li>
+            <li>Key benefits explain why the product matters</li>
+            <li>Details answer practical questions</li>
+            <li>Trust signals remove hesitation</li>
+            <li>The add-to-cart action becomes a natural next step</li>
+          </ul>
         </section>
 
         <section class="cs-section" id="implementation" data-animate>
           <p class="cs-section__eyebrow">05 · Key updates</p>
           <h2 class="cs-section__title">What changed in the redesign</h2>
 
-          <div class="cs-card-grid">
-            <div class="cs-card">
-              <h3 class="cs-card__title">Update one</h3>
-              <p class="cs-card__description">Placeholder description of a key design change or improvement. Explain the problem it solved and the impact it had.</p>
+          <div class="cs-card-grid cs-card-grid--2col" style="grid-template-columns: 340px 1fr; gap: var(--space-2); align-items: center; margin-bottom: var(--space-8);">
+            <div class="pdp-scroll" style="justify-content: flex-start;">
+              <div class="pdp-scroll__frame" style="height: 785px;">
+                <div class="pdp-scroll__ground-shadow"></div>
+                <div class="pdp-scroll__bezel"></div>
+                <div class="pdp-scroll__button pdp-scroll__button--mute"></div>
+                <div class="pdp-scroll__button pdp-scroll__button--vol-up"></div>
+                <div class="pdp-scroll__button pdp-scroll__button--vol-down"></div>
+                <div class="pdp-scroll__button pdp-scroll__button--power"></div>
+                <div class="pdp-scroll__screen">
+                  <div class="pdp-scroll__glass"></div>
+                  <div class="pdp-scroll__island">
+                    <div class="pdp-scroll__camera"></div>
+                  </div>
+                  <img src="documents/teveo-pdp-scroll-mockup-sportbra.png" alt="TEVEO Sport bra product detail page design" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block;">
+                  <div class="pdp-scroll__home-indicator"></div>
+                </div>
+              </div>
             </div>
-            <div class="cs-card">
-              <h3 class="cs-card__title">Update two</h3>
-              <p class="cs-card__description">Placeholder description of a key design change or improvement. Explain the problem it solved and the impact it had.</p>
-            </div>
-            <div class="cs-card">
-              <h3 class="cs-card__title">Update three</h3>
-              <p class="cs-card__description">Placeholder description of a key design change or improvement. Explain the problem it solved and the impact it had.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="cs-section" id="metrics" data-animate>
-          <p class="cs-section__eyebrow">06 · Results & validation</p>
-          <h2 class="cs-section__title">The numbers that matter</h2>
-
-          <div class="cs-metrics-grid">
-            <div class="cs-metric-card">
-              <span class="cs-metric-label">METRIC ONE</span>
-              <span class="cs-metric-value">XX%</span>
-              <p class="cs-metric-desc">Placeholder metric description</p>
-            </div>
-            <div class="cs-metric-card">
-              <span class="cs-metric-label">METRIC TWO</span>
-              <span class="cs-metric-value">XX%</span>
-              <p class="cs-metric-desc">Placeholder metric description</p>
-            </div>
-            <div class="cs-metric-card">
-              <span class="cs-metric-label">METRIC THREE</span>
-              <span class="cs-metric-value">XX%</span>
-              <p class="cs-metric-desc">Placeholder metric description</p>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <div class="cs-card">
+                <h3 class="cs-card__title">Displaying the price relatively small</h3>
+                <p class="cs-card__description">This ensures that it is less prominent and therefore feels less heavy or overwhelming for the customer, increasing the value perception of the product.</p>
+              </div>
+              <div class="cs-card">
+                <h3 class="cs-card__title">Key information kept above the fold on mobile</h3>
+                <p class="cs-card__description">Placing all important information, including product images, reviews, and price, above the fold on mobile ensures that customers immediately see everything they need to make a decision. This reduces the number of scrolls required and maintains attention, which is crucial on small screens.</p>
+              </div>
+              <div class="cs-card">
+                <h3 class="cs-card__title">Clickable product gallery</h3>
+                <p class="cs-card__description">Enhances the user experience by giving customers an intuitive way to quickly browse images and view different angles of the product. This helps remove doubts and makes it easier to visually assess the product before clicking further. The gallery reduces the chance that customers will leave the page to look for more product information elsewhere, which increases conversion.</p>
+              </div>
             </div>
           </div>
-        </section>
 
-        <section class="cs-section" id="contributions" data-animate>
-          <p class="cs-section__eyebrow">07 · Key contributions</p>
-          <h2 class="cs-section__title">What I designed</h2>
-          <ul class="cs-list">
-            <li>Designed a library of 40+ reusable components and page templates to create a scalable foundation for future growth.</li>
-            <li>Redesigned the navigation to support TEVEO's expanding unisex product range while keeping products easy to discover.</li>
-            <li>Redesigned key pages (Homepage, PLP, PDP, and About Us page) to improve readability, highlight trust signals, and create a clearer path to purchase.</li>
-            <li>Worked closely with the Product Manager, CRO, Dev team, and TEVEO's marketing team to align on business goals, technical constraints, and user needs.</li>
-          </ul>
+          <div class="cs-card-grid cs-card-grid--2col" style="grid-template-columns: 1fr 340px; gap: var(--space-2); align-items: center; margin-bottom: var(--space-8);">
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <div class="cs-card">
+                <h3 class="cs-card__title">Highlighted USPs like free shipping and 14-day returns</h3>
+                <p class="cs-card__description">Benefits such as "free shipping" and "14-day return policy, order risk-free" lower the purchase threshold and remove concerns about possible risks. This plays into the mere exposure effect, the more often the USPs are highlighted, the better.</p>
+              </div>
+              <div class="cs-card">
+                <h3 class="cs-card__title">Product details, Size &amp; Fit, Material &amp; Care, and Shipping &amp; Returns sections</h3>
+                <p class="cs-card__description">Helps eliminate doubts and questions from customers by providing direct answers to common inquiries. This enhances usability and allows people to make decisions more quickly and confidently, without having to leave the page to search for information elsewhere. As a result, the likelihood of conversion increases, as customers feel better informed.</p>
+              </div>
+              <div class="cs-card">
+                <h3 class="cs-card__title">Sticky "Add to Cart" button</h3>
+                <p class="cs-card__description">A powerful CRO technique, especially on mobile. This button remains continuously visible while the user scrolls, lowering the barrier to purchase and putting the action directly within reach. This encourages impulse purchases and prevents customers from dropping out because they do not have to scroll back up to order, which increases the chance of conversion.</p>
+              </div>
+            </div>
+            <div class="pdp-scroll" style="justify-content: flex-end;">
+              <div class="pdp-scroll__frame" style="height: 785px;">
+                <div class="pdp-scroll__ground-shadow"></div>
+                <div class="pdp-scroll__bezel"></div>
+                <div class="pdp-scroll__button pdp-scroll__button--mute"></div>
+                <div class="pdp-scroll__button pdp-scroll__button--vol-up"></div>
+                <div class="pdp-scroll__button pdp-scroll__button--vol-down"></div>
+                <div class="pdp-scroll__button pdp-scroll__button--power"></div>
+                <div class="pdp-scroll__screen">
+                  <div class="pdp-scroll__glass"></div>
+                  <div class="pdp-scroll__island">
+                    <div class="pdp-scroll__camera"></div>
+                  </div>
+                  <img src="documents/teveo-pdp-scroll-mockup-sticky-cta.png" alt="TEVEO PDP design showing the sticky Add to Cart button" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block;">
+                  <div class="pdp-scroll__home-indicator"></div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <div class="cs-image-grid">
-            <img
-              src="documents/teveo_pdp_mockup.png"
-              alt="Teveo e-commerce product page mockup" loading="lazy" decoding="async"
-            >
-            <img
-              src="documents/teveo_plp.png"
-              alt="Teveo product listing page mockup" loading="lazy" decoding="async"
-            >
+          <div class="cs-card-grid cs-card-grid--2col" style="grid-template-columns: 340px 1fr; gap: var(--space-2); align-items: center; margin-bottom: var(--space-8);">
+            <div class="pdp-scroll" data-pdp-scroll style="justify-content: flex-start;">
+              <div class="pdp-scroll__frame" style="height: 785px;">
+                <div class="pdp-scroll__ground-shadow"></div>
+                <div class="pdp-scroll__bezel"></div>
+                <div class="pdp-scroll__button pdp-scroll__button--mute"></div>
+                <div class="pdp-scroll__button pdp-scroll__button--vol-up"></div>
+                <div class="pdp-scroll__button pdp-scroll__button--vol-down"></div>
+                <div class="pdp-scroll__button pdp-scroll__button--power"></div>
+                <div class="pdp-scroll__screen">
+                  <div class="pdp-scroll__glass"></div>
+                  <div class="pdp-scroll__island">
+                    <div class="pdp-scroll__camera"></div>
+                  </div>
+                  <div class="pdp-scroll__scroll-area" data-pdp-scroll-area>
+                    <img class="pdp-scroll__img" data-pdp-scroll-img data-natural-w="1179" data-natural-h="5960" data-native-cutoff="5960" src="documents/teveo-pdp-scroll-mockup-complete-the-look.png" alt="TEVEO PDP design showing complete the look, reviews, and recommendations">
+                  </div>
+                  <div class="pdp-scroll__cta">
+                    <div class="pdp-scroll__cta-button">ADD TO CART</div>
+                  </div>
+                  <div class="pdp-scroll__home-indicator"></div>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <div class="cs-card">
+                <h3 class="cs-card__title">Complete the look</h3>
+                <p class="cs-card__description">Product bundles, such as those here on the PDP, and matching accessories enhance the user experience by offering people a complete look that meets their needs. This simplifies the decision-making process, saves time, and increases the likelihood of a higher average order value (AOV), as customers tend to purchase more products in a single transaction. Bundles effectively cater to convenience and provide an appealing, comprehensive solution.</p>
+              </div>
+              <div class="cs-card">
+                <h3 class="cs-card__title">A "Previously viewed by you" section</h3>
+                <p class="cs-card__description">Reminds visitors of products they have previously viewed, helping potential buyers easily return to items that interested them without having to search again. This increases the chance of conversion and strengthens purchase intention, especially among doubting customers.</p>
+              </div>
+              <div class="cs-card">
+                <h3 class="cs-card__title">Social proof via user-generated content</h3>
+                <p class="cs-card__description">This section leverages short-form video content (TikTok-style) where influencers and customers showcase TEVEO products. The integration of real users enhances trust and aligns with the rise of authentic, community-driven marketing.</p>
+              </div>
+              <div class="cs-card">
+                <h3 class="cs-card__title">Reviews filterable by value for money, sizing, and quality</h3>
+                <p class="cs-card__description">Allowing customers to filter reviews, including the lowest ratings, improves transparency and builds trust. Seeing both positive and negative experiences helps reduce doubts, supports informed decisions, and increases conversion confidence.</p>
+              </div>
+            </div>
           </div>
         </section>
 
         <section class="cs-section" id="outcome" data-animate>
-          <p class="cs-section__eyebrow">08 · Outcome</p>
-          <h2 class="cs-section__title">Where it landed</h2>
-          <div class="cs-outcome-card">
-            <span class="stat__value" style="color: var(--color-accent-green);">€50M</span>
-            <span class="stat__label">in annual webshop revenue</span>
-          </div>
-          <p class="cs-section__body">TEVEO's redesigned site is live today, supporting the brand's expanded unisex range and its 24+ product drops a year.</p>
-          <div class="hero__cta-buttons" style="margin-top: var(--space-6);">
-            <a href="https://teveo.com/en-nl" target="_blank" rel="noopener noreferrer" class="hero__cta-button hero__cta-button--work">
-              See live website
-              <div class="hero__cta-arrow">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </a>
-          </div>
+          <p class="cs-section__eyebrow">06 · Reflection</p>
+          <h2 class="cs-section__title">Reflection</h2>
+          <p class="cs-section__body">Working on the web redesign taught me that a good digital product isn't defined by any single screen, it's defined by whether the experience holds together across every way a customer meets the brand. The strategy behind the app uses trust signals, personalisation, and journey clarity to help users feel confident before making a purchase.</p>
+          <p class="cs-section__body">The real value wasn't in coming up with something completely new. I started with what we already knew worked. The webshop redesign had already validated many of the key decisions, so my job was to carry those learnings into the app instead of chasing new ideas.</p>
+          <p class="cs-section__body">The next step would be validating these recommendations with a small round of usability testing against the current app, the same way we validated decisions on the web.</p>
         </section>
 
       </div>
@@ -307,7 +424,7 @@
     <!-- ═══════════════════════════════════════════════════════
          NEXT PROJECT
          ═══════════════════════════════════════════════════════ -->
-    <div class="container">
+    <div class="container" style="display: none;">
       <div class="cs-next" data-animate>
         <p class="cs-next__label">Next</p>
         <a class="cs-next__link" href="index.html#verstegen">Verstegen →</a>
@@ -333,6 +450,7 @@
 
   <script defer src="js/animations.js?v=2"></script>
   <script defer src="js/case-study.js"></script>
+  <script defer src="js/pdp-scroll.js"></script>
   <script defer src="js/main.js?v=2"></script>
 </body>
 </html>
