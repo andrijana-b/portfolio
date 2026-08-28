@@ -32,6 +32,15 @@
     padding-bottom: var(--space-6);
   }
 
+  /* Two CTAs side by side (e.g. TEVEO's "See live website" +
+     "See case study") don't both fit a mobile row — stack them
+     instead, each sized to its own text rather than stretched. */
+  .hero__cta-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-x: visible;
+  }
+
   /* Drop the fixed desktop height so the image sizes to its own
      aspect ratio at full container width — no top/bottom letterbox
      gaps from a box taller than the image needs on a narrow screen. */
