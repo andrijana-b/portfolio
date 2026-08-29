@@ -63,6 +63,41 @@ body.case-study-page .hero__cta-button--secondary:hover svg {
 }
 
 
+/* ── Back link ──────────────────────────────────────────────── */
+
+.cs-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+  margin-top: calc(-1 * var(--space-8));
+  margin-bottom: var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.cs-back-link:hover,
+.cs-back-link:focus-visible {
+  color: var(--color-text-primary);
+}
+
+.cs-back-link svg {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.cs-back-link:hover svg,
+.cs-back-link:focus-visible svg {
+  transform: translateX(-3px);
+}
+
+
 /* ── Hero ───────────────────────────────────────────────────── */
 
 .cs-hero {

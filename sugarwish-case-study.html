@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Re-design of the Sugarwish Ordering Process · Andrijana Bakracheski</title>
+  <meta name="description"
+    content="How the Sugarwish gifting ordering flow was redesigned to reduce drop-off across choosing a gift, choosing a size, picking an eCard, and adding a recipient.">
+  <meta name="author" content="Andrijana Bakracheski">
+  <meta property="og:title" content="Re-design of the Sugarwish Ordering Process · Andrijana Bakracheski">
+  <meta property="og:description"
+    content="How the Sugarwish gifting ordering flow was redesigned to reduce drop-off across choosing a gift, choosing a size, picking an eCard, and adding a recipient.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&family=Montserrat:wght@400;500;600&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css?v=5">
+  <link rel="stylesheet" href="css/reset.css?v=2">
+  <link rel="stylesheet" href="css/typography.css?v=2">
+  <link rel="stylesheet" href="css/layout.css?v=3">
+  <link rel="stylesheet" href="css/components.css?v=44">
+  <link rel="stylesheet" href="css/animations.css?v=2">
+  <link rel="stylesheet" href="css/case-study.css?v=21">
+  <link rel="stylesheet" href="css/responsive.css?v=18">
+</head>
+
+<body class="case-study-page">
+
+  <!-- ─── SITE HEADER ───────────────────────────────────────── -->
+  <header class="site-header cs-header">
+    <div class="container">
+      <span class="cs-header__name">Andrijana Bakracheski</span>
+      <nav class="site-header__nav">
+        <a class="site-header__link" href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank"
+          rel="noopener noreferrer">LinkedIn</a>
+        <a class="site-header__link" href="mailto:a.bakracheski@gmail.com">Email</a>
+        <a class="site-header__link" href="documents/Andrijana Bakracheski_CV.pdf" download>CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════════════════ -->
+    <section class="cs-hero section section--flush-top" aria-label="Sugarwish case study introduction" data-animate>
+      <div class="container cs-hero__grid">
+        <div class="cs-hero__text">
+          <a href="index.html#sugarwish" class="cs-back-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 7L9 12L14 17M9 12L17 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Back to portfolio
+          </a>
+
+          <div class="cs-hero__tags">
+            <span class="cs-tag">Gifting</span>
+            <span class="cs-tag">UX Research</span>
+            <span class="cs-tag">Prototyping</span>
+          </div>
+
+          <h1 class="cs-hero__title">Re-design of the Sugarwish ordering process</h1>
+
+          <p class="cs-hero__intro">
+            The existing ordering flow led users to give up when confronted with certain choices.
+          </p>
+
+          <p class="cs-hero__role">As part of the UX/UI Academy at Brainster, we were asked to work on redesign on
+            small subset of screens of already existing website. Our ideas and final solution should be designed in
+            such a way that can be applied without influence on the consistency and the design of the already
+            existing website. Our solution was chosen by the company as the winning one among the eight presented.</p>
+
+          <div class="cs-hero__meta">
+            <div>
+              <span class="cs-hero__meta-label">Client</span>
+              <span class="cs-hero__meta-value">Sugarwish</span>
+            </div>
+            <div>
+              <span class="cs-hero__meta-label">Focus</span>
+              <span class="cs-hero__meta-value">Ordering flow, eCards &amp; checkout</span>
+            </div>
+          </div>
+
+          <div class="hero__cta-buttons">
+            <a href="https://www.sugarwish.com" target="_blank" rel="noopener noreferrer"
+              class="hero__cta-button hero__cta-button--work">
+              See live website
+              <div class="hero__cta-arrow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="cs-hero__media" data-animate="scale">
+          <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/sugarwish-main.png"
+            alt="Sugarwish ordering flow redesign" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         CONTENTS + SECTIONS
+         ═══════════════════════════════════════════════════════ -->
+    <div class="container cs-layout">
+      <aside class="cs-sidebar">
+        <p class="cs-sidebar__label">Contents</p>
+        <nav class="cs-sidebar__nav">
+          <a href="#overview" class="cs-sidebar__link">01 · Project overview</a>
+          <a href="#problem" class="cs-sidebar__link">02 · Problem &amp; goal</a>
+          <a href="#design-process" class="cs-sidebar__link">03 · Design process</a>
+          <a href="#define" class="cs-sidebar__link">04 · Define</a>
+          <a href="#ideate" class="cs-sidebar__link">05 · Ideate</a>
+          <a href="#ui-design" class="cs-sidebar__link">06 · UI design</a>
+          <a href="#solutions" class="cs-sidebar__link">07 · Design, test, iterate</a>
+          <a href="#outcome" class="cs-sidebar__link">08 · Prototype &amp; outcome</a>
+        </nav>
+      </aside>
+
+      <div class="cs-content">
+
+        <!-- 01 · Project overview -->
+        <section class="cs-section" id="overview" data-animate>
+          <p class="cs-section__eyebrow">01 · Project overview</p>
+          <h2 class="cs-section__title">What is Sugarwish?</h2>
+          <p class="cs-section__body">Sugarwish is a unique gifting startup company based in Denver, Colorado. With a
+            Sugarwish, the gift buyer is able to send an e-gift card digitally with no mailing address required. The
+            gift recipient receives the eCard and is invited to go to the Sugarwish website to pick their favorite
+            treats or beverages.</p>
+          <p class="cs-section__body">As part of the UX/UI Academy at Brainster, we were asked to work on redesign on
+            small subset of screens of already existing website. Our ideas and final solution should be designed in
+            such a way that can be applied without influence on the consistency and the design of the already
+            existing website.</p>
+          <p class="cs-section__body">Our solution was chosen by the company as the winning one among the eight
+            presented.</p>
+
+          <div class="cs-card-grid">
+            <div class="cs-card">
+              <span class="cs-card__number">01</span>
+              <h3 class="cs-card__title">Role &amp; team</h3>
+              <p class="cs-card__description">On this task, I collaborated with Tijana Radeska and Jovan Jovanoski.
+                As a team, we did usability testing and came up with pain points.</p>
+            </div>
+            <div class="cs-card">
+              <span class="cs-card__number">02</span>
+              <h3 class="cs-card__title">My responsibilities</h3>
+              <p class="cs-card__description">Conducting stakeholder and user interview, User research, Ideate, User
+                journey map, Wireframes, Prototyping, Iterating on designs and Usability testing to evaluate the new
+                designs.</p>
+            </div>
+            <div class="cs-card">
+              <span class="cs-card__number">03</span>
+              <h3 class="cs-card__title">Client</h3>
+              <p class="cs-card__description">Our client was Sugarwish. You can check their website at:
+                www.sugarwish.com</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02 · Problem & goal -->
+        <section class="cs-section" id="problem" data-animate>
+          <p class="cs-section__eyebrow">02 · Problem &amp; goal</p>
+          <h2 class="cs-section__title">The existing ordering flow led users to give up when confronted with certain
+            choices</h2>
+          <p class="cs-section__body">The challenge was to improve and create a better user experience and minimize
+            the possible frustration during users journey on the Sugarwish website.</p>
+          <p class="cs-section__body">In order to detect frustrating moments, we did research to understand users,
+            their shopping habits and the problems they have. It was critical to get all these insights before
+            embarking on the redesign itself, to ensure that we are solving the right problems and aligned on the
+            project goals.</p>
+
+          <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/laptop-image.png" alt="Sugarwish"
+            loading="lazy" decoding="async"
+            style="width:100%; max-width:720px; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-6) auto 0;">
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 40px 0 16px 0; color: var(--color-text-primary);">
+            Improve usability by providing a fun user experience and decrease flow abandonment</h3>
+          <p class="cs-section__body">The main goal of the project was to re-think and re-design the user flow of the
+            Sugarwish ordering process and generating research and ideas for C2C gifting experience without
+            checkout. The main points of the user flow are: Choose a type of gift, Choose a size, Choose an eCard and
+            Recipient Details. There are some intricacies and side-flows at each step which were not in scope of
+            this project.</p>
+        </section>
+
+        <!-- 03 · Design process -->
+        <section class="cs-section" id="design-process" data-animate>
+          <p class="cs-section__eyebrow">03 · Design process</p>
+          <h2 class="cs-section__title">Iterative approach, testing and improving the design throughout</h2>
+          <p class="cs-section__body">During the different phases of the project, I used a variety of research
+            techniques to gather data and I incorporate the findings into the design. The flowchart below outlines
+            the core stages of my redesign process.</p>
+
+          <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/design-process.png" alt="design process"
+            loading="lazy" decoding="async"
+            style="width:100%; max-width:720px; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-6) auto 0;">
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 40px 0 16px 0; color: var(--color-text-primary);">
+            New ideas on how to address segments of the flow or the flow in general would be considered as success</h3>
+          <p class="cs-section__body">We kicked off the project by conducted stakeholder interview to get more
+            insights, which helped me to make the right decisions and avoid end moment disappointments. During this
+            stakeholder interview, I learned that the purpose of the redesign has been tackled several times and the
+            highest bounce rate is on the page choose an e-card and second on choose a size page. With this
+            information, I conducted a UX assessment to understand what needed to change to create the experience
+            the client was desiring and meet user needs. The UX assessment included: Competitive UX analysis,
+            Usability heuristic evaluation, Google reviews.</p>
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 40px 0 16px 0; color: var(--color-text-primary);">
+            Can purchasing be made easy and enjoyable?</h3>
+          <p class="cs-section__body">Usability tests were conducted before any other research to determine the
+            areas of the website that users found confusing and to potentially discover the existing pain-points.
+            The usability test's goal is to uncover flaws and things that are not straightforward in the designs.
+            Using the test findings, we can iterate the designs and create a much better, smoother user experience.</p>
+          <p class="cs-section__body">Due to ongoing COVID-19 restrictions, I conducted my usability testing
+            remotely over Zoom, asking participants to share their screens and think aloud while being recorded
+            going through the Sugarwish website. I asked users to place themselves in the following scenario:</p>
+          <ul class="cs-list">
+            <li>Visit sugarwish website, choose happy birthday card and buy a gift for one recipient. Your budget is
+              50$.</li>
+            <li>Visit sugarwish website and buy medium box of candy for five recipients. At the end edit the box and
+              instead of medium, buy large box popcorn.</li>
+          </ul>
+          <p class="cs-section__body" style="margin-top: var(--space-4);">We created a user flow which detects the
+            pain points of our users, at each step. Below are shown the key insights from the usability testing.</p>
+
+          <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/key-insights.png" alt="key insights"
+            loading="lazy" decoding="async"
+            style="width:100%; max-width:720px; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-6) auto 0;">
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 40px 0 16px 0; color: var(--color-text-primary);">
+            Some of the users considered that the website might be a "scam"</h3>
+          <p class="cs-section__body">User interviews were conducted after the usability testing so that I could
+            understand better the users and what their needs and frustrations were. I conducted 3 face to face user
+            interviews to understand their frustrations. The biggest surprise was some of the users considered that
+            the site might be a "scam" because via the option "send the card via FB" there is no entry point for
+            that particular information. The other given options for sending the eCard are Messaging and Print which
+            were also not clear how they work and users were in doubt how to use them, and who print the card.</p>
+          <p class="cs-section__body">E-cards page, users found the design of the cards a little outdated and
+            browsing the cards took too long.</p>
+          <p class="cs-section__body">"The Select" product is a special kind of gift with a deeper personalization
+            experience. With "The Select", recipients are able to select the product type first (e.g. candy,
+            popcorn, or cookies), and then choose their favorites within that product category. But even though the
+            select is the most unique product and represents as high as 80% of Sugarwish sales user were confused
+            about the product option "The Select", saying that it is not very clear what it is at first sight.</p>
+        </section>
+
+        <!-- 04 · Define -->
+        <section class="cs-section" id="define" data-animate>
+          <p class="cs-section__eyebrow">04 · Define</p>
+          <h2 class="cs-section__title">User persona</h2>
+          <p class="cs-section__body">Based on insights from usability testing, we created a user persona to help
+            keep the design process user-centered.</p>
+          <p class="cs-section__body">The goal was to get a clear understanding of the user needs before mapping out
+            the relevant features for them. The user persona it's a fictional character who represents the target
+            audience of the website.</p>
+
+          <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/user-persona.png" alt="user persona"
+            loading="lazy" decoding="async"
+            style="width:100%; max-width:720px; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-6) auto 0;">
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 40px 0 16px 0; color: var(--color-text-primary);">
+            User journey map</h3>
+          <p class="cs-section__body">I made a visual representation of the user's journey map across all
+            touchpoints of the sugarwish website to understand the frustrations a user might encounter at each step
+            of the ordering process and where we can improve the user experience.</p>
+          <p class="cs-section__body">Scenario: Choose medium box of candy, with happy birthday card and at the end
+            edit the cart and instead of medium box order large box.</p>
+
+          <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/user-journey-map.png"
+            alt="user journey map" loading="lazy" decoding="async"
+            style="width:100%; max-width:720px; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-6) auto 0;">
+        </section>
+
+        <!-- 05 · Ideate -->
+        <section class="cs-section" id="ideate" data-animate>
+          <p class="cs-section__eyebrow">05 · Ideate</p>
+          <h2 class="cs-section__title">Improve the user flow by giving the users option to choose and change
+            products and add multiple recipients from the beginning of their journey</h2>
+          <p class="cs-section__body">To solve the users needs in a way that provides value to the company we
+            started brainstorming on the important features that we can improve on the website and came up with
+            ideas on how to create a potential solutions for better user experience.</p>
+          <ul class="cs-list">
+            <li>Introduce progress bar to reduce uncertainty and indicate the stage of the ordering process</li>
+            <li>We added an option to send the e-card today or schedule for later, making it possible for the user
+              to completely skip the calendar step</li>
+            <li>If the user adds more than one recipient, show all recipients on same page, give option with add
+              more, so he doesn't have to click back and forward to add more recipients</li>
+            <li>Explain the chosen delivery method immediately, to let the user know how it works if they choose
+              email, messaging or print</li>
+            <li>Give option to add different box size and type if they want to change their order</li>
+            <li>Present "The select" and the other product options in different way so the user can immediately see
+              what is the difference</li>
+            <li>Offer guest log in and allow checkout without registration</li>
+          </ul>
+        </section>
+
+        <!-- 06 · UI design -->
+        <section class="cs-section" id="ui-design" data-animate>
+          <p class="cs-section__eyebrow">06 · UI design</p>
+          <h2 class="cs-section__title">Design system</h2>
+          <p class="cs-section__body">For this project we had access to Sugarwish design system library. This
+            project taught me how to work within the constraints of an existing product and design within an
+            existing system, relying on already present design patterns and components.</p>
+
+          <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/style-guide.png" alt="style guide"
+            loading="lazy" decoding="async"
+            style="width:100%; max-width:720px; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-6) auto 0;">
+        </section>
+
+        <!-- 07 · Design, test, iterate -->
+        <section class="cs-section" id="solutions" data-animate>
+          <p class="cs-section__eyebrow">07 · Design, test, iterate</p>
+          <h2 class="cs-section__title">Problem/Solution</h2>
+          <p class="cs-section__body">According to Jacob's Law, users prefer every site to work the same way as all
+            the other sites they already know, therefore we embedded our decisions in the ux theories and common
+            e-commerce practices. We based almost all our decisions and solutions on the results that we got from
+            our usability testings. One that help us determine the pain points on the website and another that
+            helped us to check whether our solutions have improved the same.</p>
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 48px 0 16px 0; color: var(--color-text-primary);">
+            Progress Indicator/Stepper</h3>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Painpoint.</strong> Missing an indicator to
+            show the user what page they are on, and to have a mental map for how many steps are neccessary for
+            them to finish the order.</p>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Solution.</strong> We designed a progress
+            indicator with the brand colors of Sugarwish, that would indicate the stage of the ordering process.</p>
+          <div class="cs-image-grid">
+            <div class="pdp-scroll-item">
+              <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/indicator-problem-img.png"
+                alt="indicator problem" loading="lazy" decoding="async"
+                style="width:100%; height:auto; border-radius:1.5rem; display:block;">
+              <p class="pdp-scroll-item__label">Before</p>
+            </div>
+            <div class="pdp-scroll-item">
+              <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/indicator-solution-two.png"
+                alt="indicator solution" loading="lazy" decoding="async"
+                style="width:100%; height:auto; border-radius:1.5rem; display:block;">
+              <p class="pdp-scroll-item__label">After</p>
+            </div>
+          </div>
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 48px 0 16px 0; color: var(--color-text-primary);">
+            Page: Choose a type of gift</h3>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Painpoint.</strong> The Select is the most
+            unique package at Sugarwish, allowing the user to choose a size of box and send it to the recipient who
+            would choose their favorite treat and flavour. However, our users were confused about what it actually
+            is, and how it is different from the other products.</p>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Solution.</strong> We changed the order of
+            the products, accentuating "The Select" by making it more visible, hence giving it more importance.
+            Also, we added a catchy copy text so that the user would get an idea how the product is different from
+            the rest.</p>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Painpoint.</strong> During the second
+            usability testing, the users noted that it is still unclear what is "The Select" section, while the
+            blue-colored copy in the box gave the impression of a link. The red-coloured copy which we created to
+            separate the content and make it more clear, resulted in additional confusion about the hierarchy of the
+            information as it had the same colour as the names of the products.</p>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Final solution.</strong> We re-designed "The
+            Select" card, explaining it with a simple copy text, and improving the information hierarchy on the page
+            and this time being very cautious about how we are using color.</p>
+          <div class="cs-image-grid">
+            <div class="pdp-scroll-item">
+              <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/type-of-gift-before.png"
+                alt="before" loading="lazy" decoding="async"
+                style="width:100%; height:auto; border-radius:1.5rem; display:block;">
+              <p class="pdp-scroll-item__label">Before</p>
+            </div>
+            <div class="pdp-scroll-item">
+              <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/type-of-gift-after.png" alt="after"
+                loading="lazy" decoding="async"
+                style="width:100%; height:auto; border-radius:1.5rem; display:block;">
+              <p class="pdp-scroll-item__label">After</p>
+            </div>
+          </div>
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 48px 0 16px 0; color: var(--color-text-primary);">
+            Page: Choose a size</h3>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Painpoint.</strong> Most of the users did not
+            scroll down the page while they were choosing a size of box, meaning that they failed to notice the
+            "Sweet Shoppes" size, as well as the additional info about the products.</p>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Solution.</strong> We redesigned the price
+            cards so that the whole content is visible for the user without scrolling. With this design also the
+            content regarding the products and flavors is above the fold, it's more visible for the user and harder
+            to miss.</p>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Painpoint.</strong> However during the
+            second usability testing we realised that the users are focusing on the picture and the button. And they
+            are failing to read the info about how many flavours they are getting with the chosen box and price.</p>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Final solution.</strong> I've put the text
+            under the picture, so that the users would read how many flavors they are getting with the chosen box. I
+            put the price in the main button, so that it changes accordingly with the chosen box.</p>
+          <div class="cs-image-grid">
+            <div class="pdp-scroll-item">
+              <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/choose-a-size-before.png"
+                alt="before" loading="lazy" decoding="async"
+                style="width:100%; height:auto; border-radius:1.5rem; display:block;">
+              <p class="pdp-scroll-item__label">Before</p>
+            </div>
+            <div class="pdp-scroll-item">
+              <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/choose-a-size-after.png"
+                alt="after" loading="lazy" decoding="async"
+                style="width:100%; height:auto; border-radius:1.5rem; display:block;">
+              <p class="pdp-scroll-item__label">After</p>
+            </div>
+          </div>
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 48px 0 16px 0; color: var(--color-text-primary);">
+            Page: E-Card</h3>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Painpoint.</strong> Almost all of the users
+            were confused about the page with eCards, firstly because too many similar choices are offered at once,
+            and secondly, because some of the users failed to notice the Occasion filter. Some users lingered on the
+            page more than necessary, not being able to choose e-card and often times they would completely abandon
+            the flow at this point.</p>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Solution.</strong> Following the UX
+            principles regarding the "movement of the eyes" on a website, I moved the Occasion Filter on the left of
+            the page so that it would be the first thing the user would notice. I changed the cards, and limited the
+            choice. Also, if the "See All" category is selected only six featured cards would be visible (as in all
+            other categories), to prevent the user from getting confused or frustrated about their choice. I also
+            added the video explaining what happens with the chosen card and how the recipient would receive it.</p>
+          <div class="cs-image-grid">
+            <div class="pdp-scroll-item">
+              <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/e-card-before.png" alt="before"
+                loading="lazy" decoding="async"
+                style="width:100%; height:auto; border-radius:1.5rem; display:block;">
+              <p class="pdp-scroll-item__label">Before</p>
+            </div>
+            <div class="pdp-scroll-item">
+              <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/e-card-after.png" alt="after"
+                loading="lazy" decoding="async"
+                style="width:100%; height:auto; border-radius:1.5rem; display:block;">
+              <p class="pdp-scroll-item__label">After</p>
+            </div>
+          </div>
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 48px 0 16px 0; color: var(--color-text-primary);">
+            Slide out panel Log in and Sending e-card</h3>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Log in — painpoint.</strong> This step was
+            unpleasant for the users as it came unexpectedly after they chose the e-card and some of them said that
+            they would give up. Users would prefer if their ordering flow is interrupted and if the logging in is
+            given as an option rather than a requirement in some of the further steps before completing the order.</p>
+          <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/login-current.png" alt="current login"
+            loading="lazy" decoding="async"
+            style="width:100%; max-width:480px; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-4) auto 0;">
+          <p class="cs-section__body" style="margin-top: var(--space-6);"><strong style="font-weight: 500;">Sending
+              e-card — painpoint.</strong> The users were confused about what this is actually about, why it is
+            given such importance and why there is so much "business" they have to do which prevents them from
+            completing the order. On the other hand, some remarked that the messaging/facebook option looks like
+            spam, while for the printing option it is not clear who prints the card and how.</p>
+          <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/e-card-current.png" alt="e-card current"
+            loading="lazy" decoding="async"
+            style="width:100%; max-width:480px; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-4) auto 0;">
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 48px 0 16px 0; color: var(--color-text-primary);">
+            Page: Add recipient</h3>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Painpoint.</strong> Users were wondering how
+            they could change the order from this particular step if they wanted to do so. They expressed
+            dissatisfaction with not being able to move back and forward on the website, change their order, and see
+            their order whenever they wanted to.</p>
+          <p class="cs-section__body">My biggest challenge at this point was to simplify the steps and adapt the
+            flow to the users' expectations, in order to provide a pleasant journey and avoid confusion and
+            frustration.</p>
+          <p class="cs-section__body">What I did it was a simple merging of the three slide out panels (Log in,
+            Sending eCard and Add recipient) into one screen. To avoid further frustrations and confusion I designed
+            page where I added all this features where users can:</p>
+          <ul class="cs-list">
+            <li>preview and change his order, e-card</li>
+            <li>add, change, preview, and remove recipients</li>
+            <li>log in</li>
+            <li>improved UI by making the images stand out</li>
+            <li>added an option to send the eCard today or schedule for later, making it possible for the user to
+              completely skip the calendar step and to lower the cognitive load all together if they don't want to
+              go through the dates.</li>
+          </ul>
+          <div class="cs-image-grid">
+            <div class="pdp-scroll-item">
+              <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/add-recipient-current.png"
+                alt="add recipient current" loading="lazy" decoding="async"
+                style="width:100%; height:auto; border-radius:1.5rem; display:block;">
+              <p class="pdp-scroll-item__label">Before</p>
+            </div>
+            <div class="pdp-scroll-item">
+              <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/add-recipient-final.png"
+                alt="after" loading="lazy" decoding="async"
+                style="width:100%; height:auto; border-radius:1.5rem; display:block;">
+              <p class="pdp-scroll-item__label">After</p>
+            </div>
+          </div>
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 48px 0 16px 0; color: var(--color-text-primary);">
+            Page: Shopping cart</h3>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Painpoint.</strong> The shopping cart icon do
+            not indicate the number of the items in it making it a bit confusing for the users as to whether they
+            have successfully added something into the cart or not. During the second usability testing the remark
+            we got was that the "Log In" option should be optional and at the very end of the flow, perhaps where
+            the cart is.</p>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Final solution.</strong> The shopping card
+            icon now shows the numbers of items in it, making it easier for the users to keep track of what they are
+            buying. To avoid any confusion among our users, I designed slide out panel with system feedback massage
+            that would notify the users that their card is empty if they haven't purchased anything yet. I added a
+            Continue shopping button, to signal to users they can easily leave the cart without losing its content,
+            or they can proceed with the payment. I followed our users preference and I moved the login option at
+            the very end of the user flow, where the recipient can preview their complete order and where they can
+            proceed with the payment.</p>
+          <div class="cs-image-grid">
+            <div class="pdp-scroll-item">
+              <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/shopping-card-before.png"
+                alt="before" loading="lazy" decoding="async"
+                style="width:100%; height:auto; border-radius:1.5rem; display:block;">
+              <p class="pdp-scroll-item__label">Before</p>
+            </div>
+            <div class="pdp-scroll-item">
+              <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/shopping-card-after.png"
+                alt="after" loading="lazy" decoding="async"
+                style="width:100%; height:auto; border-radius:1.5rem; display:block;">
+              <p class="pdp-scroll-item__label">After</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 08 · Prototype & outcome -->
+        <section class="cs-section" id="outcome" data-animate>
+          <p class="cs-section__eyebrow">08 · Prototype &amp; outcome</p>
+          <h2 class="cs-section__title">Making the ideas come alive</h2>
+          <p class="cs-section__body">To deliver the ideas into a tangible design on display, I created clickable
+            prototype using Figma.</p>
+
+          <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/sugarwish-prototype.gif"
+            alt="Sugarwish prototype" loading="lazy" decoding="async"
+            style="width:100%; max-width:720px; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-6) auto 0;">
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 40px 0 16px 0; color: var(--color-text-primary);">
+            Client feedback</h3>
+          <p class="cs-section__body"><strong style="font-weight: 500;">Team Sharks - the best solution.</strong> We
+            feel that from all the teams Sharks had the best desktop solution for the flow. We liked the size
+            presentations on the Choose size screen and the simple filters for the eCards. The recipient page was a
+            little messy, but it still followed established patterns. We appreciated the complete approach that the
+            group took before dealing with the actual problems. Based on their studies they identified specific
+            issues (aka pain points) and addressed them accordingly.</p>
+          <p class="cs-section__body">It would have been great to see how the group would address the mobile flow,
+            but the absence of mobile screens is not taken as a negative.</p>
+
+          <h3 style="font-size: 18px; font-weight: 600; margin: 40px 0 16px 0; color: var(--color-text-primary);">
+            Lessons learned, and where we go from here</h3>
+          <p class="cs-section__body">It was a fun yet quite challenging experience working on this project because
+            it was first time for me doing re-design on small subset of screens of already existing website.</p>
+          <p class="cs-section__body">This project taught me how to work within the constraints of an existing
+            product and design within an existing system, relying on already present design patterns and
+            components. Since users are already familiar with these conventions, breaking them could hurt
+            usability.</p>
+          <p class="cs-section__body">Most importantly I learnt that the first ideas for the website are only the
+            beginning of the design process and "no design is perfect, there is always a room for improvements".
+            Usability testing and feedback influenced each iteration of the sugarwish ordering flow design and that
+            point to me to appreciate gradual improvement rather than striving to perfectionism.</p>
+          <p class="cs-section__body">Based on the feedback of the stakeholder, the next steps for this project are
+            to work on iteration on "The recipient page" and get it into the hands of more users for further
+            validation. Create mobile flow and create the experience the client is desiring and meet user needs.</p>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         NEXT PROJECT
+         ═══════════════════════════════════════════════════════ -->
+    <div class="container" style="display: none;">
+      <div class="cs-next" data-animate>
+        <p class="cs-next__label">Next</p>
+        <a class="cs-next__link" href="index.html#verstegen">Verstegen →</a>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════════════════ -->
+    <footer class="site-footer" data-animate>
+      <div class="container">
+        <div class="site-footer__inner">
+          <p class="site-footer__copy">© 2026 Andrijana Bakracheski</p>
+          <nav class="site-footer__links">
+            <a class="site-footer__link" href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank"
+              rel="noopener noreferrer">LinkedIn</a>
+            <a class="site-footer__link" href="mailto:a.bakracheski@gmail.com">Email</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script defer src="js/animations.js?v=2"></script>
+  <script defer src="js/case-study.js"></script>
+  <script defer src="js/main.js?v=2"></script>
+</body>
+
+</html>
