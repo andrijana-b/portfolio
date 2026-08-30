@@ -465,7 +465,7 @@ body.case-study-page .hero__cta-button--secondary:hover svg {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-6);
-  align-items: center;
+  align-items: start;
   margin-top: var(--space-6);
 }
 
@@ -870,7 +870,7 @@ body.case-study-page .hero__cta-button--secondary:hover svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(16px, 4vh, 48px) clamp(24px, 8vw, 140px);
+  padding: clamp(4px, 1vh, 12px) clamp(12px, 4vw, 72px);
   background: linear-gradient(180deg, rgba(246, 245, 241, 0.97) 0%, rgba(244, 246, 251, 0.97) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -890,8 +890,8 @@ body.case-study-page .hero__cta-button--secondary:hover svg {
   max-height: 100%;
   width: auto;
   height: auto;
-  padding: clamp(20px, 3vw, 48px);
-  border-radius: 24px;
+  padding: clamp(8px, 1.5vw, 16px);
+  border-radius: 18px;
   background: #ffffff;
   box-shadow: 0 30px 80px rgba(23, 23, 27, 0.16);
   transform: scale(0.96);
