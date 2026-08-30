@@ -324,6 +324,7 @@ body.case-study-page .hero__cta-button--secondary:hover svg {
   font-size: 32px;
   font-weight: 600;
   letter-spacing: -0.02em;
+  line-height: var(--leading-snug);
   color: var(--color-text-primary);
   margin-bottom: var(--space-4);
 }
@@ -458,6 +459,25 @@ body.case-study-page .hero__cta-button--secondary:hover svg {
   width: 100%;
   height: auto;
   border-radius: var(--radius-md);
+}
+
+.cs-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+  margin-top: var(--space-6);
+}
+
+.cs-split .cs-section__body {
+  max-width: none;
+}
+
+.cs-split img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  display: block;
 }
 
 .pdp-scroll-item {
@@ -801,6 +821,124 @@ body.case-study-page .hero__cta-button--secondary:hover svg {
   }
 }
 
+/* ── Soft media card — floats an image on a gradient surface with a
+   diffuse shadow, matching a soft "elevated card" treatment ── */
+
+.cs-media-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f6fb 100%);
+  border: 1px solid rgba(28, 28, 26, 0.06);
+  border-radius: 24px;
+  padding: clamp(20px, 4vw, 40px);
+  box-shadow: 0 16px 44px rgba(23, 23, 27, 0.1);
+  max-width: 720px;
+  margin: var(--space-6) 0 0;
+}
+
+.cs-media-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  margin: 0;
+}
+
+.cs-media-caption {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  max-width: 720px;
+  margin-top: var(--space-1);
+}
+
+/* ── Zoomable images / lightbox ────────────────────────────── */
+
+.cs-zoomable {
+  cursor: zoom-in;
+}
+
+.cs-zoomable:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.cs-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vh, 48px) clamp(24px, 8vw, 140px);
+  background: linear-gradient(180deg, rgba(246, 245, 241, 0.97) 0%, rgba(244, 246, 251, 0.97) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-slow) var(--ease-out);
+}
+
+.cs-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cs-lightbox__img {
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  padding: clamp(20px, 3vw, 48px);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 30px 80px rgba(23, 23, 27, 0.16);
+  transform: scale(0.96);
+  transition: transform var(--duration-slow) var(--ease-out);
+  cursor: zoom-out;
+}
+
+.cs-lightbox.is-open .cs-lightbox__img {
+  transform: scale(1);
+}
+
+.cs-lightbox__close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(28, 28, 26, 0.12);
+  border-radius: 50%;
+  background: rgba(28, 28, 26, 0.06);
+  color: #1c1c1a;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.cs-lightbox__close:hover,
+.cs-lightbox__close:focus-visible {
+  background: rgba(28, 28, 26, 0.12);
+}
+
+.cs-lightbox__close:focus-visible {
+  outline: 2px solid #1c1c1a;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-lightbox,
+  .cs-lightbox__img {
+    transition: none;
+  }
+}
+
 @media (max-width: 767px) {
   .cs-hero {
     padding-top: var(--space-8);
@@ -813,6 +951,10 @@ body.case-study-page .hero__cta-button--secondary:hover svg {
   }
 
   .cs-image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-split {
     grid-template-columns: 1fr;
   }
 
