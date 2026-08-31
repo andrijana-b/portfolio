@@ -487,6 +487,25 @@ body.case-study-page .hero__cta-button--secondary:hover svg {
   gap: var(--space-2);
 }
 
+.cs-callout-heading {
+  font-family: var(--font-body);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  display: inline-block;
+  margin: 0 0 var(--space-4) 0;
+  padding-bottom: 8px;
+  border-bottom: 3px solid;
+}
+
+.cs-callout-heading--pain {
+  border-color: #d2232a;
+}
+
+.cs-callout-heading--solution {
+  border-color: #55c5ce;
+}
+
 .pdp-scroll-item__label {
   font-family: var(--font-sans);
   font-size: var(--text-sm);
