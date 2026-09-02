@@ -336,6 +336,7 @@ body.case-study-page .hero__cta-button--secondary:hover svg {
   font-weight: 300;
   color: var(--color-text-body);
   max-width: 68ch;
+  text-wrap: pretty;
 }
 
 .cs-section__body strong {
@@ -365,6 +366,11 @@ body.case-study-page .hero__cta-button--secondary:hover svg {
   font-weight: 300;
   color: var(--color-text-body);
   max-width: 68ch;
+}
+
+.cs-list li strong {
+  font-weight: 600;
+  color: var(--color-text-primary);
 }
 
 .cs-list li::before {
