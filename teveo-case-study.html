@@ -25,11 +25,20 @@
   <link rel="stylesheet" href="css/layout.css?v=3">
   <link rel="stylesheet" href="css/components.css?v=44">
   <link rel="stylesheet" href="css/animations.css?v=2">
-  <link rel="stylesheet" href="css/case-study.css?v=21">
+  <link rel="stylesheet" href="css/case-study.css?v=43">
   <link rel="stylesheet" href="css/responsive.css?v=18">
 </head>
 
 <body class="case-study-page">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('sw-theme') === 'dark') {
+          document.body.classList.add('theme-dark');
+        }
+      } catch (e) { /* localStorage unavailable — default to light */ }
+    })();
+  </script>
 
   <!-- ─── SITE HEADER ───────────────────────────────────────── -->
   <header class="site-header cs-header">
@@ -40,6 +49,21 @@
           rel="noopener noreferrer">LinkedIn</a>
         <a class="site-header__link" href="mailto:a.bakracheski@gmail.com">Email</a>
         <a class="site-header__link" href="documents/Andrijana Bakracheski_CV.pdf" download>CV</a>
+        <button type="button" class="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24"
+            fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6" />
+            <path
+              d="M12 2.5V4.5M12 19.5V21.5M4.5 12H2.5M21.5 12H19.5M5.64 5.64L7.05 7.05M16.95 16.95L18.36 18.36M18.36 5.64L16.95 7.05M7.05 16.95L5.64 18.36"
+              stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" width="18" height="18" viewBox="0 0 24 24"
+            fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"
+              stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+          </svg>
+        </button>
       </nav>
     </div>
   </header>
@@ -545,6 +569,96 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
+         RELATED PROJECTS
+         ═══════════════════════════════════════════════════════ -->
+    <div class="container">
+      <section class="related-projects" data-animate>
+        <h2 class="related-projects__title">More work you might like</h2>
+        <div class="related-projects__grid">
+
+          <a class="related-project" href="sugarwish-case-study.html">
+            <div class="related-project__media">
+              <img src="https://andrijana-b.github.io/my-portfolio/img/sugarwish/sugarwish-main.png"
+                alt="Sugarwish ordering flow redesign" loading="lazy" decoding="async">
+            </div>
+            <div class="related-project__footer">
+              <div class="related-project__row">
+                <div>
+                  <h3 class="related-project__name">Sugarwish</h3>
+                  <p class="related-project__meta">Gifting e-commerce</p>
+                </div>
+                <span class="related-project__arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </div>
+              <div class="related-project__tags">
+                <span class="related-project__tag">Gifting</span>
+                <span class="related-project__tag related-project__tag--accent">UX Research</span>
+                <span class="related-project__tag">Prototyping</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="related-project" href="index.html#verstegen">
+            <div class="related-project__media">
+              <img src="documents/verstegen-new-pdp.jpg" alt="Verstegen product page redesign" loading="lazy"
+                decoding="async">
+            </div>
+            <div class="related-project__footer">
+              <div class="related-project__row">
+                <div>
+                  <h3 class="related-project__name">Verstegen</h3>
+                  <p class="related-project__meta">E-commerce · Website</p>
+                </div>
+                <span class="related-project__arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </div>
+              <div class="related-project__tags">
+                <span class="related-project__tag">E-commerce</span>
+                <span class="related-project__tag related-project__tag--accent">CRO</span>
+                <span class="related-project__tag">Shopify</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="related-project" href="tops-case-study.html">
+            <div class="related-project__media">
+              <img src="documents/tops-new-hero.png" alt="TOPS recruitment website redesign" loading="lazy"
+                decoding="async">
+            </div>
+            <div class="related-project__footer">
+              <div class="related-project__row">
+                <div>
+                  <h3 class="related-project__name">TOPS</h3>
+                  <p class="related-project__meta">Recruitment · Storyblok</p>
+                </div>
+                <span class="related-project__arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </div>
+              <div class="related-project__tags">
+                <span class="related-project__tag">Recruitment</span>
+                <span class="related-project__tag related-project__tag--accent">Design Systems</span>
+                <span class="related-project__tag">Storyblok</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
          FOOTER
          ═══════════════════════════════════════════════════════ -->
     <footer class="site-footer" data-animate>
@@ -563,7 +677,7 @@
   </main>
 
   <script defer src="js/animations.js?v=2"></script>
-  <script defer src="js/case-study.js"></script>
+  <script defer src="js/case-study.js?v=7"></script>
   <script defer src="js/pdp-scroll.js"></script>
   <script defer src="js/main.js?v=2"></script>
 </body>
