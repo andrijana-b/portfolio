@@ -23,6 +23,18 @@
   --resume-download-bg-hover: #d5d5d5;
 }
 
+body.home-page.theme-light .resume-modal {
+  --resume-surface:       #FFFFFF;
+  --resume-border:        rgba(28, 28, 26, 0.1);
+  --resume-backdrop:      rgba(241, 241, 241, 0.85);
+  --resume-text-primary:  #1C1C1A;
+  --resume-text-secondary: #55534C;
+  --resume-text-muted:    #8A8778;
+  --resume-download-bg:      #1C1C1A;
+  --resume-download-text:    #FFFFFF;
+  --resume-download-bg-hover: #3F3D38;
+}
+
 body.case-study-page:not(.theme-dark) .resume-modal {
   --resume-surface:       #FFFFFF;
   --resume-border:        rgba(28, 28, 26, 0.1);

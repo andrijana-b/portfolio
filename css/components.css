@@ -3,6 +3,78 @@
    ============================================================ */
 
 
+/* ── Homepage light theme — opt-in via the theme toggle. The
+   homepage is dark by default (:root tokens); toggling adds
+   .theme-light to flip it, mirroring the case-study pages' toggle
+   but in the opposite direction (their default is light). ── */
+
+body.home-page.theme-light {
+  --color-bg:              #F1F1F1;
+  --color-surface:         #FFFFFF;
+  --color-text-primary:    #1C1C1A;
+  --color-text-secondary:  #6F6D66;
+  --color-text-body:       #3F3D38;
+  --color-text-muted:      #A39F95;
+  --color-border:          #E0E0E0;
+  --color-link:            #1C1C1A;
+  --color-link-hover:      #6F6D66;
+}
+
+/* Buttons were designed for dark surroundings — flip their glassy
+   borders/fills so they stay visible on the light background */
+body.home-page.theme-light .hero__cta-button {
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+              0 4px 10px rgba(0, 0, 0, 0.05),
+              0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+body.home-page.theme-light .hero__bg {
+  background: #F1F1F1;
+}
+
+/* ── Theme toggle button (homepage) ───────────────────────────
+   Dark is the default, so the moon shows first; toggling to light
+   shows the sun. Mirrors the case-study pages' toggle visuals. ── */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: var(--color-text-secondary);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.theme-toggle__icon {
+  display: none;
+}
+
+body.home-page:not(.theme-light) .theme-toggle__icon--moon {
+  display: block;
+}
+
+body.home-page.theme-light .theme-toggle__icon--sun {
+  display: block;
+}
+
+
 /* ── Site Header / Nav ─────────────────────────────────────── */
 
 .site-header {
