@@ -235,6 +235,17 @@ body.home-page.theme-light .theme-toggle__icon--sun {
               0 10px 10px -2.5px rgba(0, 0, 0, 0.13);
 }
 
+.hero__cta-button svg {
+  width: 37px;
+  height: 34px;
+  flex-shrink: 0;
+  padding: 8.5px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hero__cta-button--work {
   background-color: #9cb86d;
   color: #000000;
@@ -274,33 +285,22 @@ body.home-page.theme-light .theme-toggle__icon--sun {
 }
 
 .hero__cta-button--secondary {
-  background-color: transparent;
-  color: var(--color-text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: #b596c2;
+  color: #000000;
 }
 
 .hero__cta-button--secondary:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: #ac74c2;
 }
 
 .hero__cta-button--secondary svg {
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: #ac74c2;
+  transition: background-color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
 }
 
 .hero__cta-button--secondary:hover svg {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: rotate(90deg);
-}
-
-.hero__cta-button svg {
-  width: 37px;
-  height: 34px;
-  flex-shrink: 0;
-  padding: 8.5px;
-  border-radius: 9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #b596c2;
+  transform: rotate(0deg);
 }
 
 .hero__cta-arrow--large {
