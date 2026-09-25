@@ -25,7 +25,8 @@
   <link rel="stylesheet" href="css/layout.css?v=3">
   <link rel="stylesheet" href="css/components.css?v=44">
   <link rel="stylesheet" href="css/animations.css?v=2">
-  <link rel="stylesheet" href="css/case-study.css?v=21">
+  <link rel="stylesheet" href="css/case-study.css?v=45">
+  <link rel="stylesheet" href="css/resume-modal.css?v=1">
   <link rel="stylesheet" href="css/responsive.css?v=18">
 </head>
 
@@ -39,7 +40,8 @@
         <a class="site-header__link" href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank"
           rel="noopener noreferrer">LinkedIn</a>
         <a class="site-header__link" href="mailto:a.bakracheski@gmail.com">Email</a>
-        <a class="site-header__link" href="documents/Andrijana Bakracheski_CV.pdf" download>CV</a>
+        <a class="site-header__link" href="documents/Andrijana Bakracheski_CV.pdf" download
+          data-resume-trigger>CV</a>
       </nav>
     </div>
   </header>
@@ -323,8 +325,128 @@
 
   </main>
 
+  <!-- ─── RESUME MODAL ──────────────────────────────────────── -->
+  <div class="resume-modal" id="resumeModal" aria-hidden="true">
+    <div class="resume-modal__backdrop" data-resume-close></div>
+    <div class="resume-modal__card" role="dialog" aria-modal="true" aria-label="Resume">
+      <div class="resume-modal__header">
+        <span class="resume-modal__status"><span class="resume-modal__dot"></span>Resume</span>
+        <button type="button" class="resume-modal__esc" data-resume-close aria-label="Close resume">ESC</button>
+      </div>
+
+      <div class="resume-modal__body">
+        <div class="resume-modal__main">
+          <h2 class="resume-modal__name">Andrijana Bakracheski</h2>
+          <p class="resume-modal__title">UX/UI Designer</p>
+          <p class="resume-modal__contact">Amstelveen, The Netherlands &nbsp;·&nbsp;
+            <a href="mailto:a.bakracheski@gmail.com">a.bakracheski@gmail.com</a> &nbsp;·&nbsp;
+            <a href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank"
+              rel="noopener noreferrer">LinkedIn</a> &nbsp;·&nbsp;
+            <a href="index.html">Portfolio</a> &nbsp;·&nbsp;
+            Dutch Resident / No sponsorship needed
+          </p>
+
+          <p class="resume-modal__summary">CX/UI designer with 3.5 years of experience in a marketing tech agency,
+            working on recruitment and e-commerce websites for small to mid-sized clients. My work focuses on
+            improving conversions and overall website performance. I'm organised, detail-oriented, and comfortable
+            managing multiple projects at once. I collaborate closely with CRO specialists, marketing, and
+            engineering teams and enjoy working in international and multicultural environments.</p>
+
+          <h3 class="resume-modal__section-label">Experience</h3>
+
+          <div class="resume-modal__job">
+            <div class="resume-modal__job-row">
+              <h4 class="resume-modal__job-title">UX/UI Designer</h4>
+              <span class="resume-modal__dates">Sep 2022 – Jan 2026</span>
+            </div>
+            <p class="resume-modal__job-company">Small Giants – Marketing Tech Agency, Utrecht</p>
+            <ul class="resume-modal__job-list">
+              <li><strong>Led projects from early concepts and ideation through to final design handoff</strong> for
+                development.</li>
+              <li><strong>Designed and delivered end-to-end UX solutions</strong>, including user flows, prototypes,
+                and UI designs with a strong focus on conversion optimisation, usability, and commercial impact.</li>
+              <li>Worked with the CRO team on <strong>A/B test ideas and designed the test variants</strong>.</li>
+              <li>Handled <strong>content migration for client projects</strong> by transferring, organising, and
+                maintaining content within Storyblok CMS.</li>
+              <li>Worked directly with clients like <strong>Philips, Talpa Network</strong> to improve and refine
+                their designs based on goals and feedback.</li>
+              <li>Designed <strong>landing pages and social ads</strong> for Sthree.</li>
+              <li><strong>Building a design system</strong> that standardises UI patterns to improve design speed,
+                scalability, cross-functional alignment, and consistency across internal projects.</li>
+              <li>Identified bugs and usability issues and <strong>worked with developers to improve the user
+                  experience</strong>.</li>
+              <li>Collaborating closely with marketing, CRO, other designers and engineering to align UX/UI decisions
+                with project goals.</li>
+              <li>Delivering <strong>production-ready designs</strong> to the development team.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resume-modal__side">
+          <h3 class="resume-modal__section-label">Skills</h3>
+
+          <div class="resume-modal__skill-group">
+            <h4>Design</h4>
+            <p>Web and mobile design, UI, Design Systems, Data-informed UX, AI-assisted workflows, CRO, AB Testing,
+              Cross-functional Collaboration, Managing multiple projects</p>
+          </div>
+
+          <div class="resume-modal__skill-group">
+            <h4>Technical Expertise</h4>
+            <p>Figma, Jitter, Canva, Google Analytics, Hotjar, Storyblok, Umbraco, Notion, Asana, Jira, Productive</p>
+          </div>
+
+          <div class="resume-modal__skill-group">
+            <h4>AI-assisted design workflows</h4>
+            <p>Chats, Claude Code, Gemini, Nano Banana, Midjourney</p>
+          </div>
+
+          <h3 class="resume-modal__section-label">Language</h3>
+          <div class="resume-modal__skill-group">
+            <h4>English</h4>
+          </div>
+          <div class="resume-modal__skill-group">
+            <h4>Dutch</h4>
+            <p>Good understanding of the Dutch language with experience working directly with Dutch clients. Able to
+              understand client feedback and translate it into effective design solutions.</p>
+          </div>
+          <div class="resume-modal__skill-group">
+            <h4>Macedonian</h4>
+          </div>
+
+          <h3 class="resume-modal__section-label">Education</h3>
+
+          <div class="resume-modal__edu">
+            <h4>UX/UI Academy Brainster</h4>
+            <p>Skopje, North Macedonia<br>Sep 2021 – Apr 2022</p>
+          </div>
+
+          <div class="resume-modal__edu">
+            <h4>Bachelor of Law</h4>
+            <p>Ss. Cyril and Methodius Faculty of Law<br>Skopje, North Macedonia</p>
+          </div>
+
+          <h3 class="resume-modal__section-label">Personal Interests</h3>
+          <p class="resume-modal__plain">Running (Half Marathons), Fitness &amp; Swimming, Photography</p>
+        </div>
+      </div>
+
+      <div class="resume-modal__footer">
+        <a class="resume-modal__download" href="documents/Andrijana Bakracheski_CV.pdf" download>
+          Download PDF
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4V16M12 16L7 11M12 16L17 11M5 20H19" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
   <script defer src="js/animations.js?v=2"></script>
-  <script defer src="js/case-study.js"></script>
+  <script defer src="js/case-study.js?v=7"></script>
+  <script defer src="js/resume-modal.js?v=1"></script>
   <script defer src="js/main.js?v=2"></script>
 </body>
 
