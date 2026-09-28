@@ -463,6 +463,18 @@ body.home-page.theme-light .theme-toggle__icon--sun {
   object-position: left center;
 }
 
+.full-bleed--tops-showcase {
+  background: #001C00;
+  padding-block: var(--space-8);
+}
+
+.full-bleed--tops-showcase img {
+  width: 80%;
+  max-height: none;
+  margin: 0 auto;
+  display: block;
+}
+
 
 /* ── Device showcase (phone mockup + blurred glow) ─────────── */
 
