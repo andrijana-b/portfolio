@@ -61,7 +61,7 @@
 
   if (!isMobile) {
     const parallaxSections = Array.from(
-      document.querySelectorAll('.full-bleed')
+      document.querySelectorAll('.full-bleed:not(.full-bleed--static)')
     );
 
     let rafId   = null;

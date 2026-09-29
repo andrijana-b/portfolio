@@ -124,6 +124,13 @@
   transition: none; /* JS-driven: no CSS transition */
 }
 
+/* Opt-out: no parallax and no headroom scale — the whole image
+   fits the container uncropped */
+.full-bleed.full-bleed--static img {
+  transform: none;
+  max-height: none;
+}
+
 
 /* ── Hover micro-interactions ───────────────────────────────── */
 
