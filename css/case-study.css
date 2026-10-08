@@ -1308,7 +1308,7 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
   }
 }
 
-/* ─── TOPS: tables, quotes, flows ─────────────────────────── */
+/* ─── TOPS: quotes, flows ─────────────────────────── */
 .cs-subheading {
   font-family: var(--font-body);
   font-size: var(--text-lg);
@@ -1327,47 +1327,6 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
   line-height: var(--leading-normal);
   color: var(--color-text-primary);
   max-width: 60ch;
-}
-
-.cs-table-wrap {
-  margin: var(--space-6) 0;
-  overflow-x: auto;
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-}
-
-.cs-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-.cs-table th,
-.cs-table td {
-  text-align: left;
-  vertical-align: top;
-  padding: var(--space-3) var(--space-4);
-  border-bottom: var(--border-hairline);
-}
-
-.cs-table th {
-  font-family: var(--font-sans);
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--color-text-primary);
-}
-
-.cs-table td {
-  font-weight: 300;
-  color: var(--color-text-body);
-}
-
-.cs-table tbody tr:last-child td {
-  border-bottom: 0;
 }
 
 .cs-flow {
@@ -1395,15 +1354,4 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
   color: var(--color-text-muted);
 }
 
-.cs-journey {
-  margin-top: var(--space-6);
-}
 
-.cs-journey__title {
-  font-family: var(--font-sans);
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}

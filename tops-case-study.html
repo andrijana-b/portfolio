@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="css/layout.css?v=3">
   <link rel="stylesheet" href="css/components.css?v=51">
   <link rel="stylesheet" href="css/animations.css?v=2">
-  <link rel="stylesheet" href="css/case-study.css?v=49">
+  <link rel="stylesheet" href="css/case-study.css?v=51">
   <link rel="stylesheet" href="css/resume-modal.css?v=2">
   <link rel="stylesheet" href="css/responsive.css?v=18">
 </head>
@@ -101,8 +101,9 @@
         </div>
 
         <div class="cs-hero__media" data-animate="scale">
-          <img src="documents/tops-new-hero.png" alt="TOPS recruitment website homepage after the redesign"
-            loading="lazy" decoding="async">
+          <img src="img/tops/tops-mockup.png"
+            alt="Redesigned TOPS website on a laptop and phone, showing the homepage hero and the four sector tiles"
+            decoding="async">
         </div>
       </div>
     </section>
@@ -121,9 +122,8 @@
           <a href="#expressions" class="cs-sidebar__link">05 · One system, four expressions</a>
           <a href="#funnel" class="cs-sidebar__link">06 · The recruitment funnel</a>
           <a href="#vacancy" class="cs-sidebar__link">07 · The vacancy experience</a>
-          <a href="#brand" class="cs-sidebar__link">08 · Brand into digital</a>
-          <a href="#outcome" class="cs-sidebar__link">09 · Outcome</a>
-          <a href="#learned" class="cs-sidebar__link">10 · What I learned</a>
+          <a href="#outcome" class="cs-sidebar__link">08 · Outcome</a>
+          <a href="#learned" class="cs-sidebar__link">09 · What I learned</a>
         </nav>
       </aside>
 
@@ -158,6 +158,10 @@
           <p class="cs-section__body">At the same time, the website was difficult for the internal team to manage and
             expand. The new design needed to work within a flexible Storyblok structure that allowed the team to create
             and update pages without starting from scratch.</p>
+
+          <img src="img/tops/tops-old-site.png" alt="The previous TOPS Personeel website homepage shown on a laptop"
+            loading="lazy" decoding="async" class="cs-zoomable" tabindex="0" role="button"
+            style="width:100%; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-8) 0;">
           <blockquote class="cs-quote">The overall website should feel like TOPS. But as users move deeper into a
             sector, the interface should take on that sector's visual identity.</blockquote>
           <p class="cs-section__body">In reality, there were several layers of complexity underneath.</p>
@@ -231,31 +235,35 @@
         <section class="cs-section" id="system" data-animate>
           <p class="cs-section__eyebrow">04 · From pages to a system</p>
           <h2 class="cs-section__title">Designing the building blocks, not the pages</h2>
-          <p class="cs-section__body">Rather than designing each page independently, I looked for patterns shared
-            across the different journeys.</p>
-          <p class="cs-section__body">I designed reusable components that could be combined in different ways to
-            create new pages. The new website needed to move to Storyblok CMS, so each component needed to work as a
-            flexible content block, not just look good in one specific layout.</p>
+          <p class="cs-section__body">Rather than designing each page as a separate layout, I looked for patterns
+            that could be reused across TOPS’s different recruitment journeys. The aim was to create a set of
+            components that could work across the website and be adapted as new pages were added.</p>
           <blockquote class="cs-quote">The goal was not "Design 14 pages." It was "Design the system that allows TOPS
             to create many more pages."</blockquote>
 
-          <h3 class="cs-subheading">Designing for Storyblok from the start</h3>
-          <p class="cs-section__body">Storyblok is where the TOPS content team builds pages, by stacking predefined
-            blocks. So every block I designed in Figma had to make sense as a block an editor would pick and fill
-            in.</p>
-          <p class="cs-section__body">That meant each block had to work not only on the page where I first designed
-            it, but in any context. I tested every block against:</p>
+          <img src="documents/TOPS-components.png"
+            alt="Examples of reusable TOPS components: a vacancy contact card, a testimonial block, and sector tiles for Groen, Infra, Agri and Bouw"
+            loading="lazy" decoding="async" class="cs-zoomable" tabindex="0" role="button"
+            style="width:100%; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-8) 0;">
+
+          <p class="cs-section__body">The new website was built in Storyblok, where the TOPS team would create pages
+            by combining these blocks. I therefore designed each component with its actual use in mind: how it would
+            handle different content, where it could be used, and how it would behave across screen sizes.</p>
+          <p class="cs-section__body">I tested each block with:</p>
           <ul class="cs-list">
-            <li>long and short headlines</li>
-            <li>more or less text than expected</li>
-            <li>different image ratios</li>
-            <li>different combinations of buttons</li>
-            <li>desktop, tablet and mobile</li>
-            <li>all four sector colours</li>
-            <li>reuse across different page types</li>
+            <li>Short and long headings</li>
+            <li>Different amounts of text</li>
+            <li>Different image sizes and ratios</li>
+            <li>One or more buttons</li>
+            <li>Desktop, tablet and mobile layouts</li>
+            <li>All four sector colours</li>
+            <li>Different page types</li>
           </ul>
-          <p class="cs-section__body" style="margin-top: var(--space-6);">This created a bridge between design and content
-            management, allowing the TOPS team to build new pages without starting from zero.</p>
+          <p class="cs-section__body" style="margin-top: var(--space-6);">I also considered how blocks would work
+            together, so that combining them would still result in a clear and consistent page.</p>
+          <p class="cs-section__body">The result was a set of reusable blocks that could be used across different
+            pages and sectors. The TOPS team could then build new pages in Storyblok using the same components, without
+            needing a separate design for every page.</p>
         </section>
 
         <section class="cs-section" id="expressions" data-animate>
@@ -267,51 +275,11 @@
             feel like four unrelated sites, and multiplied the work for designers and developers by four.</p>
           <p class="cs-section__body">Instead: <strong>one system, four expressions.</strong></p>
 
-          <div class="cs-table-wrap">
-            <table class="cs-table">
-              <thead>
-                <tr>
-                  <th scope="col">Stays the same in every sector</th>
-                  <th scope="col">Changes per sector</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Structure and layout</td>
-                  <td>Colour</td>
-                </tr>
-                <tr>
-                  <td>Spacing</td>
-                  <td>Accent and selected states</td>
-                </tr>
-                <tr>
-                  <td>Typography and hierarchy</td>
-                  <td>Labels and highlights</td>
-                </tr>
-                <tr>
-                  <td>How things work (interaction)</td>
-                  <td>Buttons</td>
-                </tr>
-                <tr>
-                  <td>Component behaviour</td>
-                  <td>Supporting imagery</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <img src="documents/TOPS-same-vs-changes.png"
+            alt="What stays the same in every sector (structure, spacing, typography, interaction, component behaviour, buttons) and what changes per sector (background colours, labels and supporting imagery for Groen, Infra, Bouw and Agri)"
+            loading="lazy" decoding="async" class="cs-zoomable" tabindex="0" role="button"
+            style="width:100%; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-8) 0;">
 
-          <p class="cs-section__body">The things on the right are controlled through design tokens: named settings,
-            like "accent colour", that each sector fills in with its own value. Change the token, and every button,
-            label and highlight in that sector follows.</p>
-          <p class="cs-section__body">The identity follows the user through the site. Take this path:</p>
-          <ol class="cs-flow" aria-label="Example navigation path">
-            <li>TOPS</li>
-            <li>Groen</li>
-            <li>Werkzoeken</li>
-            <li>Opleidingen</li>
-          </ol>
-          <p class="cs-section__body">The top level feels like TOPS. Once someone enters Groen, the Groen identity
-            carries through every page beneath it.</p>
           <p class="cs-section__body"><strong>The sector colours weren't decoration.</strong> They became part of the
             navigation: a quiet, constant signal of which part of TOPS you're in.</p>
         </section>
@@ -321,47 +289,13 @@
           <h2 class="cs-section__title">More focus the closer people get to applying</h2>
           <p class="cs-section__body">The website isn't a static set of information pages. People move through it in
             stages, and at each stage they're asking a different question.</p>
-          <p class="cs-section__body">The further down the funnel, the more focused the interface becomes. Early pages
-            help people orient and get inspired. Later pages remove distractions, so one action stands out. This
-            shaped the CTA hierarchy, how much information each page shows, navigation, content priority, form design
-            and supporting information.</p>
 
-          <h3 class="cs-subheading">Three journeys, one system</h3>
-          <p class="cs-section__body">Within that funnel, each audience follows its own route:</p>
+          <img src="documents/TOPS-audience-routes.png"
+            alt="Each audience's route within the funnel. Job seekers: Discover, Explore, Find a vacancy, Understand the role, Apply. Career changers and students: Discover, Understand the opportunity, Explore the programme, Understand the career path, Take action. Employers: Understand TOPS, Explore the service, Understand the sector expertise, Get in touch."
+            loading="lazy" decoding="async" class="cs-zoomable" tabindex="0" role="button"
+            style="width:100%; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-8) 0;">
 
-          <div class="cs-journey">
-            <h4 class="cs-journey__title">Job seekers</h4>
-            <ol class="cs-flow">
-              <li>Discover</li>
-              <li>Explore</li>
-              <li>Find a vacancy</li>
-              <li>Understand the role</li>
-              <li>Apply</li>
-            </ol>
-          </div>
-          <div class="cs-journey">
-            <h4 class="cs-journey__title">Career changers and students</h4>
-            <ol class="cs-flow">
-              <li>Discover</li>
-              <li>Understand the opportunity</li>
-              <li>Explore the programme</li>
-              <li>Understand the career path</li>
-              <li>Take action</li>
-            </ol>
-            <p class="cs-section__body">In the Green sector this covers training programmes and work-study routes, so
-              it's a longer journey that needs more explanation and reassurance.</p>
-          </div>
-          <div class="cs-journey">
-            <h4 class="cs-journey__title">Employers</h4>
-            <ol class="cs-flow">
-              <li>Understand TOPS</li>
-              <li>Explore the service</li>
-              <li>Understand the sector expertise</li>
-              <li>Get in touch</li>
-            </ol>
-          </div>
-
-          <p class="cs-section__body" style="margin-top: var(--space-6);">All three are built from the same blocks. No
+          <p class="cs-section__body">All three are built from the same blocks. No
             separate experiences, just different combinations of the same parts.</p>
         </section>
 
@@ -386,36 +320,15 @@
             is for them. The fuller description follows for those who want to read on.</p>
           <p class="cs-section__body">The apply button stays visible and prominent the whole way down. Whenever someone
             is ready, the next step is right there.</p>
-        </section>
 
-        <section class="cs-section" id="brand" data-animate>
-          <p class="cs-section__eyebrow">08 · Translating the new brand into digital</p>
-          <h2 class="cs-section__title">From brand guidelines to a working interface</h2>
-          <p class="cs-section__body">The new brand guidelines set the visual direction. But guidelines describe how a
-            brand looks on a poster or a business card. A website also has to behave: it scrolls, it responds to taps,
-            it reshapes itself for a phone.</p>
-          <p class="cs-section__body">I used the guidelines to define how the identity works on screen, across
-            typography, colour, buttons, cards, spacing, photography, content hierarchy, calls to action, sector
-            styling and responsive layouts.</p>
-          <p class="cs-section__body">The question for every choice was the same: does this make the brand
-            recognisable and make the site easier to use? Where those two pulled apart, usability won.</p>
-
-          <div class="cs-image-grid">
-            <div class="pdp-scroll-item">
-              <img src="documents/tops-old-hero.png" alt="TOPS website hero, previous version" loading="lazy"
-                decoding="async" style="width:100%; height:auto; border-radius:1.5rem; display:block;">
-              <p class="pdp-scroll-item__label">Before</p>
-            </div>
-            <div class="pdp-scroll-item">
-              <img src="documents/tops-new-hero.png" alt="TOPS website hero, redesigned version" loading="lazy"
-                decoding="async" style="width:100%; height:auto; border-radius:1.5rem; display:block;">
-              <p class="pdp-scroll-item__label">After</p>
-            </div>
-          </div>
+          <img src="documents/TOPS_jobs%20tils.png"
+            alt="TOPS vacancy tiles on desktop and mobile, each with a sector label, job title, location, hours, salary and a button to view the vacancy"
+            loading="lazy" decoding="async" class="cs-zoomable" tabindex="0" role="button"
+            style="width:100%; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-8) 0 0;">
         </section>
 
         <section class="cs-section" id="outcome" data-animate>
-          <p class="cs-section__eyebrow">09 · Outcome</p>
+          <p class="cs-section__eyebrow">08 · Outcome</p>
           <h2 class="cs-section__title">A scalable UX/UI foundation</h2>
           <p class="cs-section__body">The result was a scalable UX/UI foundation for the new TOPS website. The project
             delivered:</p>
@@ -430,7 +343,7 @@
         </section>
 
         <section class="cs-section" id="learned" data-animate>
-          <p class="cs-section__eyebrow">10 · What I learned</p>
+          <p class="cs-section__eyebrow">09 · What I learned</p>
           <h2 class="cs-section__title">Consistency doesn't mean identical</h2>
           <p class="cs-section__body">The most important lesson: consistency doesn't mean making everything look
             identical.</p>
@@ -454,9 +367,6 @@
             </div>
           </div>
 
-          <p class="cs-section__body" style="margin-top: var(--space-8);">Push too hard on any one of them and the
-            others break. The answer was not four separate websites. It was one set of rules, flexible enough to
-            express four sectors.</p>
 
           <h3 class="cs-subheading">Final reflection</h3>
           <p class="cs-section__body">This project pushed me to think beyond individual screens, and to see how
@@ -472,8 +382,8 @@
           <p class="cs-section__body">The most valuable thing I designed wasn't any single page. It was the rules
             behind the pages: enough structure to keep the experience consistent, and enough freedom for TOPS to
             grow.</p>
-          <blockquote class="cs-quote">One brand. Four sector identities. Reusable blocks. A system that can
-            evolve.</blockquote>
+          <blockquote class="cs-quote">One brand. Four sector identities. Reusable blocks.<br>
+            A system that can evolve.</blockquote>
         </section>
 
       </div>
