@@ -121,6 +121,38 @@ body.home-page.theme-light .theme-toggle__icon--sun {
   display: none;
 }
 
+/* Logo mark — fills with the text colour, so it's white on the dark
+   theme and black on the light theme. Links back to the homepage. */
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  margin-right: auto;
+  color: var(--color-text-primary);
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.site-logo:hover {
+  opacity: 0.7;
+}
+
+.site-logo:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.site-logo__mark {
+  display: block;
+  width: auto;
+  height: 28px;
+}
+
 
 /* ── Hero ──────────────────────────────────────────────────── */
 
