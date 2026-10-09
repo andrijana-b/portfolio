@@ -1181,7 +1181,7 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
 .related-project {
   position: relative;
   display: block;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 5;
   border-radius: 28px;
   overflow: hidden;
   background: #0a0a0a;
@@ -1198,6 +1198,8 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
 .related-project__media {
   position: absolute;
   inset: 0;
+  /* Set per tile to the image's edge colour so the uncropped image blends in */
+  background: var(--tile-bg, #0a0a0a);
 }
 
 .related-project__media::after {
@@ -1207,21 +1209,25 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.55) 100%);
 }
 
+/* Show the whole image, never cropped */
 .related-project__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top;
+  object-fit: contain;
+  object-position: center;
   display: block;
 }
 
-/* Variant: show the whole image (no crop) on a backdrop matching its edges */
-.related-project__media--contain {
-  background: #FBEFEC;
+/* Portrait images sit at the top, keeping them clear of the footer panel */
+.related-project__media--top img {
+  object-position: center top;
 }
 
-.related-project__media--contain img {
-  object-fit: contain;
+/* Images made at the tile's own 3:5 shape fill it edge to edge; on the
+   shorter mobile tile only the bottom (behind the panel) is trimmed */
+.related-project__media--fill img {
+  object-fit: cover;
+  object-position: center top;
 }
 
 .related-project__footer {
@@ -1282,19 +1288,23 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
 .related-project__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  align-content: flex-start;
+  gap: 4px;
+  /* Reserve two rows of pills so every tile's panel is the same height */
+  min-height: 42px;
 }
 
 .related-project__tag {
   font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-size: 0.5625rem;
   font-weight: 600;
+  line-height: 1.4;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: #cfcfcf;
   background: rgba(255, 255, 255, 0.12);
   border-radius: 999px;
-  padding: 5px 12px;
+  padding: 3px 8px;
 }
 
 .related-project__tag--accent {
@@ -1305,6 +1315,11 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
 @media (max-width: 767px) {
   .related-projects__grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Single column: the tall 3:5 tile would fill more than a screen */
+  .related-project {
+    aspect-ratio: 4 / 5;
   }
 }
 
