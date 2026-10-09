@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="css/animations.css?v=3">
   <link rel="stylesheet" href="css/resume-modal.css?v=2">
   <link rel="stylesheet" href="css/responsive.css?v=18">
+  <link rel="stylesheet" href="css/preloader.css?v=5">
 </head>
 
 <body class="home-page">
@@ -39,6 +40,49 @@
           document.body.classList.add('theme-light');
         }
       } catch (e) { /* localStorage unavailable — default to dark */ }
+    })();
+  </script>
+
+  <!-- ─── PRELOADER (logo → name → line → split open) ─────────── -->
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__half preloader__half--top">
+      <div class="preloader__stage">
+        <div class="preloader__lockup">
+          <svg class="preloader__mark" viewBox="100 195 460 520" xmlns="http://www.w3.org/2000/svg"
+            focusable="false">
+            <path class="preloader__mark-a" d="M360 207 L492 473 L445 473 L360 300 L165 703 L113 703 Z"
+              pathLength="1" />
+            <path class="preloader__mark-bar" d="M335 545 L528 545 L550 588 L314 588 Z" />
+          </svg>
+          <span class="preloader__name-wrap"><span class="preloader__name">Andrijana Bakracheski</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="preloader__half preloader__half--bottom">
+      <div class="preloader__stage">
+        <div class="preloader__lockup">
+          <svg class="preloader__mark" viewBox="100 195 460 520" xmlns="http://www.w3.org/2000/svg"
+            focusable="false">
+            <path class="preloader__mark-a" d="M360 207 L492 473 L445 473 L360 300 L165 703 L113 703 Z"
+              pathLength="1" />
+            <path class="preloader__mark-bar" d="M335 545 L528 545 L550 588 L314 588 Z" />
+          </svg>
+          <span class="preloader__name-wrap"><span class="preloader__name">Andrijana Bakracheski</span></span>
+        </div>
+      </div>
+    </div>
+    <span class="preloader__line"></span>
+  </div>
+  <script>
+    (function () {
+      // Play the intro once per browser session, and never for reduced motion
+      var el = document.querySelector('.preloader');
+      var skip = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      try {
+        if (sessionStorage.getItem('preloader-seen')) skip = true;
+        sessionStorage.setItem('preloader-seen', '1');
+      } catch (e) { /* storage unavailable — play it */ }
+      if (skip) { el.remove(); } else { document.body.classList.add('is-preloading'); }
     })();
   </script>
 
@@ -746,6 +790,7 @@
   <script defer src="js/hero-gradient-blinds.js"></script>
   <script defer src="js/resume-modal.js?v=1"></script>
   <script defer src="js/home-theme.js?v=1"></script>
+  <script defer src="js/preloader.js?v=4"></script>
   <script defer src="js/main.js?v=2"></script>
 </body>
 
