@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="css/animations.css?v=3">
   <link rel="stylesheet" href="css/resume-modal.css?v=2">
   <link rel="stylesheet" href="css/responsive.css?v=22">
-  <link rel="stylesheet" href="css/preloader.css?v=28">
+  <link rel="stylesheet" href="css/preloader.css?v=30">
 </head>
 
 <body class="home-page">
@@ -83,17 +83,94 @@
     <canvas class="preloader__squares"></canvas>
   </div>
   <script>
+    /* Homepage intro — runs inline, straight after the markup, so the pink
+       squares start at exactly the same moment as the CSS animation that
+       follows them (a separate script file could arrive late on a slow
+       connection, and the intro would seem to start from the logo). */
     (function () {
-      // Play the intro once per browser session, and never for reduced motion
-      var el = document.querySelector('.preloader');
+      var preloader = document.querySelector('.preloader');
+      if (!preloader) return;
+
+      // Homepage only (the case studies don't have it). Plays every time the
+      // homepage is opened — the same on desktop and mobile. Skipped only for
+      // visitors who've turned off animations, and when arriving on a
+      // section link (e.g. #verstegen-showcase from a case study's tile),
+      // which goes straight to that section instead.
       var skip = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      // Arriving on a section link (e.g. #verstegen-showcase): go straight there
       if (location.hash.length > 1) skip = true;
-      try {
-        if (sessionStorage.getItem('preloader-seen')) skip = true;
-        sessionStorage.setItem('preloader-seen', '1');
-      } catch (e) { /* storage unavailable — play it */ }
-      if (skip) { el.remove(); } else { document.body.classList.add('is-preloading'); }
+      if (skip) { preloader.remove(); return; }
+      document.body.classList.add('is-preloading');
+
+      var done = false;
+      function finish() {
+        if (done) return;
+        done = true;
+        preloader.remove();
+        document.body.classList.remove('is-preloading');
+      }
+
+      // ── Pink squares: the screen is pink, then breaks into squares that
+      //    pop away in random order ──
+      var canvas = preloader.querySelector('.preloader__squares');
+      var ctx = canvas && canvas.getContext('2d');
+      if (ctx) {
+        var PINK = getComputedStyle(preloader).getPropertyValue('--preloader-pink').trim() || '#D855D8';
+        var HOLD = 150;     // solid pink before the first square goes
+        var SPREAD = 550;   // squares pop over this window
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var W = preloader.clientWidth;
+        var H = preloader.clientHeight;
+        canvas.width = Math.round(W * dpr);
+        canvas.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        var cols = Math.max(6, Math.round(W / 110));
+        var size = W / cols;
+        var rows = Math.ceil(H / size);
+        var squares = [];
+        for (var r = 0; r < rows; r++) {
+          for (var c = 0; c < cols; c++) {
+            squares.push({ x: c * size, y: r * size, t: HOLD + Math.random() * SPREAD });
+          }
+        }
+
+        // Paint the full pink grid right away, then animate
+        ctx.fillStyle = PINK;
+        ctx.fillRect(0, 0, W, H);
+        canvas.classList.add('is-drawing');
+
+        var start = null;
+        var draw = function (now) {
+          if (done) return;
+          if (start === null) start = now;
+          var t = now - start;
+          ctx.clearRect(0, 0, W, H);
+          ctx.fillStyle = PINK;
+          var left = 0;
+          for (var i = 0; i < squares.length; i++) {
+            var sq = squares[i];
+            if (t >= sq.t) continue;
+            left++;
+            // Each square shrinks slightly in the last moment before it pops
+            var k = Math.min(1, (sq.t - t) / 90);
+            var inset = (1 - k) * size * 0.18;
+            ctx.fillRect(sq.x + inset, sq.y + inset, size - inset * 2 + 0.5, size - inset * 2 + 0.5);
+          }
+          if (left > 0) requestAnimationFrame(draw);
+          else canvas.remove();
+        };
+        requestAnimationFrame(draw);
+      }
+
+      // ── Done when the bottom half of the screen has slid away ──
+      var bottom = preloader.querySelector('.preloader__half--bottom');
+      if (bottom) {
+        bottom.addEventListener('animationend', function (e) {
+          if (e.animationName === 'preloader-split') finish();
+        });
+      }
+      // Safety net in case animations don't run (e.g. tab in background)
+      setTimeout(finish, 7500);
     })();
   </script>
 
@@ -802,7 +879,6 @@
   <script defer src="js/hero-gradient-blinds.js"></script>
   <script defer src="js/resume-modal.js?v=1"></script>
   <script defer src="js/home-theme.js?v=2"></script>
-  <script defer src="js/preloader.js?v=16"></script>
   <script defer src="js/main.js?v=6"></script>
 </body>
 

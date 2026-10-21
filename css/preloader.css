@@ -1,13 +1,14 @@
 /* ============================================================
    preloader.css — Homepage intro, on a dark background.
    1. The screen starts pink and breaks into squares that pop away
-      (drawn on a canvas by preloader.js).
+      (drawn on a canvas by the inline script after the intro markup).
    2. The white logo draws itself while large, fills, the bar slides
       in, it shrinks into place and the name appears beside it.
    3. The screen splits at the height of the logo's bar: the top half
       slides up, the bottom half down: the top half slides left, the
       bottom half right, revealing the site.
-   Shown once per browser session; skipped for reduced motion.
+   Homepage only. Plays on every visit (desktop and mobile alike);
+   skipped for reduced motion and when arriving on a section link (#…).
    ============================================================ */
 
 .preloader {
@@ -40,7 +41,7 @@ body.is-preloading {
   width: 100%;
   height: 100%;
   display: block;
-  /* Solid pink until preloader.js starts drawing the squares */
+  /* Solid pink until the inline script starts drawing the squares */
   background: var(--preloader-pink);
 }
 
