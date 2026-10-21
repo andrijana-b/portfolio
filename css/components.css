@@ -151,6 +151,15 @@ body.home-page.theme-light .theme-toggle__icon--sun {
   display: block;
   width: auto;
   height: 28px;
+  overflow: visible;
+}
+
+/* A same-colour outline thickens every edge of the logo slightly */
+.site-logo__mark path {
+  stroke: currentColor;
+  stroke-width: 14;
+  stroke-linejoin: miter;
+  stroke-miterlimit: 10;
 }
 
 

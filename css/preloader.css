@@ -115,7 +115,8 @@ body.is-preloading {
   fill-opacity: 0;
   stroke: currentColor;
   stroke-width: 6;
-  stroke-linejoin: round;
+  stroke-linejoin: miter;
+  stroke-miterlimit: 10;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
   animation:
@@ -126,6 +127,9 @@ body.is-preloading {
 /* The bar slides in from the right */
 .preloader__mark-bar {
   fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 14;
+  stroke-linejoin: miter;
   transform-box: fill-box;
   transform-origin: right center;
   transform: scaleX(0);
@@ -165,8 +169,10 @@ body.is-preloading {
   to { stroke-dashoffset: 0; }
 }
 
+/* Fills in and settles on the same slightly bolder outline as the
+   navigation logo */
 @keyframes preloader-fill {
-  to { fill-opacity: 1; stroke-width: 0; }
+  to { fill-opacity: 1; stroke-width: 14; }
 }
 
 @keyframes preloader-bar-in {

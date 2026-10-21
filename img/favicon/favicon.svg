@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="51.5 175 560 560">
+  <style>
+    path { fill: #1C1C1A; stroke: #1C1C1A; stroke-width: 14; stroke-miterlimit: 10; }
+    @media (prefers-color-scheme: dark) { path { fill: #F2F2EE; stroke: #F2F2EE; } }
+  </style>
+  <path d="M360 207 L492 473 L445 473 L360 300 L165 703 L113 703 Z" />
+  <path d="M335 545 L528 545 L550 588 L314 588 Z" />
+</svg>

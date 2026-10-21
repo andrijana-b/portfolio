@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andrijana Bakracheski — Interaction · Visual · Strategy</title>
+  <title>Andrijana Bakracheski - UX/UI Designer</title>
   <meta name="description"
     content="Product designer specialising in craft, systems, and strategy at the intersection of digital design and consumer devices.">
   <meta name="author" content="Andrijana Bakracheski">
@@ -14,6 +14,10 @@
   <meta property="og:image"
     content="https://cdn.prod.website-files.com/623bc2dfc6d9f22784672f05/6240aee3bf18303e60be43f8_websitescreenshot.png">
   <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="img/favicon/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="img/favicon/favicon-32.png?v=2" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png?v=2">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,11 +29,11 @@
   <link rel="stylesheet" href="css/reset.css?v=2">
   <link rel="stylesheet" href="css/typography.css?v=2">
   <link rel="stylesheet" href="css/layout.css?v=3">
-  <link rel="stylesheet" href="css/components.css?v=52">
+  <link rel="stylesheet" href="css/components.css?v=53">
   <link rel="stylesheet" href="css/animations.css?v=3">
   <link rel="stylesheet" href="css/resume-modal.css?v=2">
   <link rel="stylesheet" href="css/responsive.css?v=18">
-  <link rel="stylesheet" href="css/preloader.css?v=25">
+  <link rel="stylesheet" href="css/preloader.css?v=26">
 </head>
 
 <body class="home-page">
@@ -130,12 +134,12 @@
          HERO
          ═══════════════════════════════════════════════════════ -->
     <section class="hero section section--flush-top" aria-label="Introduction">
-      <div class="hero__bg">
+      <div class="hero__bg" data-parallax="0.4" data-parallax-mode="scroll">
         <canvas class="hero__bg-canvas"></canvas>
       </div>
       <div class="container">
         <div class="hero__header">
-          <div class="hero__heading-group">
+          <div class="hero__heading-group" data-parallax="0.28" data-parallax-mode="scroll" data-parallax-fade>
             <h1 class="hero__tagline">
               Andrijana Bakracheski
             </h1>
@@ -144,15 +148,15 @@
         </div>
         <!--
         <div class="hero__stats">
-          <div class="hero__stat-card">
+          <div class="hero__stat-card" data-parallax="0.06" data-parallax-mode="scroll">
             <span class="hero__stat-value hero__stat-value--green">+18%</span>
             <span class="hero__stat-label">avg. conversion lift</span>
           </div>
-          <div class="hero__stat-card">
+          <div class="hero__stat-card" data-parallax="0.12" data-parallax-mode="scroll">
             <span class="hero__stat-value hero__stat-value--purple">20+</span>
             <span class="hero__stat-label">client projects shipped</span>
           </div>
-          <div class="hero__stat-card">
+          <div class="hero__stat-card" data-parallax="0.18" data-parallax-mode="scroll">
             <span class="hero__stat-value">3.5 yrs</span>
             <span class="hero__stat-label">CX/UI experience</span>
           </div>
@@ -218,7 +222,7 @@
          ═══════════════════════════════════════════════════════ -->
     <div class="full-bleed full-bleed--tall full-bleed--photo-wrap" data-animate="scale">
       <div class="container">
-        <img class="full-bleed__photo" src="documents/Andrijana_image.png" alt="Andrijana Bakracheski" loading="lazy"
+        <img class="full-bleed__photo" src="img/optimized/andrijana-portrait.jpg" alt="Andrijana Bakracheski" loading="lazy"
           decoding="async">
       </div>
     </div>
@@ -226,7 +230,7 @@
     <article class="project section" id="spectacles" data-animate>
       <div class="container">
         <div class="project__row">
-          <span class="project__num">01</span>
+          <span class="project__num" data-parallax="-0.15">01</span>
           <div class="project__info">
             <h2 class="project__title">TEVEO</h2>
             <p class="project__meta">Small Giants · E-commerce · 2025 - 2026</p>
@@ -276,11 +280,11 @@
               </a>
             </div>
           </div>
-          <div>
+          <div data-parallax="0.08">
             <img src="documents/teveo_pdp_mockup.png" alt="Teveo e-commerce product page mockup" loading="lazy"
               decoding="async" style="width:100%;height:auto;border-radius:1.5rem;">
           </div>
-          <div>
+          <div data-parallax="-0.08">
             <img src="documents/teveo_plp.png" alt="Teveo product listing page mockup" loading="lazy" decoding="async"
               style="width:100%;height:auto;border-radius:1.5rem;">
           </div>
@@ -289,12 +293,12 @@
     </article>
 
     <div class="device-showcase" data-animate="scale">
-      <div class="device-showcase__glow" aria-hidden="true"></div>
-      <div class="device-showcase__laptop">
+      <div class="device-showcase__glow" aria-hidden="true" data-parallax="-0.18"></div>
+      <div class="device-showcase__laptop" data-parallax="0.06">
         <div class="device-showcase__screen">
           <div class="device-showcase__camera"></div>
-          <video class="device-showcase__video" src="documents/Verstegen_homepage.mp4" autoplay loop muted playsinline
-            preload="auto"></video>
+          <video class="device-showcase__video" data-src="documents/Verstegen_homepage.mp4" loop muted playsinline
+            preload="none"></video>
         </div>
         <div class="device-showcase__base"></div>
       </div>
@@ -307,7 +311,7 @@
     <article class="project section" id="verstegen" data-animate>
       <div class="container">
         <div class="project__row">
-          <span class="project__num">02</span>
+          <span class="project__num" data-parallax="-0.15">02</span>
           <div class="project__info">
             <h2 class="project__title">Verstegen</h2>
             <p class="project__meta">Small Giants · Website · Design · 2025</p>
@@ -374,9 +378,9 @@
                     <span class="pdp-compare__url">verstegen.nl/mix-voor-biefstuk</span>
                   </div>
                   <div class="pdp-compare__area">
-                    <img class="pdp-compare__img pdp-compare__img--new" src="documents/verstegen-new-pdp.jpg"
+                    <img class="pdp-compare__img pdp-compare__img--new" src="img/optimized/verstegen-new-pdp.jpg"
                       alt="Verstegen new PDP design" loading="lazy" decoding="async">
-                    <img class="pdp-compare__img pdp-compare__img--old" src="documents/verstegen-old-pdp.png"
+                    <img class="pdp-compare__img pdp-compare__img--old" src="img/optimized/verstegen-old-pdp.png"
                       alt="Verstegen old PDP design" loading="lazy" decoding="async">
                     <div class="pdp-compare__divider"></div>
                     <div class="pdp-compare__handle"></div>
@@ -407,11 +411,11 @@
                     </div>
                     <div class="plp-compare__area" data-plp-compare-area>
                       <div class="plp-compare__pane plp-compare__pane--after">
-                        <img src="documents/verstegen-plp-new.png" alt="Verstegen new PLP design" loading="lazy"
+                        <img src="img/optimized/verstegen-plp-new.jpg" alt="Verstegen new PLP design" loading="lazy"
                           decoding="async">
                       </div>
                       <div class="plp-compare__pane plp-compare__pane--before">
-                        <img src="documents/verstegen-plp-old.png" alt="Verstegen old PLP design" loading="lazy"
+                        <img src="img/optimized/verstegen-plp-old.png" alt="Verstegen old PLP design" loading="lazy"
                           decoding="async">
                       </div>
                       <div class="plp-compare__divider"></div>
@@ -439,12 +443,12 @@
       <div class="container">
         <!-- Full-width image at top -->
         <div class="full-bleed full-bleed--tall full-bleed--spaced full-bleed--tops-showcase" data-animate="scale">
-          <img src="documents/TOPS-showcase.png" alt="TOPS recruitment website, desktop and mobile" loading="lazy"
+          <img src="img/optimized/tops-showcase.jpg" alt="TOPS recruitment website, desktop and mobile" loading="lazy"
             decoding="async">
         </div>
 
         <div class="project__row">
-          <span class="project__num">03</span>
+          <span class="project__num" data-parallax="-0.15">03</span>
           <div class="project__info">
             <h2 class="project__title">Tops</h2>
             <p class="project__meta">Recruitment · Storyblok · 2025</p>
@@ -537,7 +541,7 @@
         </div>
 
         <div class="project__row">
-          <span class="project__num">04</span>
+          <span class="project__num" data-parallax="-0.15">04</span>
           <div class="project__info">
             <h2 class="project__title">Title goes here
               <p class="project__meta">Company · 2025 – 2026</p>
@@ -583,14 +587,14 @@
     <article class="project section" id="sugarwish" data-animate>
       <div class="container">
         <!-- Full-width image at top -->
-        <div class="full-bleed full-bleed--tall full-bleed--spaced full-bleed--static" data-animate="scale">
+        <div class="full-bleed full-bleed--tall full-bleed--spaced full-bleed--static" data-animate="scale" data-parallax="0.07">
           <img
-            src="img/sugarwish/sugarwish-mockup-9a.png"
+            src="img/optimized/sugarwish-mockup.png"
             alt="Sugarwish ordering flow redesign" loading="lazy" decoding="async">
         </div>
 
         <div class="project__row">
-          <span class="project__num">04</span>
+          <span class="project__num" data-parallax="-0.15">04</span>
           <div class="project__info">
             <h2 class="project__title">Sugarwish</h2>
             <p class="project__meta">Brainster UX/UI Academy · Gifting e-commerce · 2020</p>
@@ -786,14 +790,14 @@
   </div>
 
 
-  <script defer src="js/animations.js?v=3"></script>
+  <script defer src="js/animations.js?v=5"></script>
   <script defer src="js/pdp-compare.js"></script>
   <script defer src="js/plp-compare.js"></script>
   <script defer src="js/hero-gradient-blinds.js"></script>
   <script defer src="js/resume-modal.js?v=1"></script>
   <script defer src="js/home-theme.js?v=1"></script>
   <script defer src="js/preloader.js?v=14"></script>
-  <script defer src="js/main.js?v=2"></script>
+  <script defer src="js/main.js?v=3"></script>
 </body>
 
 </html>
