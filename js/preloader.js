@@ -28,7 +28,7 @@
   const canvas = preloader.querySelector('.preloader__squares');
   const ctx = canvas && canvas.getContext('2d');
   if (ctx) {
-    const PINK = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim() || '#d44dba';
+    const PINK = getComputedStyle(preloader).getPropertyValue('--preloader-pink').trim() || '#D855D8';
     const HOLD = 150;      // solid pink before the first square goes
     const SPREAD = 550;    // squares pop over this window
 

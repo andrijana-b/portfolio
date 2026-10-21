@@ -18,6 +18,8 @@
   /* Always dark with a white logo, whichever theme the site is in */
   --preloader-bg: #0A0A0A;
   --preloader-ink: #F2F2EE;
+  /* Pink of the opening squares (preloader only) */
+  --preloader-pink: #D855D8;
   /* Everything after the pink squares starts this much later */
   --t0: 750ms;
   /* The screen splits at the height of the logo's bar (its centre is
@@ -39,7 +41,7 @@ body.is-preloading {
   height: 100%;
   display: block;
   /* Solid pink until preloader.js starts drawing the squares */
-  background: var(--color-accent);
+  background: var(--preloader-pink);
 }
 
 .preloader__squares.is-drawing {

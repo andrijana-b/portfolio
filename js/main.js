@@ -5,6 +5,8 @@
  *   - Smooth-scroll for any internal anchor links
  *   - Lazy-loading videos marked with data-src (they only download and
  *     start playing when they come near the screen)
+ *   - Lining up a project's side column with its "Problem" label
+ *     ([data-align-problem])
  */
 
 (function () {
@@ -50,5 +52,33 @@
     } else {
       lazyVideos.forEach(loadAndPlay);
     }
+  }
+
+  /**
+   * [data-align-problem] on a project's side column: pushes its first
+   * label down so it starts on the same line as the "Problem" label in
+   * the project info beside it. Only applies when the two sit side by
+   * side; recalculated on resize and once fonts have loaded.
+   */
+  const alignCols = document.querySelectorAll('[data-align-problem]');
+  if (alignCols.length) {
+    const align = () => {
+      alignCols.forEach((col) => {
+        const row = col.closest('.project__row');
+        const info = row && row.querySelector('.project__info');
+        const label = col.querySelector('.section-label');
+        const problem = info && [...info.querySelectorAll('.section-label')]
+          .find((l) => l.textContent.trim().toLowerCase() === 'problem');
+        if (!label || !problem) return;
+        label.style.marginTop = '';
+        const sideBySide = col.getBoundingClientRect().left >= info.getBoundingClientRect().right - 1;
+        if (!sideBySide) return;
+        const offset = problem.getBoundingClientRect().top - label.getBoundingClientRect().top;
+        if (offset > 0) label.style.marginTop = offset + 'px';
+      });
+    };
+    align();
+    window.addEventListener('resize', align);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(align);
   }
 })();

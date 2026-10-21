@@ -645,6 +645,13 @@ body.home-page.theme-light .theme-toggle__icon--sun {
   margin-top: var(--space-3);
 }
 
+/* Bold labels inside descriptions, e.g. "UX audit:" in key contributions.
+   500 is the heaviest Inter weight loaded, so it stays crisp. */
+.project__desc strong {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
 .project__desc ol {
   list-style: decimal;
   padding-left: var(--space-4);
