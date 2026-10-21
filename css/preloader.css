@@ -1,6 +1,12 @@
 /* ============================================================
-   preloader.css — Homepage intro: logo, then name, then a line
-   draws across and the screen splits open along it.
+   preloader.css — Homepage intro, on a dark background.
+   1. The screen starts pink and breaks into squares that pop away
+      (drawn on a canvas by preloader.js).
+   2. The white logo draws itself while large, fills, the bar slides
+      in, it shrinks into place and the name appears beside it.
+   3. The screen splits at the height of the logo's bar: the top half
+      slides up, the bottom half down: the top half slides left, the
+      bottom half right, revealing the site.
    Shown once per browser session; skipped for reduced motion.
    ============================================================ */
 
@@ -9,31 +15,59 @@
   inset: 0;
   z-index: 1000;
   pointer-events: none;
+  /* Always dark with a white logo, whichever theme the site is in */
+  --preloader-bg: #0A0A0A;
+  --preloader-ink: #F2F2EE;
+  /* Everything after the pink squares starts this much later */
+  --t0: 750ms;
+  /* The screen splits at the height of the logo's bar (its centre is
+     12px below the logo's centre) */
+  --cut: calc(50vh + 12px);
 }
 
 body.is-preloading {
   overflow: hidden;
 }
 
-/* Two halves of the screen, each holding the same centred lockup so
-   the split cuts straight through it */
+/* ── 1. Pink opening squares (canvas on top of everything) ── */
+
+.preloader__squares {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: block;
+  /* Solid pink until preloader.js starts drawing the squares */
+  background: var(--color-accent);
+}
+
+.preloader__squares.is-drawing {
+  background: transparent;
+}
+
+/* ── 3. Two halves of the screen, each holding the same centred
+      lockup so the split cuts straight through it. Top slides up,
+      bottom slides down. ── */
+
 .preloader__half {
   position: absolute;
   left: 0;
   width: 100%;
-  height: 50vh;
   overflow: hidden;
-  background: var(--color-bg);
-  animation: preloader-split 900ms var(--ease-in-out) 3600ms forwards;
+  background: var(--preloader-bg);
+  animation: preloader-split 1000ms var(--ease-in-out) calc(var(--t0) + 3700ms) forwards;
 }
 
 .preloader__half--top {
   top: 0;
+  height: var(--cut);
   --split-to: -100%;
 }
 
 .preloader__half--bottom {
-  top: 50vh;
+  top: var(--cut);
+  bottom: 0;
   --split-to: 100%;
 }
 
@@ -52,14 +86,17 @@ body.is-preloading {
 }
 
 .preloader__half--bottom .preloader__stage {
-  top: -50vh;
+  top: calc(var(--cut) * -1);
 }
 
-/* Logo + name lockup */
+/* ── 2. Logo + name lockup ─────────────────────────────────── */
+
 .preloader__lockup {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
-  color: var(--color-text-primary);
+  color: var(--preloader-ink);
 }
 
 .preloader__mark {
@@ -69,7 +106,7 @@ body.is-preloading {
   overflow: visible;
   /* Held large while the logo draws itself, then shrinks into place */
   transform: scale(2.6);
-  animation: preloader-mark-shrink 650ms cubic-bezier(0.65, 0, 0.35, 1) 1350ms forwards;
+  animation: preloader-mark-shrink 650ms cubic-bezier(0.65, 0, 0.35, 1) calc(var(--t0) + 1350ms) forwards;
 }
 
 /* The "A" traces its outline, then fills in */
@@ -82,55 +119,47 @@ body.is-preloading {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
   animation:
-    preloader-draw 800ms cubic-bezier(0.65, 0, 0.35, 1) 150ms forwards,
-    preloader-fill 350ms ease-out 850ms forwards;
+    preloader-draw 800ms cubic-bezier(0.65, 0, 0.35, 1) calc(var(--t0) + 150ms) forwards,
+    preloader-fill 350ms ease-out calc(var(--t0) + 850ms) forwards;
 }
 
-/* The bar slides in from the right, like the line that splits the screen */
+/* The bar slides in from the right */
 .preloader__mark-bar {
   fill: currentColor;
   transform-box: fill-box;
   transform-origin: right center;
   transform: scaleX(0);
-  animation: preloader-bar-in 400ms var(--ease-out) 1000ms forwards;
+  animation: preloader-bar-in 400ms var(--ease-out) calc(var(--t0) + 1000ms) forwards;
 }
 
-/* The name column grows from zero width so the logo starts centred and
-   slides left as the name appears beside it */
+/* The name column grows from zero width, so the logo starts centred
+   and slides left as the name appears beside it */
 .preloader__name-wrap {
+  position: relative;
   display: grid;
   grid-template-columns: 0fr;
-  animation: preloader-name-open 800ms var(--ease-out) 1950ms forwards;
+  animation: preloader-name-open 800ms var(--ease-out) calc(var(--t0) + 1950ms) forwards;
 }
 
 .preloader__name {
+  min-width: 0;
   overflow: hidden;
   white-space: nowrap;
-  padding-left: var(--space-6);
   font-family: var(--font-sans);
   font-size: 1.375rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   opacity: 0;
-  animation: preloader-name-in 700ms var(--ease-out) 2200ms forwards;
+  animation: preloader-name-in 700ms var(--ease-out) calc(var(--t0) + 2200ms) forwards;
 }
 
-/* Thin line drawn across the full width, from the right */
-.preloader__line {
-  position: absolute;
-  top: 50vh;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  margin-top: -0.5px;
-  background: var(--color-accent-green);
-  transform: scaleX(0);
-  transform-origin: right center;
-  animation:
-    preloader-line-draw 650ms var(--ease-in-out) 2900ms forwards,
-    preloader-fade-out 300ms ease 3600ms forwards;
+.preloader__name-text {
+  display: block;
+  padding-left: var(--space-6);
 }
+
+/* ── Keyframes ────────────────────────────────────────────── */
 
 @keyframes preloader-draw {
   to { stroke-dashoffset: 0; }
@@ -157,27 +186,19 @@ body.is-preloading {
   to   { opacity: 1; transform: none; }
 }
 
-@keyframes preloader-line-draw {
-  to { transform: scaleX(1); }
-}
-
-@keyframes preloader-fade-out {
-  to { opacity: 0; }
-}
-
 @keyframes preloader-split {
-  to { transform: translateX(var(--split-to)); }
+  to { transform: translateY(var(--split-to)); }
 }
 
 @media (max-width: 767px) {
-  .preloader__mark {
-    height: 40px;
-  }
-
   .preloader__name {
     font-size: 0.9375rem;
+  }
+
+  .preloader__name-text {
     padding-left: var(--space-4);
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
