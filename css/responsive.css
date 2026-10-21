@@ -26,6 +26,13 @@
     font-size: 0.6875rem;
   }
 
+  /* Touch screens have no hover, so give the hero's Connect / Experience
+     links a visible green underline to show they're tappable */
+  .hero__info-link {
+    text-decoration-color: var(--color-accent-green);
+    text-decoration-thickness: 2px;
+  }
+
   /* ── Hero section ──────────────────────────────────────── */
   .hero {
     padding-top: var(--space-8);
