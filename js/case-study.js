@@ -95,10 +95,11 @@
 })();
 
 /**
- * Theme toggle — switches the case-study page between its default
- * light theme and a dark theme aligned with the homepage. Preference
- * is persisted in localStorage; the initial class is applied by an
- * inline script in <head> to avoid a flash of the wrong theme.
+ * Theme toggle — switches the case-study page between its default dark
+ * theme (matching the homepage) and a light theme. The choice is kept
+ * in sessionStorage so it carries across pages during a visit, but every
+ * new visit starts dark; the initial class is applied by an inline
+ * script at the top of <body> to avoid a flash of the wrong theme.
  */
 (function () {
   'use strict';
@@ -121,8 +122,8 @@
   toggle.addEventListener('click', () => {
     document.body.classList.toggle('theme-dark');
     try {
-      localStorage.setItem(STORAGE_KEY, isDark() ? 'dark' : 'light');
-    } catch (e) { /* localStorage unavailable — preference won't persist */ }
+      sessionStorage.setItem(STORAGE_KEY, isDark() ? 'dark' : 'light');
+    } catch (e) { /* storage unavailable — choice won't carry over */ }
     updateToggle();
   });
 

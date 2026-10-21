@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="css/reset.css?v=2">
   <link rel="stylesheet" href="css/typography.css?v=2">
   <link rel="stylesheet" href="css/layout.css?v=3">
-  <link rel="stylesheet" href="css/components.css?v=54">
+  <link rel="stylesheet" href="css/components.css?v=56">
   <link rel="stylesheet" href="css/animations.css?v=3">
   <link rel="stylesheet" href="css/resume-modal.css?v=2">
   <link rel="stylesheet" href="css/responsive.css?v=22">
@@ -39,11 +39,14 @@
 <body class="home-page">
   <script>
     (function () {
+      // Dark is the default on every visit; a switch to light only lasts
+      // for the current browsing session
       try {
-        if (localStorage.getItem('sw-theme') === 'light') {
+        if (sessionStorage.getItem('sw-theme') === 'light') {
           document.body.classList.add('theme-light');
         }
-      } catch (e) { /* localStorage unavailable — default to dark */ }
+        localStorage.removeItem('sw-theme');   // drop the old long-lived setting
+      } catch (e) { /* storage unavailable — stay dark */ }
     })();
   </script>
 
@@ -84,6 +87,8 @@
       // Play the intro once per browser session, and never for reduced motion
       var el = document.querySelector('.preloader');
       var skip = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Arriving on a section link (e.g. #verstegen-showcase): go straight there
+      if (location.hash.length > 1) skip = true;
       try {
         if (sessionStorage.getItem('preloader-seen')) skip = true;
         sessionStorage.setItem('preloader-seen', '1');
@@ -222,7 +227,7 @@
          ═══════════════════════════════════════════════════════ -->
     <div class="full-bleed full-bleed--tall full-bleed--photo-wrap" data-animate="scale">
       <div class="container">
-        <img class="full-bleed__photo" src="img/optimized/andrijana-portrait.jpg" alt="Andrijana Bakracheski" loading="lazy"
+        <img width="2880" height="1384" class="full-bleed__photo" src="img/optimized/andrijana-portrait.jpg" alt="Andrijana Bakracheski" loading="lazy"
           decoding="async">
       </div>
     </div>
@@ -281,18 +286,18 @@
             </div>
           </div>
           <div data-parallax="0.08">
-            <img src="documents/teveo_pdp_mockup.png" alt="Teveo e-commerce product page mockup" loading="lazy"
+            <img width="830" height="1686" src="documents/teveo_pdp_mockup.png" alt="Teveo e-commerce product page mockup" loading="lazy"
               decoding="async" style="width:100%;height:auto;border-radius:1.5rem;">
           </div>
           <div data-parallax="-0.08">
-            <img src="documents/teveo_plp.png" alt="Teveo product listing page mockup" loading="lazy" decoding="async"
+            <img width="830" height="1686" src="documents/teveo_plp.png" alt="Teveo product listing page mockup" loading="lazy" decoding="async"
               style="width:100%;height:auto;border-radius:1.5rem;">
           </div>
         </div>
       </div>
     </article>
 
-    <div class="device-showcase" data-animate="scale">
+    <div class="device-showcase" id="verstegen-showcase" data-animate="scale">
       <div class="device-showcase__glow" aria-hidden="true" data-parallax="-0.18"></div>
       <div class="device-showcase__laptop" data-parallax="0.06">
         <div class="device-showcase__screen">
@@ -378,9 +383,9 @@
                     <span class="pdp-compare__url">verstegen.nl/mix-voor-biefstuk</span>
                   </div>
                   <div class="pdp-compare__area">
-                    <img class="pdp-compare__img pdp-compare__img--new" src="img/optimized/verstegen-new-pdp.jpg"
+                    <img width="1440" height="5008" class="pdp-compare__img pdp-compare__img--new" src="img/optimized/verstegen-new-pdp.jpg"
                       alt="Verstegen new PDP design" loading="lazy" decoding="async">
-                    <img class="pdp-compare__img pdp-compare__img--old" src="img/optimized/verstegen-old-pdp.png"
+                    <img width="1440" height="2058" class="pdp-compare__img pdp-compare__img--old" src="img/optimized/verstegen-old-pdp.png"
                       alt="Verstegen old PDP design" loading="lazy" decoding="async">
                     <div class="pdp-compare__divider"></div>
                     <div class="pdp-compare__handle"></div>
@@ -411,11 +416,11 @@
                     </div>
                     <div class="plp-compare__area" data-plp-compare-area>
                       <div class="plp-compare__pane plp-compare__pane--after">
-                        <img src="img/optimized/verstegen-plp-new.jpg" alt="Verstegen new PLP design" loading="lazy"
+                        <img width="1200" height="4848" src="img/optimized/verstegen-plp-new.jpg" alt="Verstegen new PLP design" loading="lazy"
                           decoding="async">
                       </div>
                       <div class="plp-compare__pane plp-compare__pane--before">
-                        <img src="img/optimized/verstegen-plp-old.png" alt="Verstegen old PLP design" loading="lazy"
+                        <img width="1200" height="2380" src="img/optimized/verstegen-plp-old.png" alt="Verstegen old PLP design" loading="lazy"
                           decoding="async">
                       </div>
                       <div class="plp-compare__divider"></div>
@@ -443,7 +448,7 @@
       <div class="container">
         <!-- Full-width image at top -->
         <div class="full-bleed full-bleed--tall full-bleed--spaced full-bleed--tops-showcase" data-animate="scale">
-          <img src="img/optimized/tops-showcase.jpg" alt="TOPS recruitment website, desktop and mobile" loading="lazy"
+          <img width="2560" height="1077" src="img/optimized/tops-showcase.jpg" alt="TOPS recruitment website, desktop and mobile" loading="lazy"
             decoding="async">
         </div>
 
@@ -591,7 +596,7 @@
       <div class="container">
         <!-- Full-width image at top -->
         <div class="full-bleed full-bleed--tall full-bleed--spaced full-bleed--static" data-animate="scale" data-parallax="0.07">
-          <img
+          <img width="2800" height="1400"
             src="img/optimized/sugarwish-mockup.png"
             alt="Sugarwish ordering flow redesign" loading="lazy" decoding="async">
         </div>
@@ -796,9 +801,9 @@
   <script defer src="js/plp-compare.js"></script>
   <script defer src="js/hero-gradient-blinds.js"></script>
   <script defer src="js/resume-modal.js?v=1"></script>
-  <script defer src="js/home-theme.js?v=1"></script>
+  <script defer src="js/home-theme.js?v=2"></script>
   <script defer src="js/preloader.js?v=16"></script>
-  <script defer src="js/main.js?v=4"></script>
+  <script defer src="js/main.js?v=6"></script>
 </body>
 
 </html>

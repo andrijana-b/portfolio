@@ -529,6 +529,9 @@ body.home-page.theme-light .theme-toggle__icon--sun {
   overflow: hidden;
   background: var(--color-bg);
   padding: var(--space-24) 0;
+  /* Linked from the case-study tiles (#verstegen-showcase): land just
+     below the sticky header, allowing for the scroll-reveal shift */
+  scroll-margin-top: 112px;
 }
 
 .device-showcase__glow {

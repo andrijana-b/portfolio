@@ -1,9 +1,9 @@
 /**
  * home-theme.js — Theme toggle for the homepage. The homepage is dark
  * by default (:root tokens); toggling adds .theme-light to switch to
- * a light theme. Shares the "sw-theme" localStorage key with the
- * case-study pages' toggle, so the preference is consistent site-wide
- * even though each page's default direction is opposite.
+ * a light theme. The choice is kept in sessionStorage ("sw-theme",
+ * shared with the case-study pages) so it carries across pages during a
+ * visit, but every new visit starts dark again.
  */
 (function () {
   'use strict';
@@ -26,8 +26,8 @@
   toggle.addEventListener('click', () => {
     document.body.classList.toggle('theme-light');
     try {
-      localStorage.setItem(STORAGE_KEY, isLight() ? 'light' : 'dark');
-    } catch (e) { /* localStorage unavailable — preference won't persist */ }
+      sessionStorage.setItem(STORAGE_KEY, isLight() ? 'light' : 'dark');
+    } catch (e) { /* storage unavailable — choice won't carry over */ }
     updateToggle();
   });
 

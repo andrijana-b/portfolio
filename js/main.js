@@ -7,6 +7,8 @@
  *     start playing when they come near the screen)
  *   - Lining up a project's side column with its "Problem" label
  *     ([data-align-problem])
+ *   - Landing reliably on section links (e.g. index.html#verstegen-showcase),
+ *     even while images above are still loading
  */
 
 (function () {
@@ -80,5 +82,53 @@
     align();
     window.addEventListener('resize', align);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(align);
+  }
+
+  /**
+   * Arriving on a section link (#…): keep the target in place while the
+   * page settles. Images and fonts loading above it can push it down, so
+   * for the first few seconds every layout change re-aligns it — until
+   * the visitor starts scrolling themselves.
+   */
+  if (location.hash.length > 1) {
+    let target = null;
+    try { target = document.querySelector(location.hash); } catch (e) { /* invalid selector */ }
+    if (target) {
+      const root = document.documentElement;
+      let active = true;
+      const stop = () => { active = false; };
+      ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach((t) =>
+        window.addEventListener(t, stop, { once: true, passive: true }));
+      setTimeout(stop, 4000);
+
+      // Layout position, ignoring transforms (the scroll-reveal shift and
+      // parallax shouldn't move the landing spot)
+      const layoutTop = (el) => {
+        let y = 0;
+        for (let n = el; n; n = n.offsetParent) y += n.offsetTop;
+        return y;
+      };
+
+      const settle = () => {
+        if (!active) return;
+        const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+        const y = Math.max(0, layoutTop(target) - margin);
+        if (Math.abs(window.scrollY - y) < 2) return;
+        const prev = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';   // jump, don't animate
+        window.scrollTo(0, y);
+        root.style.scrollBehavior = prev;
+      };
+
+      settle();
+      requestAnimationFrame(settle);
+      window.addEventListener('load', settle);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(settle);
+      if ('ResizeObserver' in window) {
+        const ro = new ResizeObserver(settle);
+        ro.observe(document.body);
+        setTimeout(() => ro.disconnect(), 4000);
+      }
+    }
   }
 })();
