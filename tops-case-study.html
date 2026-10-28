@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Hidden from search engines for now; remove to let Google index the site -->
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+  <title>TOPS: One Brand, Four Sectors · Andrijana Bakracheski</title>
+  <meta name="description"
+    content="Building a scalable digital experience for a multi-label recruitment brand: one brand, four sector identities, and a reusable Storyblok design system.">
+  <meta name="author" content="Andrijana Bakracheski">
+  <meta property="og:title" content="TOPS: One Brand, Four Sectors · Andrijana Bakracheski">
+  <meta property="og:description"
+    content="Building a scalable digital experience for a multi-label recruitment brand: one brand, four sector identities, and a reusable Storyblok design system.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="img/favicon/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="img/favicon/favicon-32.png?v=2" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png?v=2">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&family=Montserrat:wght@400;500;600&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css?v=5">
+  <link rel="stylesheet" href="css/reset.css?v=2">
+  <link rel="stylesheet" href="css/typography.css?v=2">
+  <link rel="stylesheet" href="css/layout.css?v=3">
+  <link rel="stylesheet" href="css/components.css?v=64">
+  <link rel="stylesheet" href="css/animations.css?v=2">
+  <link rel="stylesheet" href="css/case-study.css?v=59">
+  <link rel="stylesheet" href="css/resume-modal.css?v=5">
+  <link rel="stylesheet" href="css/responsive.css?v=24">
+</head>
+
+<body class="case-study-page">
+  <script>
+    (function () {
+      // Dark is the default on every visit; a switch to light only lasts
+      // for the current browsing session
+      var light = false;
+      try {
+        light = sessionStorage.getItem('sw-theme') === 'light';
+        localStorage.removeItem('sw-theme');   // drop the old long-lived setting
+      } catch (e) { /* storage unavailable — stay dark */ }
+      if (!light) document.body.classList.add('theme-dark');
+    })();
+  </script>
+
+  <!-- ─── SITE HEADER ───────────────────────────────────────── -->
+  <header class="site-header cs-header">
+    <div class="container">
+      <div class="site-brand">
+        <a class="site-logo" href="index.html" aria-label="Andrijana Bakracheski, home">
+          <svg class="site-logo__mark" viewBox="100 195 460 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+            focusable="false">
+            <path d="M360 207 L492 473 L445 473 L360 300 L165 703 L113 703 Z" fill="currentColor" />
+            <path d="M335 545 L528 545 L550 588 L314 588 Z" fill="currentColor" />
+          </svg>
+        </a>
+        <a class="cs-header__name" href="index.html?intro=off">Andrijana Bakracheski</a>
+      </div>
+      <nav class="site-header__nav">
+        <a class="site-header__link" href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank"
+          rel="noopener noreferrer">LinkedIn</a>
+        <a class="site-header__link" href="mailto:a.bakracheski@gmail.com">Email</a>
+        <a class="site-header__link" href="documents/Andrijana Bakracheski_CV.pdf" download
+          data-resume-trigger>CV</a>
+        <button type="button" class="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24"
+            fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6" />
+            <path
+              d="M12 2.5V4.5M12 19.5V21.5M4.5 12H2.5M21.5 12H19.5M5.64 5.64L7.05 7.05M16.95 16.95L18.36 18.36M18.36 5.64L16.95 7.05M7.05 16.95L5.64 18.36"
+              stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" width="18" height="18" viewBox="0 0 24 24"
+            fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"
+              stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════════════════ -->
+    <section class="cs-hero section section--flush-top" aria-label="TOPS case study introduction" data-animate>
+      <div class="container cs-hero__grid">
+        <div class="cs-hero__text">
+          <a href="index.html#tops" class="cs-back-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 7L9 12L14 17M9 12L17 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Back to portfolio
+          </a>
+
+          <div class="cs-hero__tags">
+            <span class="cs-tag">UX UI Design</span>
+            <span class="cs-tag">Storyblok</span>
+            <span class="cs-tag">Design system</span>
+          </div>
+
+          <h1 class="cs-hero__title">One brand, four sectors, a system that grows</h1>
+
+          <p class="cs-hero__intro">
+            Designing a scalable digital experience for a multi-label recruitment brand
+          </p>
+
+          <p class="cs-hero__role">TOPS wasn't just a website redesign. It was the creation of a digital foundation for
+            a growing recruitment business: one brand, four sector identities, and a set of reusable building blocks
+            that lets the website keep growing without being redesigned every time.</p>
+
+          <div class="cs-hero__meta">
+            <div>
+              <span class="cs-hero__meta-label">Role &amp; focus</span>
+              <span class="cs-hero__meta-value">UX/UI Designer, improving the user experience, reusable components,
+                brand implementation across four labels, scalable page structures for Storyblok</span>
+            </div>
+          </div>
+
+          <div class="hero__cta-buttons">
+            <a href="https://www.tops.nl/" target="_blank" rel="noopener noreferrer"
+              class="hero__cta-button hero__cta-button--work">
+              See live website
+              <div class="hero__cta-arrow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="cs-hero__media" data-animate="scale">
+          <img src="img/optimized/tops-mockup.png"
+            alt="Redesigned TOPS website on a laptop and phone, showing the homepage hero and the four sector tiles"
+            decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         CONTENTS + SECTIONS
+         ═══════════════════════════════════════════════════════ -->
+    <div class="container cs-layout">
+      <aside class="cs-sidebar">
+        <p class="cs-sidebar__label">Contents</p>
+        <nav class="cs-sidebar__nav">
+          <a href="#context" class="cs-sidebar__link">01 · Context</a>
+          <a href="#challenge" class="cs-sidebar__link">02 · The design challenge</a>
+          <a href="#approach" class="cs-sidebar__link">03 · My approach</a>
+          <a href="#system" class="cs-sidebar__link">04 · From pages to a system</a>
+          <a href="#expressions" class="cs-sidebar__link">05 · One system, four expressions</a>
+          <a href="#funnel" class="cs-sidebar__link">06 · The recruitment funnel</a>
+          <a href="#vacancy" class="cs-sidebar__link">07 · The vacancy experience</a>
+          <a href="#outcome" class="cs-sidebar__link">08 · Outcome</a>
+          <a href="#learned" class="cs-sidebar__link">09 · What I learned</a>
+        </nav>
+      </aside>
+
+      <div class="cs-content">
+
+        <section class="cs-section" id="context" data-animate>
+          <p class="cs-section__eyebrow">01 · Context</p>
+          <h2 class="cs-section__title">One website, many audiences</h2>
+          <p class="cs-section__body">TOPS is a Dutch specialist recruitment and staffing company connecting people
+            with work across Green, Construction, Infrastructure and Agriculture. The platform serves multiple
+            audiences, from job seekers and temporary workers to employers, career changers and existing partners.</p>
+          <p class="cs-section__body">TOPS was going through a brand refresh. The challenge wasn't just to update the
+            website's look. We needed to make it easy for different audiences to find services and careers, while
+            giving the internal team the flexibility to build and create pages on their own.</p>
+
+          <div class="cs-media-card">
+            <img src="documents/TOPS-target-users-15a.png"
+              alt="TOPS target users and what they want to know: career changers through TOPS Vakschool, people interested in working at TOPS, job seekers, and partners"
+              loading="lazy" decoding="async" class="cs-zoomable" tabindex="0" role="button">
+          </div>
+        </section>
+
+        <section class="cs-section" id="challenge" data-animate>
+          <p class="cs-section__eyebrow">02 · The design challenge</p>
+          <h2 class="cs-section__title">A simple brief with layers underneath</h2>
+          <p class="cs-section__body">The challenge went beyond redesigning individual pages. TOPS needed a website
+            that felt like one brand across its four sectors: Groen, Agri, Infra and Bouw, while adapting to different
+            audiences and user journeys.</p>
+          <p class="cs-section__body">The existing website had cluttered navigation, competing CTAs and weak visual
+            hierarchy, making it harder for candidates to find and apply for vacancies. Job listings were easy to miss,
+            while limited social proof made it harder to build trust.</p>
+          <p class="cs-section__body">At the same time, the website was difficult for the internal team to manage and
+            expand. The new design needed to work within a flexible Storyblok structure that allowed the team to create
+            and update pages without starting from scratch.</p>
+
+          <img src="img/optimized/tops-old-site.jpg" alt="The previous TOPS Personeel website homepage shown on a laptop"
+            loading="lazy" decoding="async" class="cs-zoomable" tabindex="0" role="button"
+            style="width:100%; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-8) 0;">
+          <blockquote class="cs-quote">The overall website should feel like TOPS. But as users move deeper into a
+            sector, the interface should take on that sector's visual identity.</blockquote>
+          <p class="cs-section__body">In reality, there were several layers of complexity underneath.</p>
+
+          <div class="cs-card-grid cs-card-grid--2col">
+            <div class="cs-card">
+              <span class="cs-card__number">01</span>
+              <h3 class="cs-card__title">One website, four visual identities</h3>
+              <p class="cs-card__description">TOPS has four sector labels: Groen, Agri, Infra and Bouw. Each has its own
+                colour and character. Together they still had to read as one brand.</p>
+            </div>
+            <div class="cs-card">
+              <span class="cs-card__number">02</span>
+              <h3 class="cs-card__title">Too many starting points and competing calls to action</h3>
+              <p class="cs-card__description">The homepage tried to speak to different audiences and services at the
+                same time. Job seekers, employers, students and other visitors had to figure out which path was
+                relevant to them, with no clear starting point or primary next step.</p>
+            </div>
+            <div class="cs-card">
+              <span class="cs-card__number">03</span>
+              <h3 class="cs-card__title">Different stages of the funnel</h3>
+              <p class="cs-card__description">Some visitors are just discovering TOPS. Others are one click away from
+                applying. The design had to work for both, from discovery to consideration to conversion.</p>
+            </div>
+            <div class="cs-card">
+              <span class="cs-card__number">04</span>
+              <h3 class="cs-card__title">Built to be managed, not just admired</h3>
+              <p class="cs-card__description">The website would be built in Storyblok, a content management system. The
+                TOPS team needed to create and change pages themselves, without a designer redrawing every new
+                page.</p>
+            </div>
+          </div>
+
+          <p class="cs-section__body" style="margin-top: var(--space-8);">The challenge wasn't to design a collection
+            of attractive pages. It was this:</p>
+          <blockquote class="cs-quote">How do we create a strong, recognisable brand experience, while giving TOPS the
+            flexibility to keep building new pages and content over time?</blockquote>
+        </section>
+
+        <section class="cs-section" id="approach" data-animate>
+          <p class="cs-section__eyebrow">03 · My approach</p>
+          <h2 class="cs-section__title">Structure, system, expression</h2>
+          <p class="cs-section__body">I started with a UX audit of the existing experience, looking at the
+            information architecture, navigation, page hierarchy, and key conversion points. I split the work into three
+            levels, and worked through them in order.</p>
+
+          <div class="cs-card-grid">
+            <div class="cs-card">
+              <span class="cs-card__number">01</span>
+              <h3 class="cs-card__title">Structure</h3>
+              <p class="cs-card__description">Understanding what different users needed to accomplish, from finding a
+                vacancy to exploring training or contacting TOPS as an employer.</p>
+            </div>
+            <div class="cs-card">
+              <span class="cs-card__number">02</span>
+              <h3 class="cs-card__title">System</h3>
+              <p class="cs-card__description">Identifying reusable patterns and turning them into flexible
+                components: heroes, cards, CTAs, forms, vacancy tiles, search and filters, accordions and content
+                blocks.</p>
+            </div>
+            <div class="cs-card">
+              <span class="cs-card__number">03</span>
+              <h3 class="cs-card__title">Expression</h3>
+              <p class="cs-card__description">Applying the TOPS brand and four sector identities through colour,
+                imagery, accents and visual hierarchy.</p>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="cs-section" id="system" data-animate>
+          <p class="cs-section__eyebrow">04 · From pages to a system</p>
+          <h2 class="cs-section__title">Designing the building blocks, not the pages</h2>
+          <p class="cs-section__body">Rather than designing each page as a separate layout, I looked for patterns
+            that could be reused across TOPS’s different recruitment journeys. The aim was to create a set of
+            components that could work across the website and be adapted as new pages were added.</p>
+          <blockquote class="cs-quote">The goal was not "Design 14 pages." It was "Design the system that allows TOPS
+            to create many more pages."</blockquote>
+
+          <img src="img/optimized/tops-components.png"
+            alt="Examples of reusable TOPS components: a vacancy contact card, a testimonial block, and sector tiles for Groen, Infra, Agri and Bouw"
+            loading="lazy" decoding="async" class="cs-zoomable" tabindex="0" role="button"
+            style="width:100%; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-8) 0;">
+
+          <p class="cs-section__body">The new website was built in Storyblok, where the TOPS team would create pages
+            by combining these blocks. I therefore designed each component with its actual use in mind: how it would
+            handle different content, where it could be used, and how it would behave across screen sizes.</p>
+          <p class="cs-section__body">I tested each block with:</p>
+          <ul class="cs-list">
+            <li>Short and long headings</li>
+            <li>Different amounts of text</li>
+            <li>Different image sizes and ratios</li>
+            <li>One or more buttons</li>
+            <li>Desktop, tablet and mobile layouts</li>
+            <li>All four sector colours</li>
+            <li>Different page types</li>
+          </ul>
+          <p class="cs-section__body" style="margin-top: var(--space-6);">I also considered how blocks would work
+            together, so that combining them would still result in a clear and consistent page.</p>
+          <p class="cs-section__body">The result was a set of reusable blocks that could be used across different
+            pages and sectors. The TOPS team could then build new pages in Storyblok using the same components, without
+            needing a separate design for every page.</p>
+        </section>
+
+        <section class="cs-section" id="expressions" data-animate>
+          <p class="cs-section__eyebrow">05 · One system, four expressions</p>
+          <h2 class="cs-section__title">Groen, Agri, Infra and Bouw from one set of parts</h2>
+          <p class="cs-section__body">A big part of the work was taking one component and making it work for Groen,
+            Agri, Infra and Bouw.</p>
+          <p class="cs-section__body">The tempting option was four separate designs. That would have made the website
+            feel like four unrelated sites, and multiplied the work for designers and developers by four.</p>
+          <p class="cs-section__body">Instead: <strong>one system, four expressions.</strong></p>
+
+          <img src="img/optimized/tops-same-vs-changes.png"
+            alt="What stays the same in every sector (structure, spacing, typography, interaction, component behaviour, buttons) and what changes per sector (background colours, labels and supporting imagery for Groen, Infra, Bouw and Agri)"
+            loading="lazy" decoding="async" class="cs-zoomable" tabindex="0" role="button"
+            style="width:100%; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-8) 0;">
+
+          <p class="cs-section__body"><strong>The sector colours weren't decoration.</strong> They became part of the
+            navigation: a quiet, constant signal of which part of TOPS you're in.</p>
+        </section>
+
+        <section class="cs-section" id="funnel" data-animate>
+          <p class="cs-section__eyebrow">06 · Designing for the recruitment funnel</p>
+          <h2 class="cs-section__title">More focus the closer people get to applying</h2>
+          <p class="cs-section__body">The website isn't a static set of information pages. People move through it in
+            stages, and at each stage they're asking a different question.</p>
+
+          <img src="documents/TOPS-audience-routes.png"
+            alt="Each audience's route within the funnel. Job seekers: Discover, Explore, Find a vacancy, Understand the role, Apply. Career changers and students: Discover, Understand the opportunity, Explore the programme, Understand the career path, Take action. Employers: Understand TOPS, Explore the service, Understand the sector expertise, Get in touch."
+            loading="lazy" decoding="async" class="cs-zoomable" tabindex="0" role="button"
+            style="width:100%; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-8) 0;">
+
+          <p class="cs-section__body">All three are built from the same blocks. No
+            separate experiences, just different combinations of the same parts.</p>
+        </section>
+
+        <section class="cs-section" id="vacancy" data-animate>
+          <p class="cs-section__eyebrow">07 · The vacancy experience</p>
+          <h2 class="cs-section__title">Where a visitor becomes an applicant</h2>
+          <p class="cs-section__body">The vacancy page is where a visitor becomes an applicant. That makes it one of
+            the most important pages on the site.</p>
+          <p class="cs-section__body">Vacancy pages are often treated as long blocks of text. But a job seeker usually
+            needs answers to a handful of questions, fast:</p>
+          <ul class="cs-list">
+            <li>What is the job?</li>
+            <li>Where is it?</li>
+            <li>How many hours?</li>
+            <li>What will I earn?</li>
+            <li>What experience do I need?</li>
+            <li>What will I actually do?</li>
+            <li>How do I apply?</li>
+          </ul>
+          <p class="cs-section__body" style="margin-top: var(--space-6);">So I designed the page around those
+            questions. The key facts sit at the top, easy to scan, so people can decide within seconds whether a job
+            is for them. The fuller description follows for those who want to read on.</p>
+          <p class="cs-section__body">The apply button stays visible and prominent the whole way down. Whenever someone
+            is ready, the next step is right there.</p>
+
+          <img src="img/optimized/tops-jobs-tiles.jpg"
+            alt="TOPS vacancy tiles on desktop and mobile, each with a sector label, job title, location, hours, salary and a button to view the vacancy"
+            loading="lazy" decoding="async" class="cs-zoomable" tabindex="0" role="button"
+            style="width:100%; height:auto; border-radius:var(--radius-md); display:block; margin: var(--space-8) 0 0;">
+        </section>
+
+        <section class="cs-section" id="outcome" data-animate>
+          <p class="cs-section__eyebrow">08 · Outcome</p>
+          <h2 class="cs-section__title">A scalable UX/UI foundation</h2>
+          <p class="cs-section__body">The result was a scalable UX/UI foundation for the new TOPS website. The project
+            delivered:</p>
+          <ul class="cs-list">
+            <li>One consistent TOPS experience across desktop and mobile</li>
+            <li>Four sector identities, Groen, Agri, Infra and Bouw, built on one shared system</li>
+            <li>A library of reusable blocks and patterns, ready to use in Storyblok</li>
+            <li>Designs for every key journey: job seekers, career changers, employers and content readers</li>
+            <li>Independence for the TOPS team: new pages can be built from existing blocks, without redesigning the
+              experience from scratch</li>
+          </ul>
+        </section>
+
+        <section class="cs-section" id="learned" data-animate>
+          <p class="cs-section__eyebrow">09 · What I learned</p>
+          <h2 class="cs-section__title">Consistency doesn't mean identical</h2>
+          <p class="cs-section__body">The most important lesson: consistency doesn't mean making everything look
+            identical.</p>
+          <p class="cs-section__body">The real work was finding the balance between three forces:</p>
+
+          <div class="cs-card-grid">
+            <div class="cs-card">
+              <h3 class="cs-card__title">Consistency</h3>
+              <p class="cs-card__description">Users should recognise the same product everywhere and understand how it
+                works.</p>
+            </div>
+            <div class="cs-card">
+              <h3 class="cs-card__title">Differentiation</h3>
+              <p class="cs-card__description">Each sector should have its own identity and feel relevant to its
+                audience.</p>
+            </div>
+            <div class="cs-card">
+              <h3 class="cs-card__title">Scalability</h3>
+              <p class="cs-card__description">The design should work across many pages without adding complexity for
+                designers and developers.</p>
+            </div>
+          </div>
+
+
+          <h3 class="cs-subheading">Final reflection</h3>
+          <p class="cs-section__body">This project pushed me to think beyond individual screens, and to see how
+            everything connects:</p>
+          <ol class="cs-flow" aria-label="How the work connects">
+            <li>Brand</li>
+            <li>Information architecture</li>
+            <li>Components</li>
+            <li>Sector identities</li>
+            <li>User journeys</li>
+            <li>Conversion</li>
+          </ol>
+          <p class="cs-section__body">The most valuable thing I designed wasn't any single page. It was the rules
+            behind the pages: enough structure to keep the experience consistent, and enough freedom for TOPS to
+            grow.</p>
+          <blockquote class="cs-quote">One brand. Four sector identities. Reusable blocks.<br>
+            A system that can evolve.</blockquote>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         NEXT PROJECT
+         ═══════════════════════════════════════════════════════ -->
+    <div class="container" style="display: none;">
+      <div class="cs-next" data-animate>
+        <p class="cs-next__label">Next</p>
+        <a class="cs-next__link" href="index.html#verstegen">Verstegen →</a>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         RELATED PROJECTS
+         ═══════════════════════════════════════════════════════ -->
+    <div class="container">
+      <section class="related-projects" data-animate>
+        <h2 class="related-projects__title">More work you might like</h2>
+        <div class="related-projects__grid">
+
+          <a class="related-project" href="sugarwish-case-study.html">
+            <div class="related-project__media related-project__media--fill" style="--tile-bg: #FBEFEC;">
+              <img src="img/optimized/sugarwish-tile-tall.jpg"
+                alt="Sugarwish ordering flow redesign" loading="lazy" decoding="async">
+            </div>
+            <div class="related-project__footer">
+              <div class="related-project__row">
+                <div>
+                  <h3 class="related-project__name">Sugarwish</h3>
+                  <p class="related-project__meta">Gifting e-commerce</p>
+                </div>
+                <span class="related-project__arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </div>
+              <div class="related-project__tags">
+                <span class="related-project__tag">Gifting</span>
+                <span class="related-project__tag related-project__tag--accent">UX Research</span>
+                <span class="related-project__tag">Prototyping</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="related-project" href="index.html#verstegen-showcase">
+            <div class="related-project__media related-project__media--top" style="--tile-bg: #E4DCEF;">
+              <img src="img/optimized/verstegen-tile.jpg" alt="Verstegen mobile and web design, Koken met Verstegen" loading="lazy"
+                decoding="async">
+            </div>
+            <div class="related-project__footer">
+              <div class="related-project__row">
+                <div>
+                  <h3 class="related-project__name">Verstegen</h3>
+                  <p class="related-project__meta">E-commerce · Website</p>
+                </div>
+                <span class="related-project__arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </div>
+              <div class="related-project__tags">
+                <span class="related-project__tag">E-commerce</span>
+                <span class="related-project__tag related-project__tag--accent">CRO</span>
+                <span class="related-project__tag">Shopify</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="related-project" href="teveo-case-study.html">
+            <div class="related-project__media related-project__media--top" style="--tile-bg: #ECECEC;">
+              <img src="documents/teveo-tile.jpg" alt="TEVEO logo with the shopping experience redesign across web and app" loading="lazy"
+                decoding="async">
+            </div>
+            <div class="related-project__footer">
+              <div class="related-project__row">
+                <div>
+                  <h3 class="related-project__name">Teveo</h3>
+                  <p class="related-project__meta">Sportswear · Web &amp; App</p>
+                </div>
+                <span class="related-project__arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </div>
+              <div class="related-project__tags">
+                <span class="related-project__tag">E-commerce</span>
+                <span class="related-project__tag related-project__tag--accent">Design Systems</span>
+                <span class="related-project__tag">Strategy</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════════════════ -->
+    <footer class="site-footer" data-animate>
+      <div class="container">
+        <div class="site-footer__inner">
+          <p class="site-footer__copy">© 2026 Andrijana Bakracheski</p>
+          <nav class="site-footer__links">
+            <a class="site-footer__link" href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank"
+              rel="noopener noreferrer">LinkedIn</a>
+            <a class="site-footer__link" href="mailto:a.bakracheski@gmail.com">Email</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ─── RESUME MODAL ──────────────────────────────────────── -->
+  <div class="resume-modal" id="resumeModal" aria-hidden="true">
+    <div class="resume-modal__backdrop" data-resume-close></div>
+    <div class="resume-modal__card" role="dialog" aria-modal="true" aria-label="Resume">
+      <div class="resume-modal__header">
+        <span class="resume-modal__status"><span class="resume-modal__dot"></span>Resume</span>
+        <div class="resume-modal__actions">
+          <button type="button" class="resume-modal__theme" data-resume-theme aria-label="Switch to light theme">
+            <svg class="resume-modal__theme-icon resume-modal__theme-icon--sun" width="14" height="14"
+              viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8" />
+              <path
+                d="M12 2.5V4.5M12 19.5V21.5M4.5 12H2.5M21.5 12H19.5M5.64 5.64L7.05 7.05M16.95 16.95L18.36 18.36M18.36 5.64L16.95 7.05M7.05 16.95L5.64 18.36"
+                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+            <svg class="resume-modal__theme-icon resume-modal__theme-icon--moon" width="14" height="14"
+              viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" stroke="currentColor"
+                stroke-width="1.8" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button type="button" class="resume-modal__esc" data-resume-close aria-label="Close resume">ESC</button>
+        </div>
+      </div>
+
+      <div class="resume-modal__body">
+        <div class="resume-modal__top">
+          <div class="resume-modal__intro">
+            <h2 class="resume-modal__name">Andrijana Bakracheski</h2>
+            <p class="resume-modal__title">UX/UI Designer</p>
+            <ul class="resume-modal__contact">
+              <li>Amstelveen, The Netherlands</li>
+              <li>Dutch Resident / No sponsorship needed</li>
+              <li><a href="tel:+31624149711">+31 6 24 14 97 11</a></li>
+              <li class="resume-modal__links">
+                <a href="mailto:a.bakracheski@gmail.com">Email</a>
+                <span aria-hidden="true">|</span>
+                <a href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank"
+                  rel="noopener noreferrer">LinkedIn</a>
+                <span aria-hidden="true">|</span>
+                <a href="https://andrijana-b.com/">Portfolio</a>
+              </li>
+            </ul>
+          </div>
+          <img class="resume-modal__photo" src="img/optimized/cv-photo.jpg" width="566" height="643"
+            alt="Andrijana Bakracheski" loading="lazy" decoding="async">
+        </div>
+
+        <div class="resume-modal__side">
+          <h3 class="resume-modal__section-label">Skills</h3>
+
+          <div class="resume-modal__skill-group">
+            <h4>Design</h4>
+            <ul class="resume-modal__list">
+              <li>UX design</li>
+              <li>UI design</li>
+              <li>Web and mobile design</li>
+              <li>Ads and banner design</li>
+              <li>Marketing visuals</li>
+              <li>CRO</li>
+              <li>A/B testing</li>
+              <li>Cross-functional collaboration</li>
+              <li>Managing multiple projects</li>
+            </ul>
+          </div>
+
+          <div class="resume-modal__skill-group">
+            <h4>Tools</h4>
+            <ul class="resume-modal__list">
+              <li>Figma</li>
+              <li>Jitter</li>
+              <li>Canva</li>
+              <li>Storyblok, Umbraco (CMS)</li>
+              <li>Notion</li>
+              <li>Asana, Jira, Productive</li>
+            </ul>
+          </div>
+
+          <div class="resume-modal__skill-group">
+            <h4>AI-assisted design workflows</h4>
+            <ul class="resume-modal__list">
+              <li><strong>Research and synthesis:</strong><br>Claude, Perplexity</li>
+              <li><strong>Design exploration:</strong><br>Claude Design, Claude Code</li>
+              <li><strong>Image generation:</strong><br>Nano Banana (Gemini)</li>
+            </ul>
+          </div>
+
+          <h3 class="resume-modal__section-label">Language</h3>
+          <ul class="resume-modal__list">
+            <li>English</li>
+            <li>Dutch
+              <span class="resume-modal__note">(Delivered design projects for Dutch clients, translating their briefs
+                and feedback into clear design solutions despite not speaking Dutch fluently)</span>
+            </li>
+            <li>Macedonian</li>
+          </ul>
+
+          <h3 class="resume-modal__section-label">Personal Interests</h3>
+          <ul class="resume-modal__list">
+            <li>Running (Half Marathons)</li>
+            <li>Fitness</li>
+            <li>Drawing</li>
+          </ul>
+        </div>
+
+        <div class="resume-modal__main">
+          <h3 class="resume-modal__section-label">Professional summary</h3>
+          <p class="resume-modal__summary">UX/UI designer with 3.5 years of experience at a marketing tech agency,
+            where I joined as the first designer on a team of 12 developers and took ownership from day one. I design
+            recruitment and e-commerce websites with a focus on improving conversions and overall performance, while
+            also managing CMS content and creating ads and other visual assets. My previous experience as a legal
+            assistant in a notary office gave me a strong eye for details and a structured approach to managing
+            multiple projects. I enjoy collaborating closely with CRO, marketing, and engineering teams in
+            international environments.</p>
+
+          <h3 class="resume-modal__section-label">Experience</h3>
+
+          <div class="resume-modal__job">
+            <h4 class="resume-modal__job-title">Small Giants - Marketing Tech Agency, Utrecht | UX/UI Designer</h4>
+            <p class="resume-modal__dates">September 2022 - January 2026</p>
+            <ul class="resume-modal__job-list">
+              <li>Led projects from early concepts and ideation through to final design handoff for development</li>
+              <li>Design and deliver end-to-end UX solutions, including user flows, prototypes, and UI designs with a
+                strong focus on conversion optimisation, usability, and commercial impact</li>
+              <li>Worked with the CRO team on A/B test ideas and designed the test variants</li>
+              <li>Handled content migration for client projects by transferring, organising, and maintaining content
+                within Storyblok CMS</li>
+              <li>Worked directly with clients like Philips, Talpa Network to improve and refine their designs based on
+                goals and feedback</li>
+              <li>Designed landing pages and social ads</li>
+              <li>Started a design system with reusable components, which sped up repetitive work, made handoff to
+                developers easier, and gave marketers a clear picture of what we could offer clients.</li>
+              <li>Reviewed implemented features to identify UI bugs, documented findings, and collaborated with
+                developers to deliver fixes that improved usability, consistency, and overall user experience</li>
+              <li>Collaborating closely with marketing, CRO, other designers and engineering to align UX/UI decisions
+                with project goals</li>
+            </ul>
+          </div>
+
+          <h3 class="resume-modal__section-label">Education</h3>
+
+          <div class="resume-modal__edu">
+            <h4>UX/UI Academy Brainster, Skopje, North Macedonia</h4>
+            <p>September 2021 - April 2022</p>
+          </div>
+
+          <div class="resume-modal__edu">
+            <h4>Bachelor of Law, Ss. Cyril and Methodius Faculty of Law - Skopje, North Macedonia</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="resume-modal__footer">
+        <a class="resume-modal__download" href="documents/Andrijana Bakracheski_CV.pdf" download>
+          Download PDF
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4V16M12 16L7 11M12 16L17 11M5 20H19" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <script defer src="js/animations.js?v=2"></script>
+  <script defer src="js/case-study.js?v=8"></script>
+  <script defer src="js/resume-modal.js?v=3"></script>
+  <script defer src="js/main.js?v=2"></script>
+</body>
+
+</html>

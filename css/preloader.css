@@ -1,0 +1,217 @@
+/* ============================================================
+   preloader.css — Homepage intro, on a dark background.
+   1. The screen starts pink and breaks into squares that pop away
+      (drawn on a canvas by the inline script after the intro markup).
+   2. The white logo draws itself while large, fills, the bar slides
+      in, it shrinks into place and the name appears beside it.
+   3. The screen splits at the height of the logo's bar: the top half
+      slides up, the bottom half down: the top half slides left, the
+      bottom half right, revealing the site.
+   Homepage only. Plays on every visit (desktop and mobile alike);
+   skipped for reduced motion and when arriving on a section link (#…).
+   ============================================================ */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  /* Always dark with a white logo, whichever theme the site is in */
+  --preloader-bg: #0A0A0A;
+  --preloader-ink: #F2F2EE;
+  /* Pink of the opening squares (preloader only) */
+  --preloader-pink: #D855D8;
+  /* Everything after the pink squares starts this much later */
+  --t0: 750ms;
+  /* The screen splits at the height of the logo's bar (its centre is
+     12px below the logo's centre) */
+  --cut: calc(50vh + 12px);
+}
+
+body.is-preloading {
+  overflow: hidden;
+}
+
+/* ── 1. Pink opening squares (canvas on top of everything) ── */
+
+.preloader__squares {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: block;
+  /* Solid pink until the inline script starts drawing the squares */
+  background: var(--preloader-pink);
+}
+
+.preloader__squares.is-drawing {
+  background: transparent;
+}
+
+/* ── 3. Two halves of the screen, each holding the same centred
+      lockup so the split cuts straight through it. Top slides up,
+      bottom slides down. ── */
+
+.preloader__half {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background: var(--preloader-bg);
+  animation: preloader-split 1000ms var(--ease-in-out) calc(var(--t0) + 3700ms) forwards;
+}
+
+.preloader__half--top {
+  top: 0;
+  height: var(--cut);
+  --split-to: -100%;
+}
+
+.preloader__half--bottom {
+  top: var(--cut);
+  bottom: 0;
+  --split-to: 100%;
+}
+
+.preloader__stage {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader__half--top .preloader__stage {
+  top: 0;
+}
+
+.preloader__half--bottom .preloader__stage {
+  top: calc(var(--cut) * -1);
+}
+
+/* ── 2. Logo + name lockup ─────────────────────────────────── */
+
+.preloader__lockup {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  color: var(--preloader-ink);
+}
+
+.preloader__mark {
+  display: block;
+  height: 56px;
+  width: auto;
+  overflow: visible;
+  /* Held large while the logo draws itself, then shrinks into place */
+  transform: scale(2.6);
+  animation: preloader-mark-shrink 650ms cubic-bezier(0.65, 0, 0.35, 1) calc(var(--t0) + 1350ms) forwards;
+}
+
+/* The "A" traces its outline, then fills in */
+.preloader__mark-a {
+  fill: currentColor;
+  fill-opacity: 0;
+  stroke: currentColor;
+  stroke-width: 6;
+  stroke-linejoin: miter;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation:
+    preloader-draw 800ms cubic-bezier(0.65, 0, 0.35, 1) calc(var(--t0) + 150ms) forwards,
+    preloader-fill 350ms ease-out calc(var(--t0) + 850ms) forwards;
+}
+
+/* The bar slides in from the right */
+.preloader__mark-bar {
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 14;
+  stroke-linejoin: miter;
+  transform-box: fill-box;
+  transform-origin: right center;
+  transform: scaleX(0);
+  animation: preloader-bar-in 400ms var(--ease-out) calc(var(--t0) + 1000ms) forwards;
+}
+
+/* The name column grows from zero width, so the logo starts centred
+   and slides left as the name appears beside it */
+.preloader__name-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0fr;
+  animation: preloader-name-open 800ms var(--ease-out) calc(var(--t0) + 1950ms) forwards;
+}
+
+.preloader__name {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+  font-size: 1.375rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: preloader-name-in 700ms var(--ease-out) calc(var(--t0) + 2200ms) forwards;
+}
+
+.preloader__name-text {
+  display: block;
+  padding-left: var(--space-6);
+}
+
+/* ── Keyframes ────────────────────────────────────────────── */
+
+@keyframes preloader-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Fills in and settles on the same slightly bolder outline as the
+   navigation logo */
+@keyframes preloader-fill {
+  to { fill-opacity: 1; stroke-width: 14; }
+}
+
+@keyframes preloader-bar-in {
+  to { transform: scaleX(1); }
+}
+
+@keyframes preloader-mark-shrink {
+  to { transform: scale(1); }
+}
+
+@keyframes preloader-name-open {
+  to { grid-template-columns: 1fr; }
+}
+
+@keyframes preloader-name-in {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes preloader-split {
+  to { transform: translateY(var(--split-to)); }
+}
+
+@media (max-width: 767px) {
+  .preloader__name {
+    font-size: 0.9375rem;
+  }
+
+  .preloader__name-text {
+    padding-left: var(--space-4);
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader {
+    display: none;
+  }
+}

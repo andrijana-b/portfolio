@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Hidden from search engines for now; remove to let Google index the site -->
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+  <title>Andrijana Bakracheski - UX/UI Designer</title>
+  <meta name="description"
+    content="UX/UI designer in the Netherlands with agency experience in e-commerce, recruitment, CRO, CMS and social ads, now looking to grow into in-house product design.">
+  <meta name="author" content="Andrijana Bakracheski">
+  <link rel="canonical" href="https://andrijana-b.com/">
+  <!-- Link previews (LinkedIn, Slack, WhatsApp, X…) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://andrijana-b.com/">
+  <meta property="og:title" content="Andrijana Bakracheski - UX/UI Designer">
+  <meta property="og:description"
+    content="UX/UI designer in the Netherlands with agency experience in e-commerce, recruitment, CRO, CMS and social ads, now looking to grow into in-house product design.">
+  <meta property="og:image" content="https://andrijana-b.com/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Andrijana Bakracheski, UX/UI Designer in the Netherlands">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="img/favicon/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="img/favicon/favicon-32.png?v=2" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png?v=2">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&family=Montserrat:wght@400;500;600&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css?v=5">
+  <link rel="stylesheet" href="css/reset.css?v=2">
+  <link rel="stylesheet" href="css/typography.css?v=2">
+  <link rel="stylesheet" href="css/layout.css?v=3">
+  <link rel="stylesheet" href="css/components.css?v=64">
+  <link rel="stylesheet" href="css/animations.css?v=3">
+  <link rel="stylesheet" href="css/resume-modal.css?v=5">
+  <link rel="stylesheet" href="css/responsive.css?v=24">
+  <link rel="stylesheet" href="css/preloader.css?v=30">
+</head>
+
+<body class="home-page">
+  <script>
+    (function () {
+      // Dark is the default on every visit; a switch to light only lasts
+      // for the current browsing session
+      try {
+        if (sessionStorage.getItem('sw-theme') === 'light') {
+          document.body.classList.add('theme-light');
+        }
+        localStorage.removeItem('sw-theme');   // drop the old long-lived setting
+      } catch (e) { /* storage unavailable — stay dark */ }
+    })();
+  </script>
+
+  <!-- ─── PRELOADER (pink squares → logo + name → split open) ── -->
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__half preloader__half--top">
+      <div class="preloader__stage">
+        <div class="preloader__lockup">
+          <svg class="preloader__mark" viewBox="100 195 460 520" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <path class="preloader__mark-a" d="M360 207 L492 473 L445 473 L360 300 L165 703 L113 703 Z"
+              pathLength="1" />
+            <path class="preloader__mark-bar" d="M335 545 L528 545 L550 588 L314 588 Z" />
+          </svg>
+          <span class="preloader__name-wrap">
+            <span class="preloader__name"><span class="preloader__name-text">Andrijana Bakracheski</span></span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="preloader__half preloader__half--bottom">
+      <div class="preloader__stage">
+        <div class="preloader__lockup">
+          <svg class="preloader__mark" viewBox="100 195 460 520" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <path class="preloader__mark-a" d="M360 207 L492 473 L445 473 L360 300 L165 703 L113 703 Z"
+              pathLength="1" />
+            <path class="preloader__mark-bar" d="M335 545 L528 545 L550 588 L314 588 Z" />
+          </svg>
+          <span class="preloader__name-wrap">
+            <span class="preloader__name"><span class="preloader__name-text">Andrijana Bakracheski</span></span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <canvas class="preloader__squares"></canvas>
+  </div>
+  <script>
+    /* Homepage intro — runs inline, straight after the markup, so the pink
+       squares start at exactly the same moment as the CSS animation that
+       follows them (a separate script file could arrive late on a slow
+       connection, and the intro would seem to start from the logo). */
+    (function () {
+      var preloader = document.querySelector('.preloader');
+      if (!preloader) return;
+
+      // Homepage only (the case studies don't have it). Plays every time the
+      // homepage is opened — the same on desktop and mobile. Skipped only for
+      // visitors who've turned off animations, and when arriving on a
+      // section link (e.g. #verstegen-showcase from a case study's tile),
+      // which goes straight to that section instead.
+      // Also skipped when coming from the name in a case study's navigation
+      // (index.html?intro=off) — that link should just open the homepage.
+      var skip = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (location.hash.length > 1) skip = true;
+      if (/[?&]intro=off(&|$)/.test(location.search)) {
+        skip = true;
+        // Tidy the address bar back to the plain homepage URL
+        try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) { /* ignore */ }
+      }
+      if (skip) { preloader.remove(); return; }
+      document.body.classList.add('is-preloading');
+
+      var done = false;
+      function finish() {
+        if (done) return;
+        done = true;
+        preloader.remove();
+        document.body.classList.remove('is-preloading');
+      }
+
+      // ── Pink squares: the screen is pink, then breaks into squares that
+      //    pop away in random order ──
+      var canvas = preloader.querySelector('.preloader__squares');
+      var ctx = canvas && canvas.getContext('2d');
+      if (ctx) {
+        var PINK = getComputedStyle(preloader).getPropertyValue('--preloader-pink').trim() || '#D855D8';
+        var HOLD = 150;     // solid pink before the first square goes
+        var SPREAD = 550;   // squares pop over this window
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var W = preloader.clientWidth;
+        var H = preloader.clientHeight;
+        canvas.width = Math.round(W * dpr);
+        canvas.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        var cols = Math.max(6, Math.round(W / 110));
+        var size = W / cols;
+        var rows = Math.ceil(H / size);
+        var squares = [];
+        for (var r = 0; r < rows; r++) {
+          for (var c = 0; c < cols; c++) {
+            squares.push({ x: c * size, y: r * size, t: HOLD + Math.random() * SPREAD });
+          }
+        }
+
+        // Paint the full pink grid right away, then animate
+        ctx.fillStyle = PINK;
+        ctx.fillRect(0, 0, W, H);
+        canvas.classList.add('is-drawing');
+
+        var start = null;
+        var draw = function (now) {
+          if (done) return;
+          if (start === null) start = now;
+          var t = now - start;
+          ctx.clearRect(0, 0, W, H);
+          ctx.fillStyle = PINK;
+          var left = 0;
+          for (var i = 0; i < squares.length; i++) {
+            var sq = squares[i];
+            if (t >= sq.t) continue;
+            left++;
+            // Each square shrinks slightly in the last moment before it pops
+            var k = Math.min(1, (sq.t - t) / 90);
+            var inset = (1 - k) * size * 0.18;
+            ctx.fillRect(sq.x + inset, sq.y + inset, size - inset * 2 + 0.5, size - inset * 2 + 0.5);
+          }
+          if (left > 0) requestAnimationFrame(draw);
+          else canvas.remove();
+        };
+        requestAnimationFrame(draw);
+      }
+
+      // ── Done when the bottom half of the screen has slid away ──
+      var bottom = preloader.querySelector('.preloader__half--bottom');
+      if (bottom) {
+        bottom.addEventListener('animationend', function (e) {
+          if (e.animationName === 'preloader-split') finish();
+        });
+      }
+      // Safety net in case animations don't run (e.g. tab in background)
+      setTimeout(finish, 7500);
+    })();
+  </script>
+
+  <!-- ─── SITE HEADER ───────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="container">
+      <a class="site-logo" href="index.html" aria-label="Andrijana Bakracheski, home">
+        <svg class="site-logo__mark" viewBox="100 195 460 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+          focusable="false">
+          <path d="M360 207 L492 473 L445 473 L360 300 L165 703 L113 703 Z" fill="currentColor" />
+          <path d="M335 545 L528 545 L550 588 L314 588 Z" fill="currentColor" />
+        </svg>
+      </a>
+      <span class="site-header__name">Andrijana Bakracheski</span>
+      <nav class="site-header__nav">
+        <a class="site-header__link" href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank"
+          rel="noopener noreferrer">LinkedIn</a>
+        <a class="site-header__link" href="mailto:a.bakracheski@gmail.com">Email</a>
+        <a class="site-header__link" href="documents/Andrijana Bakracheski_CV.pdf" download
+          data-resume-trigger>CV</a>
+        <button type="button" class="theme-toggle" aria-label="Switch to light theme" aria-pressed="false">
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24"
+            fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6" />
+            <path
+              d="M12 2.5V4.5M12 19.5V21.5M4.5 12H2.5M21.5 12H19.5M5.64 5.64L7.05 7.05M16.95 16.95L18.36 18.36M18.36 5.64L16.95 7.05M7.05 16.95L5.64 18.36"
+              stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" width="18" height="18" viewBox="0 0 24 24"
+            fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"
+              stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════════════════ -->
+    <section class="hero section section--flush-top" aria-label="Introduction">
+      <div class="hero__bg" data-parallax="0.4" data-parallax-mode="scroll">
+        <canvas class="hero__bg-canvas"></canvas>
+      </div>
+      <div class="container">
+        <div class="hero__header">
+          <div class="hero__heading-group" data-parallax="0.28" data-parallax-mode="scroll" data-parallax-fade>
+            <h1 class="hero__tagline">
+              Andrijana Bakracheski
+            </h1>
+            <p class="hero__subtitle">UX/UI Designer based in The Netherlands</p>
+          </div>
+        </div>
+        <!--
+        <div class="hero__stats">
+          <div class="hero__stat-card" data-parallax="0.06" data-parallax-mode="scroll">
+            <span class="hero__stat-value hero__stat-value--green">+18%</span>
+            <span class="hero__stat-label">avg. conversion lift</span>
+          </div>
+          <div class="hero__stat-card" data-parallax="0.12" data-parallax-mode="scroll">
+            <span class="hero__stat-value hero__stat-value--purple">20+</span>
+            <span class="hero__stat-label">client projects shipped</span>
+          </div>
+          <div class="hero__stat-card" data-parallax="0.18" data-parallax-mode="scroll">
+            <span class="hero__stat-value">3.5 yrs</span>
+            <span class="hero__stat-label">CX/UI experience</span>
+          </div>
+        </div>
+        -->
+        <div class="hero__info">
+
+          <div class="hero__info-about">
+            <p class="hero__info-label">About</p>
+            <p class="hero__bio" data-marker>
+              I’m a UX/UI Designer with 3.5 years of experience at a <strong>marketing tech</strong> agency, helping
+              recruitment and e-commerce brands improve their digital presence. My work focuses on improving
+              <strong>conversions</strong>, <strong>designing websites and webshops</strong>, managing content in
+              <strong>CMS</strong> platforms, and <strong>creating ads</strong> and other <strong>visual assets</strong>.
+              I <strong>collaborate</strong> closely with <strong>CRO</strong>, <strong>marketing</strong>, and
+              <strong>engineering teams</strong> and enjoy working in international and multicultural environments. Before moving into design, I worked as a legal assistant, which gave me a
+              <strong>sharp eye for detail</strong> and a structured approach to managing <strong>multiple
+              projects</strong>. I’m now looking to <strong>grow further in product design</strong> within an in-house
+              team.
+            </p>
+          </div>
+
+          <div class="hero__info-middle">
+            <div>
+              <p class="hero__info-label">Connect</p>
+              <a class="hero__info-link" href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank"
+                rel="noopener noreferrer">LinkedIn</a>
+              <a class="hero__info-link" href="mailto:a.bakracheski@gmail.com">Email</a>
+            </div>
+          </div>
+
+          <div class="hero__info-right">
+            <div>
+              <p class="hero__info-label">Experience</p>
+              <a class="hero__info-link" href="documents/Andrijana Bakracheski_CV.pdf" download
+                data-resume-trigger>CV</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="hero__cta-buttons">
+          <a href="#teveo" class="hero__cta-button hero__cta-button--work">
+            See my work
+            <div class="hero__cta-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </a>
+          <a href="mailto:a.bakracheski@gmail.com" class="hero__cta-button hero__cta-button--chat">
+            Contact
+            <div class="hero__cta-arrow hero__cta-arrow--large">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         PROJECT 01 — TEVEO
+         ═══════════════════════════════════════════════════════ -->
+    <div class="full-bleed full-bleed--tall full-bleed--photo-wrap" data-animate="scale">
+      <div class="container">
+        <img width="2880" height="1384" class="full-bleed__photo" src="img/optimized/andrijana-portrait.jpg" alt="Andrijana Bakracheski" loading="lazy"
+          decoding="async">
+      </div>
+    </div>
+
+    <article class="project section" id="teveo" data-animate>
+      <div class="container">
+        <div class="project__row">
+          <span class="project__num" data-parallax="-0.15">01</span>
+          <div class="project__info">
+            <h2 class="project__title">TEVEO</h2>
+            <p class="project__meta">Small Giants · E-commerce · 2025 - 2026</p>
+            <div class="stat"
+              style="margin-bottom: var(--space-6); flex-direction: row; align-items: baseline; gap: var(--space-2);">
+              <span class="stat__value" style="color: var(--color-accent-green);">€50M</span>
+              <span class="stat__label">in annual webshop revenue</span>
+            </div>
+            <p class="section-label">Problem</p>
+            <p class="project__desc">TEVEO's Shopify site was originally built for a niche leggings brand, but they had
+              grown into a unisex sportswear company. With 24+ product drops a year, this caused real issues: the
+              website became harder to navigate, customers struggled to find products, and the team had no insights into
+              what was driving conversions.</p>
+            <p class="section-label">My Role</p>
+            <p class="project__desc">I took ownership after the lead designer set the visual direction, translating
+              those concepts into a scalable design system with a focus on CRO and a smooth handoff to dev.</p>
+            <p class="section-label">Key contributions</p>
+            <div class="project__desc">
+              <ul>
+                <li>Designed a library of 40+ reusable components and templates for a scalable design foundation.</li>
+                <li>Redesigned navigation to keep TEVEO's growing unisex range easy to discover.</li>
+                <li>Redesigned key pages (Homepage, PLP, PDP, About Us) to improve readability, highlight trust
+                  signals, and clarify the path to purchase.</li>
+                <li>Collaborated with PM, CRO, Dev, and Teveo marketing team to align on goals, constraints, and
+                  user needs.</li>
+              </ul>
+            </div>
+            <div class="project__actions">
+              <a href="teveo-case-study.html" class="project-btn project-btn--primary" aria-label="Read TEVEO case study">
+                Read case study
+                <span class="project-btn__tile">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </a>
+              <a href="https://teveo.com/en-nl" target="_blank" rel="noopener noreferrer" class="project-btn project-btn--secondary"
+                aria-label="Visit TEVEO live site (opens in a new tab)">
+                Visit live site
+                <span class="project-btn__tile">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M8 16L16 8M16 8H9.5M16 8V14.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div data-parallax="0.08">
+            <img width="830" height="1686" src="documents/teveo_pdp_mockup.png" alt="Teveo e-commerce product page mockup" loading="lazy"
+              decoding="async" style="width:100%;height:auto;border-radius:1.5rem;">
+          </div>
+          <div data-parallax="-0.08">
+            <img width="830" height="1686" src="documents/teveo_plp.png" alt="Teveo product listing page mockup" loading="lazy" decoding="async"
+              style="width:100%;height:auto;border-radius:1.5rem;">
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="device-showcase" id="verstegen-showcase" data-animate="scale">
+      <div class="device-showcase__glow" aria-hidden="true" data-parallax="-0.18"></div>
+      <div class="device-showcase__laptop" data-parallax="0.06">
+        <div class="device-showcase__screen">
+          <div class="device-showcase__camera"></div>
+          <video class="device-showcase__video" data-src="documents/Verstegen_homepage.mp4" loop muted playsinline
+            preload="none"></video>
+        </div>
+        <div class="device-showcase__base"></div>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         PROJECT 02 — Verstegen
+         ═══════════════════════════════════════════════════════ -->
+    <article class="project section" id="verstegen" data-animate>
+      <div class="container">
+        <div class="project__row">
+          <span class="project__num" data-parallax="-0.15">02</span>
+          <div class="project__info">
+            <h2 class="project__title">Verstegen</h2>
+            <p class="project__meta">Small Giants · Website · Design · 2025</p>
+            <div class="stat" style="margin-bottom: var(--space-6);">
+              <span class="stat__value" style="color: var(--color-accent-green);">10K+</span>
+              <span class="stat__label">Monthly revenue through the webshop</span>
+            </div>
+            <p class="section-label">Problem</p>
+            <p class="project__desc">Verstegen's WooCommerce website no longer matched the needs of the business.
+              Products were difficult to find, product pages lacked the information customers needed, and frequent
+              checkout issues hurt the buying experience. B2B customers were sent to a separate website, creating an
+              inconsistent brand experience, while limited analytics and poor accessibility made it difficult to
+              optimise the experience.</p>
+            <p class="section-label">My Role</p>
+            <p class="project__desc">As the UX/UI designer, I worked closely with the client lead, CRO specialist, and
+              frontend developers throughout the project. We started with a client meeting to define the requirements
+              for the new website. I redesigned the entire website, transforming the existing catalogue style website
+              into a more user-friendly e-commerce Shopify platform.</p>
+          </div>
+          <div class="col-span-2">
+            <p class="section-label">Key contributions</p>
+            <div class="project__desc">
+              <ul>
+                <li>Ran user interviews and card sorting to define how people expect products to be grouped, then
+                  redesign the category structure and navigation around that</li>
+                <li>Removed the old "Professionals" redirect, bringing B2C and B2B into one shopping experience</li>
+                <li>Worked with CRO to set a clear goal for each page type, so pages were designed with a purpose</li>
+                <li>Optimised PDPs with clearer USPs, trust signals, and reviews, and added expandable sections to
+                  help customers quickly find the product details they need</li>
+                <li>Designed to meet basic WCAG accessibility requirements and created consistent visual design</li>
+                <li>Handed off a fully specced Figma file with all assets ready for development</li>
+              </ul>
+            </div>
+            <div class="project__actions">
+              <a href="https://verstegen.nl/" target="_blank" rel="noopener noreferrer" class="project-btn project-btn--secondary"
+                aria-label="Visit Verstegen live site (opens in a new tab)">
+                Visit live site
+                <span class="project-btn__tile">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M8 16L16 8M16 8H9.5M16 8V14.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <article class="project section project--pdp-showcase" id="verstegen-compare" data-animate>
+      <div class="container">
+        <!-- Two-column layout: left full height, right stacked -->
+        <div class="security-media-grid security-media-grid--pdp">
+          <!-- Left column - Single image aligned to bottom -->
+          <div class="security-media-grid__left">
+            <div class="pdp-compare" data-pdp-compare>
+              <div class="pdp-compare__bezel">
+                <div class="pdp-compare__camera"></div>
+                <div class="pdp-compare__screen">
+                  <div class="pdp-compare__browser-bar">
+                    <span class="pdp-compare__dot pdp-compare__dot--red"></span>
+                    <span class="pdp-compare__dot pdp-compare__dot--yellow"></span>
+                    <span class="pdp-compare__dot pdp-compare__dot--green"></span>
+                    <span class="pdp-compare__url">verstegen.nl/mix-voor-biefstuk</span>
+                  </div>
+                  <div class="pdp-compare__area">
+                    <img width="1440" height="5008" class="pdp-compare__img pdp-compare__img--new" src="img/optimized/verstegen-new-pdp.jpg"
+                      alt="Verstegen new PDP design" loading="lazy" decoding="async">
+                    <img width="1440" height="2058" class="pdp-compare__img pdp-compare__img--old" src="img/optimized/verstegen-old-pdp.png"
+                      alt="Verstegen old PDP design" loading="lazy" decoding="async">
+                    <div class="pdp-compare__divider"></div>
+                    <div class="pdp-compare__handle"></div>
+                    <div class="pdp-compare__strip" data-pdp-compare-strip></div>
+                    <span class="pdp-compare__badge pdp-compare__badge--before">Before</span>
+                    <span class="pdp-compare__badge pdp-compare__badge--after">After</span>
+                    <span class="pdp-compare__hint">← Drag to compare →</span>
+                  </div>
+                </div>
+                <div class="pdp-compare__home-indicator"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right column - Two images stacked vertically -->
+          <div class="security-media-grid__right">
+            <!-- Top image -->
+            <div class="security-media-grid__item">
+              <div class="plp-compare" data-plp-compare>
+                <div class="plp-compare__bezel">
+                  <div class="pdp-compare__camera"></div>
+                  <div class="plp-compare__screen">
+                    <div class="pdp-compare__browser-bar">
+                      <span class="pdp-compare__dot pdp-compare__dot--red"></span>
+                      <span class="pdp-compare__dot pdp-compare__dot--yellow"></span>
+                      <span class="pdp-compare__dot pdp-compare__dot--green"></span>
+                      <span class="pdp-compare__url">verstegen.nl/kruiden-specerijen</span>
+                    </div>
+                    <div class="plp-compare__area" data-plp-compare-area>
+                      <div class="plp-compare__pane plp-compare__pane--after">
+                        <img width="1200" height="4848" src="img/optimized/verstegen-plp-new.jpg" alt="Verstegen new PLP design" loading="lazy"
+                          decoding="async">
+                      </div>
+                      <div class="plp-compare__pane plp-compare__pane--before">
+                        <img width="1200" height="2380" src="img/optimized/verstegen-plp-old.png" alt="Verstegen old PLP design" loading="lazy"
+                          decoding="async">
+                      </div>
+                      <div class="plp-compare__divider"></div>
+                      <div class="plp-compare__handle"></div>
+                      <div class="plp-compare__strip" data-plp-compare-strip></div>
+                      <span class="plp-compare__badge plp-compare__badge--before">Before</span>
+                      <span class="plp-compare__badge plp-compare__badge--after">After</span>
+                      <span class="plp-compare__hint">↑<br>Drag to compare<br>↓</span>
+                    </div>
+                  </div>
+                  <div class="pdp-compare__home-indicator"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         PROJECT 03 — TOPS
+         ═══════════════════════════════════════════════════════ -->
+    <article class="project section" id="tops" data-animate>
+      <div class="container">
+        <!-- Full-width image at top -->
+        <div class="full-bleed full-bleed--tall full-bleed--spaced full-bleed--static full-bleed--tops-showcase" data-animate="scale">
+          <img width="2560" height="1074" src="img/optimized/tops-showcase.jpg?v=2" alt="TOPS recruitment website, desktop and mobile" loading="lazy"
+            decoding="async">
+        </div>
+
+        <div class="project__row">
+          <span class="project__num" data-parallax="-0.15">03</span>
+          <div class="project__info">
+            <h2 class="project__title">Tops</h2>
+            <p class="project__meta">Recruitment · Storyblok · 2025</p>
+            <p class="section-label">Problem</p>
+            <p class="project__desc">TOPS needed a user-friendly recruitment website that made it easier for candidates
+              to find relevant jobs across four sectors: Green, Agriculture, Infrastructure, and Construction. The
+              existing site was cluttered, with unclear navigation, competing CTAs, and job listings that were easy to
+              miss.</p>
+            <p class="section-label">My Role</p>
+            <p class="project__desc">I was responsible for the UX/UI redesign of the TOPS recruitment website, working
+              closely with copywriter, the CRO team, and developers to improve the user experience and create a
+              flexible design system that supports the company’s growth.</p>
+          </div>
+          <div class="col-span-2">
+            <p class="section-label">Key contributions</p>
+            <div class="project__desc">
+              <ul>
+                <li><strong>UX audit:</strong> Reviewed the existing website to identify navigation problems, unclear buttons, cluttered
+                  layouts, and job listings that were easy to miss.</li>
+                <li><strong>Information architecture:</strong> Improved page structure to help users find relevant jobs and services more
+                  easily.</li>
+                <li><strong>UI design system:</strong> Created reusable components with consistent layouts, spacing, and behaviour across
+                  four sector brands in Figma that developers built in Storyblok, to support independent page
+                  creation.</li>
+                <li><strong>Scalable page design:</strong> Built flexible components in Storyblok, allowing the internal team to create and
+                  update pages independently.</li>
+                <li><strong>Sector-specific styling:</strong> Adapted colours, labels, and imagery for Green, Agriculture, Infrastructure,
+                  and Construction while keeping the overall experience consistent.</li>
+                <li><strong>Vacancy experience:</strong> Improved job cards and vacancy pages to make key information easier to scan and the
+                  application action easier to find.</li>
+              </ul>
+            </div>
+            <div class="project__actions">
+              <a href="tops-case-study.html" class="project-btn project-btn--primary" aria-label="Read TOPS case study">
+                Read case study
+                <span class="project-btn__tile">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </a>
+              <a href="https://www.tops.nl/" target="_blank" rel="noopener noreferrer" class="project-btn project-btn--secondary"
+                aria-label="Visit TOPS live site (opens in a new tab)">
+                Visit live site
+                <span class="project-btn__tile">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M8 16L16 8M16 8H9.5M16 8V14.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         PROJECT 04 — TBD
+         ═══════════════════════════════════════════════════════ -->
+    <article class="project section" id="echo-device-setup" data-animate hidden>
+      <div class="container">
+
+        <div class="project__row">
+          <span class="project__num" data-parallax="-0.15">04</span>
+          <div class="project__info">
+            <h2 class="project__title">Title goes here
+              <p class="project__meta">Company · 2025 – 2026</p>
+              <p class="project__desc">
+                Explain what the product is and who uses it. Explain what wasn't working.
+                Explain how this affected users. Explain what
+                needed to improve.
+                Use Context → Problem → User impact → UX opportunity
+              </p>
+              <p class="project__desc">
+                To address these issues, I redesigned the underlying foundations of the setup experience by creating
+                more consistent and
+                reusable design patterns and components. This allowed improvements to be applied across different setup
+                flows, making
+                the experience clearer and more consistent for users while also helping design and engineering teams
+                work more
+                efficiently. As a result, setup completion, user satisfaction, and overall consistency improved.
+              </p>
+          </div>
+          <div class="stat">
+            <span class="stat__value">+213%</span>
+            <span class="stat__label">Increased setup app rating</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-8);">
+            <div class="stat">
+              <span class="stat__value">+11%</span>
+              <span class="stat__label">Increased setup completion rate</span>
+            </div>
+            <div class="stat">
+              <span class="stat__value">−65%</span>
+              <span class="stat__label">Reduced design &amp; engineering time</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         PROJECT 04 — Sugarwish
+         ═══════════════════════════════════════════════════════ -->
+    <article class="project section" id="sugarwish" data-animate>
+      <div class="container">
+        <!-- Full-width image at top -->
+        <div class="full-bleed full-bleed--tall full-bleed--spaced full-bleed--static" data-animate="scale" data-parallax="0.07">
+          <img width="2800" height="1400"
+            src="img/optimized/sugarwish-mockup.png"
+            alt="Sugarwish ordering flow redesign" loading="lazy" decoding="async">
+        </div>
+
+        <div class="project__row">
+          <span class="project__num" data-parallax="-0.15">04</span>
+          <div class="project__info">
+            <h2 class="project__title">Sugarwish</h2>
+            <p class="project__meta">Brainster UX/UI Academy · Gifting e-commerce · 2022</p>
+            <p class="section-label">Problem</p>
+            <p class="project__desc">Sugarwish lets a gift buyer send a digital eCard with no mailing address
+              required, and the recipient picks their own treats. But the existing ordering flow led users to give
+              up when confronted with certain choices, usability testing showed the highest drop-off was on the
+              "choose an eCard" and "choose a size" steps, and user interviews found some visitors suspected the
+              site of being a scam because of an unclear sending flow.</p>
+            <p class="section-label">My Role</p>
+            <p class="project__desc">As part of the UX/UI Academy at Brainster, I worked in a team of three to
+              redesign a subset of screens on Sugarwish's existing website, without breaking the consistency of the
+              live product. I led stakeholder and user interviews, usability testing, journey mapping, wireframing,
+              and prototyping in Figma. <strong>Our solution was chosen by the company as the winning one among
+              eight submitted.</strong></p>
+          </div>
+          <div class="col-span-2" data-align-problem>
+            <p class="section-label">Key contributions</p>
+            <div class="project__desc">
+              <ul>
+                <li>Conducted remote usability tests and user interviews to identify ordering-flow pain points.</li>
+                <li>Added a progress indicator to clarify remaining steps.</li>
+                <li>Repositioned and clarified the best-selling “The Select” product.</li>
+                <li>Redesigned size-selection cards on PDP to show pricing and flavours above the fold.</li>
+                <li>Improved eCard browsing with a reordered occasion filter and fewer cards per view.</li>
+                <li>Moved login to the final step before payment to reduce friction.</li>
+              </ul>
+            </div>
+            <div class="project__actions">
+              <a href="sugarwish-case-study.html" class="project-btn project-btn--primary" aria-label="Read Sugarwish case study">
+                Read case study
+                <span class="project-btn__tile">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </a>
+              <a href="https://www.sugarwish.com" target="_blank" rel="noopener noreferrer" class="project-btn project-btn--secondary"
+                aria-label="Visit Sugarwish live site (opens in a new tab)">
+                Visit live site
+                <span class="project-btn__tile">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M8 16L16 8M16 8H9.5M16 8V14.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════════════════ -->
+    <footer class="site-footer" data-animate>
+      <div class="container">
+        <div class="site-footer__inner">
+          <p class="site-footer__copy">© 2026 Andrijana Bakracheski</p>
+          <nav class="site-footer__links">
+            <a class="site-footer__link" href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank"
+              rel="noopener noreferrer">LinkedIn</a>
+            <a class="site-footer__link" href="mailto:a.bakracheski@gmail.com">Email</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ─── RESUME MODAL ──────────────────────────────────────── -->
+  <div class="resume-modal" id="resumeModal" aria-hidden="true">
+    <div class="resume-modal__backdrop" data-resume-close></div>
+    <div class="resume-modal__card" role="dialog" aria-modal="true" aria-label="Resume">
+      <div class="resume-modal__header">
+        <span class="resume-modal__status"><span class="resume-modal__dot"></span>Resume</span>
+        <div class="resume-modal__actions">
+          <button type="button" class="resume-modal__theme" data-resume-theme aria-label="Switch to light theme">
+            <svg class="resume-modal__theme-icon resume-modal__theme-icon--sun" width="14" height="14"
+              viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8" />
+              <path
+                d="M12 2.5V4.5M12 19.5V21.5M4.5 12H2.5M21.5 12H19.5M5.64 5.64L7.05 7.05M16.95 16.95L18.36 18.36M18.36 5.64L16.95 7.05M7.05 16.95L5.64 18.36"
+                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+            <svg class="resume-modal__theme-icon resume-modal__theme-icon--moon" width="14" height="14"
+              viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" stroke="currentColor"
+                stroke-width="1.8" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button type="button" class="resume-modal__esc" data-resume-close aria-label="Close resume">ESC</button>
+        </div>
+      </div>
+
+      <div class="resume-modal__body">
+        <div class="resume-modal__top">
+          <div class="resume-modal__intro">
+            <h2 class="resume-modal__name">Andrijana Bakracheski</h2>
+            <p class="resume-modal__title">UX/UI Designer</p>
+            <ul class="resume-modal__contact">
+              <li>Amstelveen, The Netherlands</li>
+              <li>Dutch Resident / No sponsorship needed</li>
+              <li><a href="tel:+31624149711">+31 6 24 14 97 11</a></li>
+              <li class="resume-modal__links">
+                <a href="mailto:a.bakracheski@gmail.com">Email</a>
+                <span aria-hidden="true">|</span>
+                <a href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank"
+                  rel="noopener noreferrer">LinkedIn</a>
+                <span aria-hidden="true">|</span>
+                <a href="https://andrijana-b.com/">Portfolio</a>
+              </li>
+            </ul>
+          </div>
+          <img class="resume-modal__photo" src="img/optimized/cv-photo.jpg" width="566" height="643"
+            alt="Andrijana Bakracheski" loading="lazy" decoding="async">
+        </div>
+
+        <div class="resume-modal__side">
+          <h3 class="resume-modal__section-label">Skills</h3>
+
+          <div class="resume-modal__skill-group">
+            <h4>Design</h4>
+            <ul class="resume-modal__list">
+              <li>UX design</li>
+              <li>UI design</li>
+              <li>Web and mobile design</li>
+              <li>Ads and banner design</li>
+              <li>Marketing visuals</li>
+              <li>CRO</li>
+              <li>A/B testing</li>
+              <li>Cross-functional collaboration</li>
+              <li>Managing multiple projects</li>
+            </ul>
+          </div>
+
+          <div class="resume-modal__skill-group">
+            <h4>Tools</h4>
+            <ul class="resume-modal__list">
+              <li>Figma</li>
+              <li>Jitter</li>
+              <li>Canva</li>
+              <li>Storyblok, Umbraco (CMS)</li>
+              <li>Notion</li>
+              <li>Asana, Jira, Productive</li>
+            </ul>
+          </div>
+
+          <div class="resume-modal__skill-group">
+            <h4>AI-assisted design workflows</h4>
+            <ul class="resume-modal__list">
+              <li><strong>Research and synthesis:</strong><br>Claude, Perplexity</li>
+              <li><strong>Design exploration:</strong><br>Claude Design, Claude Code</li>
+              <li><strong>Image generation:</strong><br>Nano Banana (Gemini)</li>
+            </ul>
+          </div>
+
+          <h3 class="resume-modal__section-label">Language</h3>
+          <ul class="resume-modal__list">
+            <li>English</li>
+            <li>Dutch
+              <span class="resume-modal__note">(Delivered design projects for Dutch clients, translating their briefs
+                and feedback into clear design solutions despite not speaking Dutch fluently)</span>
+            </li>
+            <li>Macedonian</li>
+          </ul>
+
+          <h3 class="resume-modal__section-label">Personal Interests</h3>
+          <ul class="resume-modal__list">
+            <li>Running (Half Marathons)</li>
+            <li>Fitness</li>
+            <li>Drawing</li>
+          </ul>
+        </div>
+
+        <div class="resume-modal__main">
+          <h3 class="resume-modal__section-label">Professional summary</h3>
+          <p class="resume-modal__summary">UX/UI designer with 3.5 years of experience at a marketing tech agency,
+            where I joined as the first designer on a team of 12 developers and took ownership from day one. I design
+            recruitment and e-commerce websites with a focus on improving conversions and overall performance, while
+            also managing CMS content and creating ads and other visual assets. My previous experience as a legal
+            assistant in a notary office gave me a strong eye for details and a structured approach to managing
+            multiple projects. I enjoy collaborating closely with CRO, marketing, and engineering teams in
+            international environments.</p>
+
+          <h3 class="resume-modal__section-label">Experience</h3>
+
+          <div class="resume-modal__job">
+            <h4 class="resume-modal__job-title">Small Giants - Marketing Tech Agency, Utrecht | UX/UI Designer</h4>
+            <p class="resume-modal__dates">September 2022 - January 2026</p>
+            <ul class="resume-modal__job-list">
+              <li>Led projects from early concepts and ideation through to final design handoff for development</li>
+              <li>Design and deliver end-to-end UX solutions, including user flows, prototypes, and UI designs with a
+                strong focus on conversion optimisation, usability, and commercial impact</li>
+              <li>Worked with the CRO team on A/B test ideas and designed the test variants</li>
+              <li>Handled content migration for client projects by transferring, organising, and maintaining content
+                within Storyblok CMS</li>
+              <li>Worked directly with clients like Philips, Talpa Network to improve and refine their designs based on
+                goals and feedback</li>
+              <li>Designed landing pages and social ads</li>
+              <li>Started a design system with reusable components, which sped up repetitive work, made handoff to
+                developers easier, and gave marketers a clear picture of what we could offer clients.</li>
+              <li>Reviewed implemented features to identify UI bugs, documented findings, and collaborated with
+                developers to deliver fixes that improved usability, consistency, and overall user experience</li>
+              <li>Collaborating closely with marketing, CRO, other designers and engineering to align UX/UI decisions
+                with project goals</li>
+            </ul>
+          </div>
+
+          <h3 class="resume-modal__section-label">Education</h3>
+
+          <div class="resume-modal__edu">
+            <h4>UX/UI Academy Brainster, Skopje, North Macedonia</h4>
+            <p>September 2021 - April 2022</p>
+          </div>
+
+          <div class="resume-modal__edu">
+            <h4>Bachelor of Law, Ss. Cyril and Methodius Faculty of Law - Skopje, North Macedonia</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="resume-modal__footer">
+        <a class="resume-modal__download" href="documents/Andrijana Bakracheski_CV.pdf" download>
+          Download PDF
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4V16M12 16L7 11M12 16L17 11M5 20H19" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <script defer src="js/animations.js?v=5"></script>
+  <script defer src="js/pdp-compare.js"></script>
+  <script defer src="js/plp-compare.js"></script>
+  <script defer src="js/hero-gradient-blinds.js"></script>
+  <script defer src="js/resume-modal.js?v=3"></script>
+  <script defer src="js/home-theme.js?v=2"></script>
+  <script defer src="js/main.js?v=7"></script>
+</body>
+
+</html>

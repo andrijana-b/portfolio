@@ -1,0 +1,486 @@
+/* ============================================================
+   resume-modal.css — The "CV" preview modal, shared across every
+   page (homepage + all case studies) so clicking CV always behaves
+   the same way. Depends on tokens.css for spacing/font vars and
+   var(--color-accent-green) for the status dot.
+   ============================================================ */
+
+/* ── Resume modal — follows the page's light/dark toggle via its own
+   tuned token set (kept separate from the shared tokens so its grays
+   can be adjusted independently of the rest of the page). Pages
+   without the case-study light/dark toggle (e.g. the homepage) fall
+   back to this dark default, matching the homepage's own dark theme. ── */
+
+.resume-modal {
+  --resume-surface:       #141412;
+  --resume-border:        rgba(255, 255, 255, 0.08);
+  --resume-backdrop:      rgba(0, 0, 0, 0.75);
+  --resume-text-primary:  #ffffff;
+  --resume-text-secondary: #c2c2c2;
+  --resume-text-muted:    #9a9a9a;
+  --resume-download-bg:      #ffffff;
+  --resume-download-text:    #0a0a0a;
+  --resume-download-bg-hover: #d5d5d5;
+}
+
+body.home-page.theme-light .resume-modal {
+  --resume-surface:       #FFFFFF;
+  --resume-border:        rgba(28, 28, 26, 0.1);
+  --resume-backdrop:      rgba(241, 241, 241, 0.85);
+  --resume-text-primary:  #1C1C1A;
+  --resume-text-secondary: #55534C;
+  --resume-text-muted:    #8A8778;
+  --resume-download-bg:      #1C1C1A;
+  --resume-download-text:    #FFFFFF;
+  --resume-download-bg-hover: #3F3D38;
+}
+
+body.case-study-page:not(.theme-dark) .resume-modal {
+  --resume-surface:       #FFFFFF;
+  --resume-border:        rgba(28, 28, 26, 0.1);
+  --resume-backdrop:      rgba(246, 245, 241, 0.85);
+  --resume-text-primary:  #1C1C1A;
+  --resume-text-secondary: #55534C;
+  --resume-text-muted:    #8A8778;
+  --resume-download-bg:      #1C1C1A;
+  --resume-download-text:    #FFFFFF;
+  --resume-download-bg-hover: #3F3D38;
+}
+
+body.case-study-page.theme-dark .resume-modal {
+  --resume-surface:       #141412;
+  --resume-border:        rgba(255, 255, 255, 0.08);
+  --resume-backdrop:      rgba(0, 0, 0, 0.75);
+  --resume-text-primary:  #ffffff;
+  --resume-text-secondary: #c2c2c2;
+  --resume-text-muted:    #9a9a9a;
+  --resume-download-bg:      #ffffff;
+  --resume-download-text:    #0a0a0a;
+  --resume-download-bg-hover: #d5d5d5;
+}
+
+/* CV-only theme set by the button beside ESC (resume-modal.js); beats the
+   page-based sets above, so the page behind keeps its own theme */
+body .resume-modal.resume-modal--light.resume-modal--light.resume-modal--light {
+  --resume-surface:       #FFFFFF;
+  --resume-border:        rgba(28, 28, 26, 0.1);
+  --resume-text-primary:  #1C1C1A;
+  --resume-text-secondary: #55534C;
+  --resume-text-muted:    #8A8778;
+  --resume-download-bg:      #1C1C1A;
+  --resume-download-text:    #FFFFFF;
+  --resume-download-bg-hover: #3F3D38;
+}
+
+body .resume-modal.resume-modal--dark.resume-modal--dark.resume-modal--dark {
+  --resume-surface:       #141412;
+  --resume-border:        rgba(255, 255, 255, 0.08);
+  --resume-text-primary:  #ffffff;
+  --resume-text-secondary: #c2c2c2;
+  --resume-text-muted:    #9a9a9a;
+  --resume-download-bg:      #ffffff;
+  --resume-download-text:    #0a0a0a;
+  --resume-download-bg-hover: #d5d5d5;
+}
+
+.resume-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-slow) var(--ease-out);
+}
+
+.resume-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.resume-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--resume-backdrop);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.resume-modal__card {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  max-height: min(860px, 90vh);
+  display: flex;
+  flex-direction: column;
+  background: var(--resume-surface);
+  border: 1px solid var(--resume-border);
+  border-radius: 20px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transform: scale(0.97) translateY(8px);
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.resume-modal.is-open .resume-modal__card {
+  transform: scale(1) translateY(0);
+}
+
+.resume-modal__header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--resume-border);
+}
+
+.resume-modal__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-alt);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--resume-text-secondary);
+}
+
+.resume-modal__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent-green);
+  box-shadow: 0 0 8px var(--color-accent-green);
+}
+
+.resume-modal__esc {
+  font-family: var(--font-alt);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: var(--resume-text-secondary);
+  background: none;
+  border: 1px solid var(--resume-border);
+  border-radius: 6px;
+  padding: 3px 8px;
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+
+.resume-modal__esc:hover,
+.resume-modal__esc:focus-visible {
+  color: var(--resume-text-primary);
+  border-color: var(--resume-text-secondary);
+}
+
+.resume-modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Theme switch beside ESC: the sun switches to light, the moon back to dark */
+.resume-modal__theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  color: var(--resume-text-secondary);
+  background: none;
+  border: 1px solid var(--resume-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+
+.resume-modal__theme:hover,
+.resume-modal__theme:focus-visible {
+  color: var(--resume-text-primary);
+  border-color: var(--resume-text-secondary);
+}
+
+.resume-modal__theme-icon {
+  display: none;
+}
+
+.resume-modal__theme:not([data-light="true"]) .resume-modal__theme-icon--sun,
+.resume-modal__theme[data-light="true"] .resume-modal__theme-icon--moon {
+  display: block;
+}
+
+/* Same layout as the PDF: name, contact and photo across the top, then
+   skills / language / interests on the left and summary / experience /
+   education on the right */
+.resume-modal__body {
+  flex: 1;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  column-gap: var(--space-6);
+  row-gap: var(--space-4);
+  align-content: start;
+  padding: var(--space-4) var(--space-6) var(--space-6);
+}
+
+.resume-modal__top {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.resume-modal__photo {
+  flex-shrink: 0;
+  width: 150px;
+  height: auto;
+  aspect-ratio: 566 / 643;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.resume-modal__name {
+  font-family: var(--font-body);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--resume-text-primary);
+  margin-bottom: 4px;
+}
+
+.resume-modal__title {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--resume-text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.resume-modal__contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--resume-text-secondary);
+}
+
+.resume-modal__contact a {
+  color: var(--resume-text-secondary);
+  text-decoration: none;
+}
+
+.resume-modal__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 2px;
+  color: var(--resume-text-muted);
+}
+
+.resume-modal__links a {
+  color: var(--resume-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.resume-modal__contact a:hover {
+  color: var(--resume-text-primary);
+}
+
+.resume-modal__links a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.resume-modal__section-label {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--resume-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.resume-modal__side .resume-modal__section-label:not(:first-child),
+.resume-modal__main .resume-modal__section-label:not(:first-child) {
+  margin-top: var(--space-4);
+}
+
+.resume-modal__summary {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--resume-text-secondary);
+}
+
+.resume-modal__job-title {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--resume-text-primary);
+}
+
+.resume-modal__dates {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--resume-text-secondary);
+  margin: 4px 0 var(--space-3);
+}
+
+.resume-modal__job-list,
+.resume-modal__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-modal__job-list {
+  gap: 8px;
+}
+
+.resume-modal__list {
+  gap: 4px;
+}
+
+.resume-modal__job-list li,
+.resume-modal__list li {
+  position: relative;
+  padding-left: 14px;
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--resume-text-secondary);
+}
+
+.resume-modal__job-list li {
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.resume-modal__list li {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.resume-modal__job-list li::before,
+.resume-modal__list li::before {
+  content: "·";
+  position: absolute;
+  left: 2px;
+  font-weight: 700;
+  color: var(--resume-text-muted);
+}
+
+.resume-modal__list li strong {
+  font-weight: 500;
+  color: var(--resume-text-primary);
+}
+
+.resume-modal__note {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--resume-text-muted);
+}
+
+.resume-modal__skill-group + .resume-modal__skill-group {
+  margin-top: var(--space-3);
+}
+
+.resume-modal__skill-group h4,
+.resume-modal__edu h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--resume-text-primary);
+}
+
+.resume-modal__skill-group h4 {
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.resume-modal__edu h4 {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.resume-modal__edu p {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--resume-text-secondary);
+  margin-top: 4px;
+}
+
+.resume-modal__edu + .resume-modal__edu {
+  margin-top: var(--space-3);
+}
+
+.resume-modal__footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--resume-border);
+}
+
+.resume-modal__download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--resume-download-bg);
+  color: var(--resume-download-text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.resume-modal__download:hover,
+.resume-modal__download:focus-visible {
+  background: var(--resume-download-bg-hover);
+}
+
+@media (max-width: 767px) {
+  .resume-modal__body {
+    grid-template-columns: 1fr;
+    padding: var(--space-3) var(--space-3) var(--space-4);
+  }
+
+  /* Phones: summary and experience first, skills after */
+  .resume-modal__main {
+    order: 1;
+  }
+
+  .resume-modal__side {
+    order: 2;
+  }
+
+  /* Photo above the name so the contact lines keep the full width */
+  .resume-modal__top {
+    flex-direction: column-reverse;
+    gap: var(--space-2);
+  }
+
+  .resume-modal__photo {
+    width: 96px;
+  }
+
+  .resume-modal__name {
+    font-size: 1.375rem;
+  }
+}
