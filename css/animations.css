@@ -316,6 +316,7 @@ a {
   .hero__statement,
   .hero__facts,
   .hero__intro .hero__cta-buttons,
+  .hero__aside,
   .hero__info {
     animation: none;
     opacity: 1;

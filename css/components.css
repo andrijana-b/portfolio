@@ -252,24 +252,148 @@ body.home-page.theme-light .theme-toggle__icon--sun {
    secondary text), so the line stays calm and quick to scan. ── */
 
 .hero__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-8);
+  align-items: start;
   margin-bottom: var(--space-12);
+}
+
+/* Connect + Experience, stacked beside the intro */
+.hero__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 200px;
+  padding-top: var(--space-1);
+  animation: hero-fade-in 600ms var(--ease-quart) 400ms both;
+}
+
+.hero__aside-group .hero__info-label {
+  margin-top: 0;
 }
 
 .hero__statement {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: clamp(1.75rem, 3.4vw, 3rem);   /* 48px max */
+  font-size: clamp(1.375rem, 2.4vw, 2.125rem);   /* 34px max */
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.3;
   letter-spacing: -0.025em;
   color: var(--color-text-secondary);
-  max-width: 30ch;
+  max-width: 40ch;
   text-wrap: balance;
 }
 
 .hero__statement em {
   font-style: normal;
   color: var(--color-text-primary);
+}
+
+/* ── Intro copy — a static value statement by default; "Read full
+   intro" swaps it for the full About paragraph (js/hero-intro.js). ── */
+
+.hero__lead,
+.hero__full {
+  margin: 0;
+}
+
+/* Keeps hyphenated words like "e-commerce" from splitting at the hyphen */
+.hero__nowrap {
+  white-space: nowrap;
+}
+
+/* Full intro — longer copy, so a reading size and regular weight,
+   with the key words still bold */
+.hero__statement.is-expanded {
+  max-width: 52ch;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.hero__statement.is-expanded em,
+.hero__statement.is-expanded .hero__key {
+  font-weight: 700;
+}
+
+.hero__full:not([hidden]) {
+  animation: hero-fade-in 500ms var(--ease-out) both;
+}
+
+/* Key phrases — the same highlighter stroke as the bio, in the brand
+   colours in turn, swiped in shortly after the statement lands */
+.hero__key {
+  --key: color-mix(in srgb, var(--color-accent-green) 45%, transparent);
+  padding: 0 0.1em;
+  margin: 0 -0.05em;
+  background-color: transparent;
+  background-image: linear-gradient(var(--key), var(--key));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 100% 38%;
+  color: var(--color-text-primary);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: key-swipe 600ms var(--ease-out) both;
+}
+
+.hero__key:nth-of-type(3n + 2) {
+  --key: color-mix(in srgb, var(--color-accent-purple) 50%, transparent);
+}
+
+.hero__key:nth-of-type(3n + 3) {
+  --key: color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+.hero__lead .hero__key:nth-of-type(1) { animation-delay: 700ms; }
+.hero__lead .hero__key:nth-of-type(2) { animation-delay: 850ms; }
+.hero__lead .hero__key:nth-of-type(3) { animation-delay: 1000ms; }
+
+@keyframes key-swipe {
+  from { background-size: 0% 38%; }
+  to   { background-size: 100% 38%; }
+}
+
+/* "Read full intro" — a quiet text link under the copy */
+.hero__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-3);
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-cta);
+  font-size: var(--text-base);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.hero__more:hover {
+  color: var(--color-text-primary);
+  text-decoration-color: currentColor;
+}
+
+.hero__more svg {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.hero__more[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.hero__more:focus-visible {
+  outline: 2px solid var(--color-accent-green);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .hero__facts {
@@ -305,6 +429,311 @@ body.home-page.theme-light .theme-toggle__icon--sun {
   width: 8px;
   height: 8px;
   background: var(--color-accent-green);
+}
+
+/* Sentence roller — currently hidden (its markup is commented out in
+   index.html); kept so the rolling version can be switched back on. */
+
+/* ── Sentence roller — the About text one sentence at a time.
+   js/hero-roller.js moves .is-active along; each sentence rolls up
+   out of view as the next rises in. All sentences share one grid cell, so the block keeps the height of the longest
+   and nothing below it jumps. ── */
+
+.hero__roller {
+  max-width: 34ch;
+  font-size: clamp(1.5rem, 2.8vw, 2.5rem);   /* 40px max */
+}
+
+.hero__roller-track {
+  display: grid;
+  overflow: hidden;
+}
+
+.hero__roller-line {
+  grid-area: 1 / 1;
+  align-self: start;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(40%);
+  transition:
+    opacity 500ms var(--ease-out),
+    transform 800ms var(--ease-out);
+}
+
+.hero__roller-line.is-active {
+  opacity: 1;
+  transform: none;
+  transition-delay: 150ms;
+}
+
+.hero__roller-line.is-leaving {
+  opacity: 0;
+  transform: translateY(-40%);
+  transition-delay: 0ms;
+}
+
+/* Topic word of each sentence — the same highlighter stroke as the
+   bio, in the brand colours in turn, swiped in just after its
+   sentence has risen into place */
+.hero__roller-key {
+  --key: color-mix(in srgb, var(--color-accent-green) 45%, transparent);
+  padding: 0 0.1em;
+  margin: 0 -0.05em;
+  background-color: transparent;
+  background-image: linear-gradient(var(--key), var(--key));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 0% 38%;
+  color: var(--color-text-primary);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 600ms var(--ease-out);
+}
+
+.hero__roller-line:nth-child(3n + 2) .hero__roller-key {
+  --key: color-mix(in srgb, var(--color-accent-purple) 50%, transparent);
+}
+
+.hero__roller-line:nth-child(3n + 3) .hero__roller-key {
+  --key: color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+.hero__roller-line.is-active .hero__roller-key,
+.hero__roller.is-expanded .hero__roller-key {
+  background-size: 100% 38%;
+}
+
+.hero__roller-line.is-active .hero__roller-key {
+  transition-delay: 550ms;
+}
+
+/* Controls — pause/play plus one segment per sentence; the active
+   segment fills over the time its sentence is shown (--roller-hold,
+   set per sentence by the script) and each segment jumps to it. */
+.hero__roller-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+}
+
+.hero__roller-toggle {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+}
+
+.hero__roller-toggle:hover,
+.hero__roller-step:hover,
+.hero__roller-speed:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-text-muted);
+}
+
+/* Previous / next arrows — borderless so the pause button stays the
+   primary control; 32px square keeps them easy to hit */
+.hero__roller-step {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+/* Speed — cycles 1× → 1.5× → 2× */
+.hero__roller-speed {
+  flex-shrink: 0;
+  min-width: 44px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: none;
+  font-family: var(--font-cta);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+}
+
+.hero__roller-icon {
+  grid-area: 1 / 1;
+}
+
+.hero__roller-icon--play,
+.hero__roller.is-paused .hero__roller-icon--pause {
+  display: none;
+}
+
+.hero__roller.is-paused .hero__roller-icon--play {
+  display: block;
+}
+
+.hero__roller-progress {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  max-width: 280px;
+}
+
+/* Tall invisible hit area around a thin visible bar */
+.hero__roller-seg {
+  position: relative;
+  flex: 1;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.hero__roller-seg::before,
+.hero__roller-seg::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 3px;
+  margin-top: -1.5px;
+  border-radius: 2px;
+}
+
+.hero__roller-seg::before {
+  right: 0;
+  background: var(--color-border);
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.hero__roller-seg:hover::before {
+  background: var(--color-text-muted);
+}
+
+.hero__roller-seg::after {
+  width: 0;
+  background: var(--color-text-primary);
+}
+
+.hero__roller-seg.is-done::after {
+  width: 100%;
+  background: var(--color-text-secondary);
+}
+
+.hero__roller-seg.is-active::after {
+  animation: roller-progress var(--roller-hold, 5s) linear forwards;
+}
+
+.hero__roller.is-held .hero__roller-seg.is-active::after {
+  animation-play-state: paused;
+}
+
+.hero__roller-toggle:focus-visible,
+.hero__roller-step:focus-visible,
+.hero__roller-speed:focus-visible,
+.hero__roller-seg:focus-visible {
+  outline: 2px solid var(--color-accent-green);
+  outline-offset: 2px;
+}
+
+/* "Read full intro" — a quiet text link at the end of the controls */
+.hero__roller-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: var(--space-2);
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-cta);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.hero__roller-more:hover {
+  color: var(--color-text-primary);
+  text-decoration-color: currentColor;
+}
+
+.hero__roller-more svg {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.hero__roller-more[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.hero__roller-more:focus-visible {
+  outline: 2px solid var(--color-accent-green);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Expanded — the whole intro as one paragraph at a reading size;
+   the playback controls hide, since nothing moves any more, leaving
+   only "Show less". */
+.hero__roller.is-expanded {
+  max-width: 52ch;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 400;     /* long copy reads easier at regular weight… */
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.hero__roller.is-expanded em,
+.hero__roller.is-expanded .hero__roller-key {
+  font-weight: 700;     /* …with the key words still standing out */
+}
+
+.hero__roller.is-expanded .hero__roller-track {
+  display: block;
+  animation: hero-fade-in 500ms var(--ease-out) both;
+}
+
+.hero__roller.is-expanded .hero__roller-line {
+  display: inline;
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.hero__roller.is-expanded .hero__roller-toggle,
+.hero__roller.is-expanded .hero__roller-step,
+.hero__roller.is-expanded .hero__roller-progress,
+.hero__roller.is-expanded .hero__roller-speed {
+  display: none;
+}
+
+.hero__roller.is-expanded .hero__roller-more {
+  margin-left: 0;
+}
+
+@keyframes roller-progress {
+  from { width: 0; }
+  to   { width: 100%; }
 }
 
 /* ── What I do — numbered services grid ─────────────────────── */
@@ -352,6 +781,7 @@ body.home-page.theme-light .theme-toggle__icon--sun {
   font-size: var(--text-base);
   line-height: 1.5;
   color: var(--color-text-secondary);
+  text-wrap: pretty;     /* no single word left alone on the last line */
 }
 
 .hero__cta-buttons {
@@ -662,12 +1092,6 @@ body.home-page.theme-light .project-btn:focus-visible {
   grid-template-columns: 2fr 1fr 1fr;
   gap: 32px;
   align-items: start;
-}
-
-.hero__info-middle {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
 }
 
 .hero__info-label {

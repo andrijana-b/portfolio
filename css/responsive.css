@@ -152,8 +152,27 @@
     max-width: 100%;
   }
 
-  .hero__info-middle {
-    gap: 1.5rem;
+  /* Roller controls: "Read full intro" drops to its own line so the
+     progress bar keeps room to breathe */
+  .hero__roller-controls {
+    flex-wrap: wrap;
+  }
+
+  .hero__roller-more {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+
+  /* Intro stacks; Connect and Experience sit side by side below it */
+  .hero__intro {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .hero__aside {
+    flex-direction: row;
+    gap: var(--space-8);
+    min-width: 0;
   }
 
   .hero__bio,
@@ -434,10 +453,6 @@
 
   .hero__info {
     grid-template-columns: 2fr 1fr;
-  }
-
-  .hero__info-right {
-    display: none; /* collapse on tablet — shown on desktop */
   }
 
   .project__three-col {

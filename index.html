@@ -40,10 +40,10 @@
   <link rel="stylesheet" href="css/reset.css?v=2">
   <link rel="stylesheet" href="css/typography.css?v=2">
   <link rel="stylesheet" href="css/layout.css?v=3">
-  <link rel="stylesheet" href="css/components.css?v=76">
-  <link rel="stylesheet" href="css/animations.css?v=6">
+  <link rel="stylesheet" href="css/components.css?v=89">
+  <link rel="stylesheet" href="css/animations.css?v=7">
   <link rel="stylesheet" href="css/resume-modal.css?v=10">
-  <link rel="stylesheet" href="css/responsive.css?v=28">
+  <link rel="stylesheet" href="css/responsive.css?v=30">
   <link rel="stylesheet" href="css/preloader.css?v=30">
 </head>
 
@@ -250,35 +250,122 @@
         <!-- Intro — value statement, key facts and the two main actions,
              so the essentials are clear before anyone reads the bio -->
         <div class="hero__intro">
-          <p class="hero__statement">
-            I design <em>websites and webshops</em> that convert, for <em>e-commerce</em> and
-            <em>recruitment</em> brands.
-          </p>
-          <ul class="hero__facts" aria-label="Key facts">
-            <li>3.5 years at a marketing tech agency</li>
-            <li>Works with CRO, marketing &amp; engineering</li>
-            <li class="hero__facts-open">Open to in-house product design roles</li>
-          </ul>
-          <div class="hero__cta-buttons">
-            <a href="#teveo" class="hero__cta-button hero__cta-button--work">
-              See my work
-              <div class="hero__cta-arrow">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                </svg>
+          <div class="hero__intro-main">
+            <div class="hero__statement" data-intro>
+              <p class="hero__lead" id="intro-lead">I design <em>digital experiences</em> for <em class="hero__nowrap">e-commerce</em> and
+                <em>recruitment</em> brands that turn visitors into <mark class="hero__key">customers and
+                candidates</mark>, in close collaboration with <em>CRO and engineering</em>, and a
+                <mark class="hero__key">sharp eye for detail</mark>. After <em>3.5 years</em> at a marketing tech
+                agency, I’m ready to bring that to an <mark class="hero__key">in-house product team</mark>.</p>
+              <p class="hero__full" id="intro-full" hidden>I’m a <em>UX/UI Designer</em> with <em>3.5 years</em> of
+                <mark class="hero__key">experience</mark> at a <em>marketing tech agency</em>, helping
+                <em>recruitment</em> and <em class="hero__nowrap">e-commerce</em> brands improve their digital presence.
+                <mark class="hero__key">My work</mark> focuses on improving <em>conversions</em>, designing
+                <em>websites and webshops</em>, managing content in <em>CMS platforms</em>, and creating
+                <em>ads</em> and other <em>visual assets</em>. I <mark class="hero__key">collaborate</mark> closely
+                with <em>CRO, marketing, and engineering teams</em> and enjoy working in <em>international and
+                multicultural</em> environments. <mark class="hero__key">Before</mark> moving into design, I worked
+                as a <em>legal assistant</em>, which gave me a <em>sharp eye for detail</em> and a structured
+                approach to managing <em>multiple projects</em>. I’m now <mark class="hero__key">looking to</mark>
+                <em>grow further in product design</em> within an <em>in-house team</em>.</p>
+              <button type="button" class="hero__more" data-intro-more aria-expanded="false"
+                aria-controls="intro-lead intro-full">
+                <span class="hero__more-label">Read full intro</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"
+                    fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round" /></svg>
+              </button>
+            </div>
+            <!-- Sentence roller — hidden; uncomment (and comment out the statement above) to switch back
+            <div class="hero__statement hero__roller" data-roller>
+              <div class="hero__roller-track">
+                <p class="hero__roller-line is-active">I’m a <em>UX/UI Designer</em> with <em>3.5 years</em> of <mark class="hero__roller-key">experience</mark> at a
+                  <em>marketing tech agency</em>, helping <em>recruitment</em> and <em>e-commerce</em> brands improve
+                  their digital presence.</p>
+                <p class="hero__roller-line"><mark class="hero__roller-key">My work</mark> focuses on improving <em>conversions</em>, designing
+                  <em>websites and webshops</em>, managing content in <em>CMS platforms</em>, and creating
+                  <em>ads</em> and other <em>visual assets</em>.</p>
+                <p class="hero__roller-line">I <mark class="hero__roller-key">collaborate</mark> closely with <em>CRO, marketing, and engineering teams</em>
+                  and enjoy working in <em>international and multicultural</em> environments.</p>
+                <p class="hero__roller-line"><mark class="hero__roller-key">Before</mark> moving into design, I worked as a <em>legal assistant</em>, which
+                  gave me a <em>sharp eye for detail</em> and a structured approach to managing
+                  <em>multiple projects</em>.</p>
+                <p class="hero__roller-line">I’m now <mark class="hero__roller-key">looking to</mark> <em>grow further in product design</em> within an
+                  <em>in-house team</em>.</p>
               </div>
-            </a>
-            <a href="mailto:a.bakracheski@gmail.com" class="hero__cta-button hero__cta-button--chat">
-              Contact
-              <div class="hero__cta-arrow hero__cta-arrow--large">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                </svg>
+              <div class="hero__roller-controls">
+                <button type="button" class="hero__roller-toggle" aria-label="Pause intro" aria-pressed="false">
+                  <svg class="hero__roller-icon hero__roller-icon--pause" width="14" height="14" viewBox="0 0 14 14"
+                    aria-hidden="true"><rect x="2" y="1" width="3.5" height="12" rx="1" fill="currentColor" />
+                    <rect x="8.5" y="1" width="3.5" height="12" rx="1" fill="currentColor" /></svg>
+                  <svg class="hero__roller-icon hero__roller-icon--play" width="14" height="14" viewBox="0 0 14 14"
+                    aria-hidden="true"><path d="M3 1.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 3 1.5z"
+                      fill="currentColor" /></svg>
+                </button>
+                <button type="button" class="hero__roller-step" data-roller-prev aria-label="Previous sentence">
+                  <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5 4.5 7 9 11.5"
+                      fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      stroke-linejoin="round" /></svg>
+                </button>
+                <div class="hero__roller-progress" data-roller-progress></div>
+                <button type="button" class="hero__roller-step" data-roller-next aria-label="Next sentence">
+                  <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 2.5 9.5 7 5 11.5"
+                      fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      stroke-linejoin="round" /></svg>
+                </button>
+                <button type="button" class="hero__roller-speed" data-roller-speed
+                  aria-label="Reading speed: normal. Change speed">1×</button>
+                <button type="button" class="hero__roller-more" data-roller-more aria-expanded="false">
+                  <span class="hero__roller-more-label">Read full intro</span>
+                  <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"
+                      fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                      stroke-linejoin="round" /></svg>
+                </button>
               </div>
-            </a>
+            </div>
+            -->
+            <!--
+            <ul class="hero__facts" aria-label="Key facts">
+              <li>3.5 years at a marketing tech agency</li>
+              <li>Works with CRO, marketing &amp; engineering</li>
+              <li class="hero__facts-open">Open to in-house product design roles</li>
+            </ul>
+            -->
+            <div class="hero__cta-buttons">
+              <a href="#teveo" class="hero__cta-button hero__cta-button--work">
+                See my work
+                <div class="hero__cta-arrow">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </a>
+              <a href="mailto:a.bakracheski@gmail.com" class="hero__cta-button hero__cta-button--chat">
+                Contact
+                <div class="hero__cta-arrow hero__cta-arrow--large">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </a>
+            </div>
           </div>
+
+          <aside class="hero__aside" aria-label="Contact and CV">
+            <div class="hero__aside-group">
+              <p class="hero__info-label">Connect</p>
+              <a class="hero__info-link" href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank"
+                rel="noopener noreferrer">LinkedIn</a>
+              <a class="hero__info-link" href="mailto:a.bakracheski@gmail.com">Email</a>
+            </div>
+            <div class="hero__aside-group">
+              <p class="hero__info-label">Experience</p>
+              <a class="hero__info-link" href="documents/Andrijana Bakracheski_CV.pdf" download
+                data-resume-trigger>CV</a>
+            </div>
+          </aside>
         </div>
 
         <!-- What I do — the four focus areas from the bio -->
@@ -288,22 +375,22 @@
             <li class="service">
               <span class="service__num">01</span>
               <h3 class="service__title">UX/UI design</h3>
-              <p class="service__desc">Websites and webshops for e-commerce and recruitment brands.</p>
+              <p class="service__desc">Websites, webshops and mobile designs for e-commerce, recruitment and other industries.</p>
             </li>
             <li class="service">
               <span class="service__num">02</span>
               <h3 class="service__title">Conversion optimisation</h3>
-              <p class="service__desc">Improving conversions together with CRO, marketing and engineering teams.</p>
+              <p class="service__desc">Creating A/B test designs and improving conversions in collaboration with the CRO team.</p>
             </li>
             <li class="service">
               <span class="service__num">03</span>
               <h3 class="service__title">Content &amp; CMS</h3>
-              <p class="service__desc">Building and managing content in CMS platforms.</p>
+              <p class="service__desc">Managing and migrating content in platforms like Storyblok and Umbraco.</p>
             </li>
             <li class="service">
               <span class="service__num">04</span>
               <h3 class="service__title">Ads &amp; visual assets</h3>
-              <p class="service__desc">Ads and other visual assets for campaigns and brand presence.</p>
+              <p class="service__desc">Ads and other visual assets for campaigns and&nbsp;brand&nbsp;presence.</p>
             </li>
           </ol>
         </section>
@@ -323,6 +410,7 @@
           </div>
         </div>
         -->
+        <!--
         <div class="hero__info">
 
           <div class="hero__info-about">
@@ -340,24 +428,8 @@
             </p>
           </div>
 
-          <div class="hero__info-middle">
-            <div>
-              <p class="hero__info-label">Connect</p>
-              <a class="hero__info-link" href="https://www.linkedin.com/in/andrijana-bakracheski/" target="_blank"
-                rel="noopener noreferrer">LinkedIn</a>
-              <a class="hero__info-link" href="mailto:a.bakracheski@gmail.com">Email</a>
-            </div>
-          </div>
-
-          <div class="hero__info-right">
-            <div>
-              <p class="hero__info-label">Experience</p>
-              <a class="hero__info-link" href="documents/Andrijana Bakracheski_CV.pdf" download
-                data-resume-trigger>CV</a>
-            </div>
-          </div>
-
         </div>
+        -->
       </div>
     </section>
 
@@ -960,6 +1032,8 @@
   <script defer src="js/hero-gradient-blinds.js"></script>
   <script defer src="js/resume-modal.js?v=3"></script>
   <script defer src="js/home-theme.js?v=2"></script>
+  <script defer src="js/hero-intro.js"></script>
+  <script defer src="js/hero-roller.js?v=4"></script>
   <script defer src="js/main.js?v=7"></script>
 </body>
 
