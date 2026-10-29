@@ -204,7 +204,7 @@ body.home-page.theme-light .theme-toggle__icon--sun {
   display: flex;
   align-items: center;
   gap: var(--space-8);
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-6);
 }
 
 .hero__image-wrapper {
@@ -247,10 +247,117 @@ body.home-page.theme-light .theme-toggle__icon--sun {
   margin: 0;
 }
 
+/* ── Hero intro — one value statement, three facts, two actions.
+   Key words carry the emphasis through contrast alone (primary vs
+   secondary text), so the line stays calm and quick to scan. ── */
+
+.hero__intro {
+  margin-bottom: var(--space-12);
+}
+
+.hero__statement {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3.4vw, 3rem);   /* 48px max */
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--color-text-secondary);
+  max-width: 30ch;
+  text-wrap: balance;
+}
+
+.hero__statement em {
+  font-style: normal;
+  color: var(--color-text-primary);
+}
+
+.hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.5;
+  color: var(--color-text-body);
+}
+
+.hero__facts li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Each fact gets a small dot; the "open to work" one is green */
+.hero__facts li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+}
+
+.hero__facts li.hero__facts-open::before {
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent-green);
+}
+
+/* ── What I do — numbered services grid ─────────────────────── */
+
+.hero__services {
+  margin-bottom: var(--space-12);
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.service__num {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.service__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+}
+
+.service__desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
 .hero__cta-buttons {
   display: flex;
   gap: var(--space-2);
-  margin-top: var(--space-8);
+  margin-top: var(--space-6);
   max-width: 100%;
   overflow-x: auto;
 }

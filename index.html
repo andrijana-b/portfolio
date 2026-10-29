@@ -40,10 +40,10 @@
   <link rel="stylesheet" href="css/reset.css?v=2">
   <link rel="stylesheet" href="css/typography.css?v=2">
   <link rel="stylesheet" href="css/layout.css?v=3">
-  <link rel="stylesheet" href="css/components.css?v=70">
-  <link rel="stylesheet" href="css/animations.css?v=3">
+  <link rel="stylesheet" href="css/components.css?v=76">
+  <link rel="stylesheet" href="css/animations.css?v=6">
   <link rel="stylesheet" href="css/resume-modal.css?v=10">
-  <link rel="stylesheet" href="css/responsive.css?v=24">
+  <link rel="stylesheet" href="css/responsive.css?v=28">
   <link rel="stylesheet" href="css/preloader.css?v=30">
 </head>
 
@@ -246,6 +246,67 @@
             <p class="hero__subtitle">UX/UI Designer based in The Netherlands</p>
           </div>
         </div>
+
+        <!-- Intro — value statement, key facts and the two main actions,
+             so the essentials are clear before anyone reads the bio -->
+        <div class="hero__intro">
+          <p class="hero__statement">
+            I design <em>websites and webshops</em> that convert, for <em>e-commerce</em> and
+            <em>recruitment</em> brands.
+          </p>
+          <ul class="hero__facts" aria-label="Key facts">
+            <li>3.5 years at a marketing tech agency</li>
+            <li>Works with CRO, marketing &amp; engineering</li>
+            <li class="hero__facts-open">Open to in-house product design roles</li>
+          </ul>
+          <div class="hero__cta-buttons">
+            <a href="#teveo" class="hero__cta-button hero__cta-button--work">
+              See my work
+              <div class="hero__cta-arrow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </a>
+            <a href="mailto:a.bakracheski@gmail.com" class="hero__cta-button hero__cta-button--chat">
+              Contact
+              <div class="hero__cta-arrow hero__cta-arrow--large">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- What I do — the four focus areas from the bio -->
+        <section class="hero__services" aria-labelledby="services-title">
+          <h2 class="hero__info-label" id="services-title">What I do</h2>
+          <ol class="services" data-stagger>
+            <li class="service">
+              <span class="service__num">01</span>
+              <h3 class="service__title">UX/UI design</h3>
+              <p class="service__desc">Websites and webshops for e-commerce and recruitment brands.</p>
+            </li>
+            <li class="service">
+              <span class="service__num">02</span>
+              <h3 class="service__title">Conversion optimisation</h3>
+              <p class="service__desc">Improving conversions together with CRO, marketing and engineering teams.</p>
+            </li>
+            <li class="service">
+              <span class="service__num">03</span>
+              <h3 class="service__title">Content &amp; CMS</h3>
+              <p class="service__desc">Building and managing content in CMS platforms.</p>
+            </li>
+            <li class="service">
+              <span class="service__num">04</span>
+              <h3 class="service__title">Ads &amp; visual assets</h3>
+              <p class="service__desc">Ads and other visual assets for campaigns and brand presence.</p>
+            </li>
+          </ol>
+        </section>
         <!--
         <div class="hero__stats">
           <div class="hero__stat-card" data-parallax="0.06" data-parallax-mode="scroll">
@@ -296,26 +357,6 @@
             </div>
           </div>
 
-        </div>
-        <div class="hero__cta-buttons">
-          <a href="#teveo" class="hero__cta-button hero__cta-button--work">
-            See my work
-            <div class="hero__cta-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </div>
-          </a>
-          <a href="mailto:a.bakracheski@gmail.com" class="hero__cta-button hero__cta-button--chat">
-            Contact
-            <div class="hero__cta-arrow hero__cta-arrow--large">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 7L15 12L10 17M15 12L7 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </div>
-          </a>
         </div>
       </div>
     </section>

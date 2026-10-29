@@ -33,6 +33,19 @@
   animation: hero-fade-up 700ms var(--ease-expo) 60ms both;
 }
 
+/* Statement, facts and actions follow the name in a short sequence */
+.hero__statement {
+  animation: hero-fade-up 700ms var(--ease-expo) 160ms both;
+}
+
+.hero__facts {
+  animation: hero-fade-up 700ms var(--ease-expo) 260ms both;
+}
+
+.hero__intro .hero__cta-buttons {
+  animation: hero-fade-up 700ms var(--ease-expo) 360ms both;
+}
+
 /* Info grid fades in after tagline */
 .hero__info {
   animation: hero-fade-in 600ms var(--ease-quart) 400ms both;
@@ -300,6 +313,9 @@ a {
   }
 
   .hero__tagline,
+  .hero__statement,
+  .hero__facts,
+  .hero__intro .hero__cta-buttons,
   .hero__info {
     animation: none;
     opacity: 1;
