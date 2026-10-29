@@ -223,7 +223,7 @@ body.case-study-page.theme-dark .cs-theme-img--dark {
 }
 
 .cs-hero__title {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
   line-height: 1.05;
@@ -245,7 +245,7 @@ body.case-study-page.theme-dark .cs-theme-img--dark {
 .cs-hero__role {
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.6;
   color: var(--color-text-secondary);
   max-width: 60ch;
@@ -393,9 +393,9 @@ body.case-study-page.theme-dark .cs-theme-img--dark {
 }
 
 .cs-section__title {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.02em;
   line-height: var(--leading-snug);
   color: var(--color-text-primary);
@@ -406,7 +406,7 @@ body.case-study-page.theme-dark .cs-theme-img--dark {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 30px;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-body);
   max-width: 68ch;
   text-wrap: pretty;
@@ -436,7 +436,7 @@ body.case-study-page.theme-dark .cs-theme-img--dark {
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-body);
   max-width: 68ch;
 }
@@ -508,9 +508,9 @@ body.case-study-page.theme-dark .cs-theme-img--dark {
 }
 
 .cs-card__title {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text-primary);
 }
 
@@ -518,7 +518,7 @@ body.case-study-page.theme-dark .cs-theme-img--dark {
   font-family: var(--font-body);
   font-size: 0.95rem;
   line-height: 1.6;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-secondary);
 }
 
@@ -567,9 +567,9 @@ body.case-study-page.theme-dark .cs-theme-img--dark {
 }
 
 .cs-callout-heading {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: 21px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text-primary);
   display: inline-block;
   margin: 0 0 var(--space-4) 0;
@@ -1160,9 +1160,9 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
 }
 
 .related-projects__title {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text-primary);
   margin-bottom: var(--space-6);
 }
@@ -1247,16 +1247,16 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
 }
 
 .related-project__name {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #ffffff;
 }
 
 .related-project__meta {
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  font-weight: 300;
+  font-weight: 400;
   color: #a0a0a0;
   margin-top: 2px;
 }
@@ -1320,9 +1320,9 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
 
 /* ─── TOPS: quotes, flows ─────────────────────────── */
 .cs-subheading {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text-primary);
   margin: var(--space-10) 0 var(--space-4);
 }

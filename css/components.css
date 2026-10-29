@@ -229,9 +229,9 @@ body.home-page.theme-light .theme-toggle__icon--sun {
 }
 
 .hero__tagline {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: clamp(2rem, 5vw, 4rem);   /* 64px max */
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.25;                    /* 80/64 */
   letter-spacing: -0.03em;
   color: var(--color-text-primary);
@@ -262,7 +262,7 @@ body.home-page.theme-light .theme-toggle__icon--sun {
   padding: 4px 6px 4px 10px;
   height: 50px;
   border-radius: 8px;
-  font-family: var(--font-body);
+  font-family: var(--font-cta);
   font-size: 1.125rem;    /* 18px */
   font-weight: 500;
   white-space: nowrap;
@@ -372,7 +372,7 @@ body.home-page.theme-light .theme-toggle__icon--sun {
   padding: 0 6px 0 14px;
   border: 1.5px solid transparent;
   border-radius: 8px;
-  font-family: var(--font-body);
+  font-family: var(--font-cta);
   font-size: 1.125rem;    /* 18px */
   font-weight: 500;
   line-height: 1;
@@ -586,7 +586,7 @@ body.home-page.theme-light .project-btn:focus-visible {
   font-family: var(--font-body);
   font-size: 1.375rem;    /* 22px */
   line-height: 2.25rem;   /* 36px */
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-body);
 }
 
@@ -595,7 +595,7 @@ body.home-page.theme-light .project-btn:focus-visible {
    main.js gives each one its colour (--marker) and its turn in the
    sequence (transition-delay), then adds .is-marked to the paragraph. */
 .hero__bio strong {
-  font-weight: 500;
+  font-weight: 700;
   color: var(--color-text-primary);
   padding: 0 0.12em;
   margin: 0 -0.06em;
@@ -624,7 +624,7 @@ body.home-page.theme-light .project-btn:focus-visible {
   font-family: var(--font-body);
   font-size: 1.5rem;      /* 24px */
   line-height: 2.5rem;    /* 40px */
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-body);
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -644,7 +644,7 @@ body.home-page.theme-light .project-btn:focus-visible {
   font-family: var(--font-body);
   font-size: 1.5rem;      /* 24px */
   line-height: 2.5rem;    /* 40px */
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-body);
 }
 
@@ -804,16 +804,16 @@ body.home-page.theme-light .project-btn:focus-visible {
   font-family: var(--font-body);
   font-size: 3rem;        /* 48px */
   line-height: 3.875rem;  /* 62px */
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-muted);
   display: block;
 }
 
 .project__title {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: 3rem;        /* 48px */
   line-height: 3.875rem;  /* 62px */
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--color-accent);
   margin-bottom: var(--space-2);
@@ -823,7 +823,7 @@ body.home-page.theme-light .project-btn:focus-visible {
   font-family: var(--font-body);
   font-size: 1.125rem;    /* 18px */
   line-height: 1.375rem;  /* 22px */
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-body);
   margin-bottom: var(--space-4);
 }
@@ -832,7 +832,7 @@ body.home-page.theme-light .project-btn:focus-visible {
   font-family: var(--font-body);
   font-size: 1.125rem;    /* 18px */
   line-height: 1.5rem;    /* 24px */
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-body);
   max-width: 52ch;
 }
@@ -871,7 +871,7 @@ body.home-page.theme-light .project-btn:focus-visible {
   font-family: var(--font-body);
   font-size: 1.125rem;    /* 18px */
   line-height: 1.5rem;    /* 24px */
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-body);
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -986,7 +986,7 @@ body.home-page.theme-light .project-btn:focus-visible {
   font-family: var(--font-body);
   font-size: 1.125rem;    /* 18px */
   line-height: 1.375rem;  /* 22px */
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-body);
   max-width: 100%;
   width: 100%;

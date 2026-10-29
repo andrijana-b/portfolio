@@ -22,7 +22,9 @@
   /* ── Font families ─────────────────────────────────────── */
   --font-display: 'Cardo', Georgia, serif;        /* hero name */
   --font-sans:    'Montserrat', sans-serif;       /* labels, section headers */
-  --font-body:    'Inter', system-ui, sans-serif; /* body copy */
+  --font-heading: 'Bricolage Grotesque', Helvetica, sans-serif; /* titles */
+  --font-body:    Helvetica, sans-serif;  /* body copy */
+  --font-cta:     'Helvetica Neue', Helvetica, sans-serif;  /* CTA buttons (medium) */
   --font-alt:     'Roboto', sans-serif;           /* dates, numbers */
 
   /* ── Type scale ────────────────────────────────────────── */
