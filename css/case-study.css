@@ -313,6 +313,7 @@ body.case-study-page.theme-dark .cs-theme-img--dark {
   font-size: 1.125rem;
   font-weight: 400;
   color: var(--color-text-primary);
+  text-wrap: pretty;
 }
 
 
@@ -466,6 +467,46 @@ body.case-study-page.theme-dark .cs-theme-img--dark {
 
 .cs-card-grid--2col {
   grid-template-columns: repeat(2, 1fr);
+}
+
+.cs-card-grid--4col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Result tile: green top rule, key phrase in <strong>, rest muted */
+.cs-card--highlight {
+  border-top: 3px solid var(--color-accent-green);
+}
+
+/* Card that spans every column of its grid — e.g. a fifth card under a 2×2 */
+.cs-card--wide {
+  grid-column: 1 / -1;
+}
+
+.cs-card__text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+.cs-card__text strong {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+/* Four tiles get too narrow beside the sidebar below 1280px */
+@media (max-width: 1279px) {
+  .cs-card-grid--4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .cs-card {
@@ -1339,10 +1380,35 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
   max-width: 60ch;
 }
 
+/* Quote set in the section-title typeface — for a key question or statement */
+.cs-quote--heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-snug);
+}
+
+/* Line break that only applies on wide screens (1280px+) */
+@media (max-width: 1279px) {
+  .br-wide {
+    display: none;
+  }
+}
+
+/* Body paragraph with the quote's green rule — for a short lead statement */
+.cs-section__body--accent {
+  padding-left: var(--space-6);
+  border-left: 3px solid var(--color-accent-green);
+}
+
 @media (max-width: 767px) {
   .cs-quote {
     padding-left: var(--space-2);
     font-size: var(--text-md);
+  }
+
+  .cs-section__body--accent {
+    padding-left: var(--space-2);
   }
 }
 
@@ -1746,6 +1812,87 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
   color: var(--color-text-body);
 }
 
+/* Featured variant: headline per decision, chosen option leads,
+   rejected option drops to a quiet line, reason in its own column */
+.cs-decisions--feature {
+  gap: var(--space-4);
+}
+
+.cs-decisions--feature .cs-decision {
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: var(--space-3) var(--space-6);
+  padding: var(--space-4);
+}
+
+.cs-decision__head {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.cs-decision__num {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.cs-decision__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-snug);
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.cs-decisions--feature .cs-decision__options {
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: var(--space-2);
+}
+
+.cs-decisions--feature .cs-decision__option--chose {
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  border-left: 3px solid var(--color-accent-green);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.cs-decisions--feature .cs-decision__option--rejected {
+  padding: 0 var(--space-3);
+  border: none;
+}
+
+.cs-decisions--feature .cs-decision__option--rejected .cs-decision__text {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+}
+
+.cs-decisions--feature .cs-decision__because {
+  align-self: start;
+  padding: var(--space-2) 0 0 var(--space-4);
+}
+
+/* Reason column gets too narrow beside the sidebar below 1280px */
+@media (max-width: 1279px) {
+  .cs-decisions--feature .cs-decision {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-decisions--feature .cs-decision__because {
+    padding: var(--space-3) 0 0;
+    border-left: none;
+    border-top: var(--border-hairline);
+  }
+}
+
 /* Bullet list beside a phone-sized image */
 .cs-split--phone {
   grid-template-columns: minmax(0, 1fr) 300px;
@@ -1758,20 +1905,42 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
 }
 
 @media (max-width: 1023px) {
-  .cs-decision {
+  .cs-decision,
+  .cs-decisions--feature .cs-decision {
     grid-template-columns: 1fr;
   }
 
-  .cs-decision__because {
-    padding: var(--space-2) 0 0;
+  .cs-decision__because,
+  .cs-decisions--feature .cs-decision__because {
+    padding: var(--space-3) 0 0;
     border-left: none;
     border-top: var(--border-hairline);
   }
 }
 
 @media (max-width: 767px) {
-  .cs-decision {
+  .cs-decision,
+  .cs-decisions--feature .cs-decision {
     padding: var(--space-3) var(--space-2);
+  }
+
+  .cs-decision__head {
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .cs-decision__num {
+    font-size: var(--text-lg);
+  }
+
+  .cs-decision__title {
+    font-size: var(--text-md);
+  }
+
+  .cs-decisions--feature .cs-decision__option--chose,
+  .cs-decisions--feature .cs-decision__option--rejected {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
   }
 
   .cs-decision__options,
