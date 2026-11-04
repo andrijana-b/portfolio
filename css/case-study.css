@@ -174,7 +174,7 @@ body.case-study-page.theme-dark .cs-theme-img--dark {
 /* ── Hero ───────────────────────────────────────────────────── */
 
 .cs-hero {
-  padding-top: var(--space-16);
+  padding-top: calc(var(--space-1) / 2);
   padding-bottom: var(--space-8);
 }
 
@@ -313,6 +313,7 @@ body.case-study-page.theme-dark .cs-theme-img--dark {
   font-size: 1.125rem;
   font-weight: 400;
   color: var(--color-text-primary);
+  text-wrap: pretty;
 }
 
 
@@ -466,6 +467,46 @@ body.case-study-page.theme-dark .cs-theme-img--dark {
 
 .cs-card-grid--2col {
   grid-template-columns: repeat(2, 1fr);
+}
+
+.cs-card-grid--4col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Result tile: green top rule, key phrase in <strong>, rest muted */
+.cs-card--highlight {
+  border-top: 3px solid var(--color-accent-green);
+}
+
+/* Card that spans every column of its grid — e.g. a fifth card under a 2×2 */
+.cs-card--wide {
+  grid-column: 1 / -1;
+}
+
+.cs-card__text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+.cs-card__text strong {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+/* Four tiles get too narrow beside the sidebar below 1280px */
+@media (max-width: 1279px) {
+  .cs-card-grid--4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .cs-card {
@@ -1339,6 +1380,38 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
   max-width: 60ch;
 }
 
+/* Quote set in the section-title typeface — for a key question or statement */
+.cs-quote--heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-snug);
+}
+
+/* Line break that only applies on wide screens (1280px+) */
+@media (max-width: 1279px) {
+  .br-wide {
+    display: none;
+  }
+}
+
+/* Body paragraph with the quote's green rule — for a short lead statement */
+.cs-section__body--accent {
+  padding-left: var(--space-6);
+  border-left: 3px solid var(--color-accent-green);
+}
+
+@media (max-width: 767px) {
+  .cs-quote {
+    padding-left: var(--space-2);
+    font-size: var(--text-md);
+  }
+
+  .cs-section__body--accent {
+    padding-left: var(--space-2);
+  }
+}
+
 .cs-flow {
   list-style: none;
   padding: 0;
@@ -1365,3 +1438,549 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
 }
 
 
+
+
+/* ─── No single-word last lines ───────────────────────────── */
+
+.cs-hero__intro,
+.cs-hero__role,
+.cs-list li,
+.cs-card__description,
+.cs-quote,
+.cs-media-caption,
+.stat--inline .stat__label,
+.cs-decision__text,
+.cs-table td,
+.cs-placeholder__hint {
+  text-wrap: pretty;
+}
+
+
+/* Headings: even line lengths, so none ends on a lone word */
+.cs-section__title,
+.cs-subheading,
+.cs-card__title {
+  text-wrap: balance;
+}
+
+
+/* ─── Verstegen: decisions, pain points, placeholders ──────── */
+
+/* Hero title with manual line breaks: scales with the text column on
+   desktop so no line wraps again */
+@media (min-width: 1024px) {
+  .cs-hero__text:has(.cs-hero__title--fit) {
+    container-type: inline-size;
+  }
+
+  .cs-hero__title--fit {
+    font-size: clamp(2rem, 12.5cqi, 4rem);
+  }
+}
+
+/* Hairline divider above the role paragraph, matching .cs-hero__meta */
+.cs-hero__role--divided {
+  padding-top: var(--space-6);
+  border-top: var(--border-hairline);
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+}
+
+/* Highlights list directly under the role paragraph, no label */
+.cs-hero__role--divided + .cs-hero__glance .cs-list {
+  margin-top: 0;
+  gap: var(--space-1);
+}
+
+/* Stat with value and label side by side */
+.stat--inline {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.stat--inline .stat__value {
+  flex-shrink: 0;
+}
+
+.stat--inline .stat__label {
+  width: auto;
+  min-width: 0;
+}
+
+.cs-hero__media .cs-hero__media-tile {
+  max-height: 760px;
+  border-radius: var(--radius-md);
+}
+
+/* Scannable card content: meta line, buyer rows, compact list, note */
+.cs-card__meta {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.cs-buyers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.cs-buyers__row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.cs-buyers dt {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.cs-buyers dd {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+.cs-buyers dd strong,
+.cs-card__note strong {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.cs-list--compact {
+  margin-top: 0;
+  gap: var(--space-1);
+}
+
+.cs-list--compact li {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.cs-card__note {
+  margin-top: auto;
+  padding-top: var(--space-2);
+  border-top: var(--border-hairline);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+/* Image placeholder — swap the div for an <img> once the asset exists */
+.cs-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  width: 100%;
+  aspect-ratio: var(--placeholder-ratio, 16 / 9);
+  padding: var(--space-3);
+  border: 1.5px dashed var(--color-text-muted);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  text-align: center;
+}
+
+.cs-placeholder__label {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.cs-placeholder__hint {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  max-width: 32ch;
+}
+
+.cs-placeholder--phone {
+  max-width: 300px;
+  margin-inline: auto;
+  border-radius: 32px;
+}
+
+.cs-media-card--wide {
+  max-width: none;
+}
+
+/* Before / after pair */
+.cs-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.cs-compare__item {
+  position: relative;
+  margin: 0;
+}
+
+.cs-compare__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+.cs-compare__label {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 1;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+  border: var(--border-hairline);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.cs-compare__label--after {
+  border-color: var(--color-accent-green);
+}
+
+/* Pain points table */
+.cs-table {
+  width: 100%;
+  max-width: 820px;
+  border-collapse: collapse;
+  margin-top: var(--space-4);
+}
+
+.cs-table th {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--color-text-secondary);
+  padding: 0 var(--space-2) 12px 0;
+  border-bottom: var(--border-hairline);
+}
+
+.cs-table td {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-body);
+  padding: var(--space-2) var(--space-2) var(--space-2) 0;
+  border-bottom: var(--border-hairline);
+  vertical-align: middle;
+}
+
+.cs-table th:last-child,
+.cs-table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+  padding-right: 0;
+}
+
+.cs-pill {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-accent-green);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.cs-pill--muted {
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+}
+
+/* "I chose / I rejected / Because" decision cards */
+.cs-decisions {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.cs-decision {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+  gap: var(--space-2) var(--space-3);
+  padding: 22px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.cs-decision > .cs-card__number {
+  grid-column: 1 / -1;
+}
+
+.cs-decision__options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.cs-decision__option {
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+}
+
+.cs-decision__option--chose {
+  background: color-mix(in srgb, var(--color-accent-green) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-accent-green) 45%, transparent);
+}
+
+.cs-decision__option--rejected {
+  border: 1px dashed var(--color-text-muted);
+}
+
+.cs-decision__label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--space-1);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.cs-decision__option--chose .cs-decision__label {
+  color: var(--color-text-primary);
+}
+
+.cs-decision__option--chose .cs-decision__label svg {
+  color: var(--color-accent-green);
+}
+
+.cs-decision__option--rejected .cs-decision__label svg {
+  color: var(--color-text-muted);
+}
+
+.cs-decision__text {
+  font-family: var(--font-heading);
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  color: var(--color-text-primary);
+}
+
+.cs-decision__option--rejected .cs-decision__text {
+  color: var(--color-text-secondary);
+}
+
+.cs-decision__because {
+  padding: var(--space-2) 0 var(--space-2) var(--space-3);
+  border-left: var(--border-hairline);
+}
+
+.cs-decision__because .cs-decision__text {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: var(--leading-normal);
+  color: var(--color-text-body);
+}
+
+/* Featured variant: headline per decision, chosen option leads,
+   rejected option drops to a quiet line, reason in its own column */
+.cs-decisions--feature {
+  gap: var(--space-4);
+}
+
+.cs-decisions--feature .cs-decision {
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: var(--space-3) var(--space-6);
+  padding: var(--space-4);
+}
+
+.cs-decision__head {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.cs-decision__num {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.cs-decision__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-snug);
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.cs-decisions--feature .cs-decision__options {
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: var(--space-2);
+}
+
+.cs-decisions--feature .cs-decision__option--chose {
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  border-left: 3px solid var(--color-accent-green);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.cs-decisions--feature .cs-decision__option--rejected {
+  padding: 0 var(--space-3);
+  border: none;
+}
+
+.cs-decisions--feature .cs-decision__option--rejected .cs-decision__text {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+}
+
+.cs-decisions--feature .cs-decision__because {
+  align-self: start;
+  padding: var(--space-2) 0 0 var(--space-4);
+}
+
+/* Reason column gets too narrow beside the sidebar below 1280px */
+@media (max-width: 1279px) {
+  .cs-decisions--feature .cs-decision {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-decisions--feature .cs-decision__because {
+    padding: var(--space-3) 0 0;
+    border-left: none;
+    border-top: var(--border-hairline);
+  }
+}
+
+/* Bullet list beside a phone-sized image */
+.cs-split--phone {
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.cs-split--phone .cs-list {
+  margin-top: 0;
+}
+
+@media (max-width: 1023px) {
+  .cs-decision,
+  .cs-decisions--feature .cs-decision {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-decision__because,
+  .cs-decisions--feature .cs-decision__because {
+    padding: var(--space-3) 0 0;
+    border-left: none;
+    border-top: var(--border-hairline);
+  }
+}
+
+@media (max-width: 767px) {
+  .cs-decision,
+  .cs-decisions--feature .cs-decision {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .cs-decision__head {
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .cs-decision__num {
+    font-size: var(--text-lg);
+  }
+
+  .cs-decision__title {
+    font-size: var(--text-md);
+  }
+
+  .cs-decisions--feature .cs-decision__option--chose,
+  .cs-decisions--feature .cs-decision__option--rejected {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+  }
+
+  .cs-decision__options,
+  .cs-compare,
+  .cs-split--phone {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-split--phone {
+    gap: var(--space-6);
+  }
+
+  .cs-placeholder--phone {
+    max-width: 260px;
+  }
+
+  /* Pain points: each row becomes a stacked item */
+  .cs-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .cs-table tr {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+    padding: var(--space-2) 0;
+    border-bottom: var(--border-hairline);
+  }
+
+  .cs-table td {
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .cs-table td:last-child {
+    width: auto;
+  }
+}
