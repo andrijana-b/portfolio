@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="css/layout.css?v=3">
   <link rel="stylesheet" href="css/components.css?v=89">
   <link rel="stylesheet" href="css/animations.css?v=7">
-  <link rel="stylesheet" href="css/case-study.css?v=93">
+  <link rel="stylesheet" href="css/case-study.css?v=96">
   <link rel="stylesheet" href="css/resume-modal.css?v=10">
   <link rel="stylesheet" href="css/responsive.css?v=30">
 </head>
@@ -284,7 +284,25 @@
           <p class="cs-section__eyebrow">03 · Key decisions</p>
           <h2 class="cs-section__title">Three decisions that shaped the site</h2>
 
-          <ol class="cs-decisions cs-decisions--feature" data-stagger>
+          <ol class="cs-decisions cs-decisions--matrix" data-stagger>
+            <li class="cs-decisions__labels" aria-hidden="true">
+              <span class="cs-decisions__label"></span>
+              <span class="cs-decisions__label cs-decisions__label--chose">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" focusable="false">
+                  <path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+                I chose
+              </span>
+              <span class="cs-decisions__label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" focusable="false">
+                  <path d="M7 7L17 17M17 7L7 17" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+                </svg>
+                I rejected
+              </span>
+              <span class="cs-decisions__label">Because</span>
+            </li>
+
             <li class="cs-decision">
               <div class="cs-decision__head">
                 <span class="cs-decision__num" aria-hidden="true">01</span>

@@ -2139,3 +2139,175 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
     width: 65%;
   }
 }
+
+/* ── Decision matrix — decisions as columns, I chose / I rejected /
+   Because as rows. Each decision stays one list item; subgrid lines
+   its four cells up with the row labels. Stacks into cards < 1280px. ── */
+
+.cs-decisions--matrix {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.6fr) repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(4, auto);
+  grid-auto-flow: column;
+  gap: 0;
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.cs-decisions--matrix > li {
+  grid-row: 1 / span 4;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-template-columns: none;
+  gap: 0;
+  padding: 0;
+  border-bottom: var(--border-hairline);
+  border-radius: 0;
+  background: none;
+}
+
+.cs-decisions--matrix .cs-decision {
+  border-left: var(--border-hairline);
+}
+
+.cs-decisions--matrix .cs-decision__options {
+  display: contents;
+}
+
+/* Every cell: shared padding and a rule beneath */
+.cs-decisions--matrix .cs-decisions__label,
+.cs-decisions--matrix .cs-decision__head,
+.cs-decisions--matrix .cs-decision__option,
+.cs-decisions--matrix .cs-decision__because {
+  padding: var(--space-3);
+  border: none;
+  border-top: var(--border-hairline);
+  border-radius: 0;
+}
+
+.cs-decisions--matrix .cs-decisions__label {
+  padding-left: 0;
+}
+
+/* Chosen row: tinted, with a green rule along its top */
+.cs-decisions--matrix .cs-decision__option--chose {
+  background: color-mix(in srgb, var(--color-accent-green) 14%, var(--color-surface));
+  border-top: 3px solid var(--color-accent-green);
+}
+
+.cs-decisions__label {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.cs-decisions__label svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.cs-decisions__label--chose {
+  color: var(--color-accent-green);
+}
+
+.cs-decisions--matrix .cs-decision__head {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.cs-decisions--matrix .cs-decision__num {
+  font-size: var(--text-2xl);
+}
+
+/* The row labels column names each cell on desktop */
+.cs-decisions--matrix .cs-decision__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.cs-decisions--matrix .cs-decision__option--rejected .cs-decision__text,
+.cs-decisions--matrix .cs-decision__because .cs-decision__text {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: var(--leading-normal);
+}
+
+.cs-decisions--matrix .cs-decision__option--rejected .cs-decision__text {
+  color: var(--color-text-secondary);
+}
+
+.cs-decisions--matrix .cs-decision__because .cs-decision__text {
+  color: var(--color-text-body);
+}
+
+/* Stacked: one card per decision, each cell labelled — the columns
+   get too narrow beside the sidebar below 1280px */
+@media (max-width: 1279px) {
+  .cs-decisions--matrix {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: 0;
+    background: none;
+  }
+
+  .cs-decisions--matrix > .cs-decisions__labels {
+    display: none;
+  }
+
+  .cs-decisions--matrix > .cs-decision {
+    display: flex;
+    flex-direction: column;
+    border-left: none;
+    border-bottom: none;
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    overflow: hidden;
+  }
+
+  .cs-decisions--matrix .cs-decision__head {
+    border-top: none;
+  }
+
+  .cs-decisions--matrix .cs-decision__head,
+  .cs-decisions--matrix .cs-decision__option,
+  .cs-decisions--matrix .cs-decision__because {
+    padding: var(--space-3);
+  }
+
+  .cs-decisions--matrix .cs-decision__label {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    letter-spacing: var(--tracking-widest);
+  }
+
+  .cs-decisions--matrix .cs-decision__option--chose .cs-decision__label {
+    color: var(--color-accent-green);
+  }
+}
+
+@media (max-width: 767px) {
+  .cs-decisions--matrix .cs-decision__head,
+  .cs-decisions--matrix .cs-decision__option,
+  .cs-decisions--matrix .cs-decision__because {
+    padding: var(--space-3) var(--space-2);
+  }
+}
