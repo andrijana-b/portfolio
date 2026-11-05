@@ -19,6 +19,12 @@
   --color-accent-green:    #9cb86d;  /* matches "See the work" CTA button */
   --color-accent-purple:   #b596c2;  /* matches "Contact" CTA button */
 
+  /* TOPS brand — lister page loupes mockup (light in both themes) */
+  --color-tops-paper:      #f2f1ec;
+  --color-tops-ink:        #002200;
+  --color-tops-body:       #334433;
+  --color-tops-muted:      #5d6b5d;
+
   /* ── Font families ─────────────────────────────────────── */
   --font-display: 'Cardo', Georgia, serif;        /* hero name */
   --font-sans:    'Montserrat', sans-serif;       /* labels, section headers */
