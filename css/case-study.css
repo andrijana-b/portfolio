@@ -2311,3 +2311,492 @@ body.case-study-page.theme-dark .cs-lightbox--light .cs-lightbox__close:focus-vi
     padding: var(--space-3) var(--space-2);
   }
 }
+
+/* ── Before / After — continues the yellow old-website mockup with a
+   toggle between the original homepage and the redesign, shown in
+   laptop and phone frames whose screens scroll on their own. ── */
+
+.cs-ba {
+  margin: var(--space-8) 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-tops-yellow);
+  color: var(--color-tops-yellow-ink);
+}
+
+.cs-ba__intro {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cs-ba__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  padding: clamp(32px, 5vw, 72px) clamp(16px, 6vw, 96px) clamp(40px, 6vw, 88px);
+}
+
+/* Segmented toggle with a sliding thumb */
+.cs-ba__toggle {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-tops-yellow-ink) 10%, transparent);
+}
+
+.cs-ba__thumb {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  border-radius: 999px;
+  background: var(--color-device-url);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--color-tops-yellow-ink) 18%, transparent);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.cs-ba[data-view="after"] .cs-ba__thumb {
+  transform: translateX(100%);
+}
+
+.cs-ba__option {
+  position: relative;
+  min-width: 104px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 999px;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-tops-yellow-ink) 60%, transparent);
+  cursor: pointer;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.cs-ba__option[aria-pressed="true"] {
+  color: var(--color-tops-yellow-ink);
+}
+
+.cs-ba__option:focus-visible {
+  outline: 2px solid var(--color-tops-yellow-ink);
+  outline-offset: 2px;
+}
+
+/* Devices: laptop with the phone overlapping its right edge */
+.cs-ba__devices {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  padding-right: 22%;  /* room for the phone, so it never covers the laptop screen */
+}
+
+.cs-device__bezel {
+  padding: 2.2% 2.2% 0;
+  border-radius: 18px 18px 0 0;
+  background: var(--color-device-frame);
+}
+
+.cs-device--laptop .cs-device__screen {
+  overflow: hidden;
+  border-radius: 6px 6px 0 0;
+  background: var(--color-device-url);
+}
+
+.cs-device__bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 28px;
+  padding: 0 12px;
+  background: var(--color-device-bar);
+}
+
+.cs-device__dots {
+  flex-shrink: 0;
+  width: 40px;
+  height: 8px;
+  background:
+    radial-gradient(circle 4px at 4px 50%, #ff5f57 98%, transparent) ,
+    radial-gradient(circle 4px at 20px 50%, #febc2e 98%, transparent),
+    radial-gradient(circle 4px at 36px 50%, #28c840 98%, transparent);
+}
+
+.cs-device__url {
+  flex: 1;
+  max-width: 280px;
+  margin: 0 auto;
+  padding: 3px 12px;
+  border-radius: 6px;
+  background: var(--color-device-url);
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.cs-device__viewport {
+  position: relative;
+  aspect-ratio: 1440 / 886;
+}
+
+/* Prototype — the redesign screenshot as the page, with hotspots
+   and carousels on top that copy the interactions of tops.nl.
+   Everything is positioned in design px (1440 desktop / 375 mobile)
+   multiplied by --u, the screen width divided by the design width. */
+.cs-ba__before {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.proto {
+  --u: 0.5px;
+  position: absolute;
+  inset: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  background: var(--color-device-url);
+}
+
+.proto::-webkit-scrollbar {
+  display: none;
+}
+
+.proto__page {
+  position: relative;
+  width: calc(var(--pw) * var(--u));
+  height: calc(var(--ph) * var(--u));
+  background-position: 0 0;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+.proto__hot,
+.proto__arrow,
+.proto__dots,
+.proto__carousel {
+  position: absolute;
+  left: calc(var(--x) * var(--u));
+  top: calc(var(--y) * var(--u));
+  width: calc(var(--w) * var(--u));
+  height: calc(var(--h) * var(--u));
+  border-radius: calc(var(--r, 0) * var(--u));
+}
+
+.proto__hot {
+  cursor: pointer;
+  transition: box-shadow var(--duration-fast) ease-in-out,
+    background-color var(--duration-fast) ease-in-out;
+}
+
+/* Primary buttons: an inset ring */
+.proto__hot--ring:hover,
+.proto__hot--card:hover .proto__hot--ring {
+  box-shadow: inset 0 0 0 max(1px, calc(1.5 * var(--u))) var(--ring);
+}
+
+/* Menu and text links: a line underneath */
+.proto__hot--line:hover {
+  box-shadow: 0 max(1px, calc(2 * var(--u))) 0 0 var(--ring);
+}
+
+/* Sector tiles: a border in the sector colour */
+.proto__hot--tile:hover {
+  box-shadow: inset 0 0 0 max(2px, calc(3 * var(--u))) var(--ring);
+}
+
+/* Vacancy cards: a light-blue border */
+.proto__hot--card:hover {
+  box-shadow: inset 0 0 0 max(1px, calc(2 * var(--u))) var(--ring);
+}
+
+.proto__hot--social:hover {
+  background: var(--color-tops-sky);
+  mix-blend-mode: multiply;
+}
+
+.proto__hot--press:active {
+  background: color-mix(in srgb, var(--color-device-url) 18%, transparent);
+}
+
+/* Carousels: native sideways scroll with snap, plus mouse drag */
+.proto__carousel {
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.proto__track {
+  display: flex;
+  gap: calc(var(--gap) * var(--u));
+  height: 100%;
+  padding-inline: calc(var(--pad) * var(--u));
+  scroll-padding-inline: calc(var(--pad) * var(--u));
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.proto__track::-webkit-scrollbar {
+  display: none;
+}
+
+.proto__track.is-dragging {
+  scroll-snap-type: none;
+  cursor: grabbing;
+  user-select: none;
+}
+
+.proto__track:focus-visible {
+  outline: 2px solid var(--color-tops-blue);
+  outline-offset: -2px;
+}
+
+.proto__slide {
+  position: relative;
+  flex: none;
+  width: calc(var(--sw) * var(--u));
+  height: calc(var(--sh) * var(--u));
+  border-radius: calc(var(--r, 0) * var(--u));
+  background-position: calc(var(--sx) * var(--u) * -1) calc(var(--sy) * var(--u) * -1);
+  background-size: calc(var(--spw, var(--pw)) * var(--u)) auto;
+  background-repeat: no-repeat;
+  scroll-snap-align: start;
+}
+
+.proto__track > .proto__slide:last-child {
+  scroll-snap-align: end;
+}
+
+/* Arrows sit on the arrows drawn in the design */
+.proto__arrow {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: box-shadow var(--duration-fast) ease-in-out, opacity var(--duration-fast) ease-in-out;
+}
+
+.proto__arrow:hover:not(:disabled) {
+  box-shadow: inset 0 0 0 max(1px, calc(2 * var(--u))) var(--color-tops-sky);
+}
+
+.proto__arrow:disabled {
+  background: color-mix(in srgb, var(--color-device-url) 45%, transparent);
+  cursor: default;
+}
+
+.proto__arrow:focus-visible {
+  outline: 2px solid var(--color-tops-sky);
+  outline-offset: 2px;
+}
+
+/* Live dots, drawn over the static dots in the design */
+.proto__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(16 * var(--u));
+  background: var(--bg);
+}
+
+.proto__dot {
+  width: calc(12 * var(--u));
+  height: calc(12 * var(--u));
+  border-radius: 50%;
+  background: var(--dot);
+  transition: background-color var(--duration-fast) ease-in-out;
+}
+
+.proto__dot.is-active {
+  background: var(--color-tops-blue);
+}
+
+.cs-device__base {
+  position: relative;
+  width: 116%;
+  height: 0;
+  padding-bottom: 2.4%;
+  margin-left: -8%;
+  border-radius: 0 0 14px 14px;
+  background: linear-gradient(180deg, var(--color-device-base-top) 0%, var(--color-device-base-bot) 100%);
+}
+
+.cs-device__base::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 14%;
+  height: 40%;
+  transform: translateX(-50%);
+  border-radius: 0 0 8px 8px;
+  background: var(--color-device-base-bot);
+}
+
+/* Phone: the TEVEO iPhone frame (.pdp-scroll), scaled down and
+   overlapping the laptop's right edge. The frame keeps its native
+   340×736 size; the live page inside is scaled to fit it. */
+.cs-ba__phone {
+  --phone-scale: 0.6;
+  position: absolute;
+  right: calc(14px * var(--phone-scale));
+  bottom: -6%;
+  width: calc(340px * var(--phone-scale));
+  height: calc(736px * var(--phone-scale));
+}
+
+.cs-ba .pdp-scroll {
+  display: block;
+  width: 340px;
+  margin: 0;
+  transform: scale(var(--phone-scale));
+  transform-origin: top left;
+}
+
+.cs-ba .pdp-scroll__frame {
+  animation: none;
+}
+
+/* Before: the original homepage sits over the laptop screen,
+   and the phone steps away (there was no mobile design to show) */
+.cs-ba__before {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.cs-ba__phone {
+  transition: opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+/* Before has no phone, so the laptop slides to the centre: half the
+   phone's 22% column, as a share of the laptop's 78% width */
+.cs-ba .cs-device--laptop {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.cs-ba[data-view="before"] .cs-device--laptop {
+  transform: translateX(calc(11 / 78 * 100%));
+}
+
+.cs-ba[data-view="before"] .cs-ba__before {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cs-ba[data-view="before"] .cs-ba__phone {
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    visibility 0s linear var(--duration-base);
+}
+
+.cs-ba__hint {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  text-align: center;
+  color: color-mix(in srgb, var(--color-tops-yellow-ink) 70%, transparent);
+}
+
+/* Text that differs per view (address bar, hint) */
+.cs-ba__swap {
+  display: none;
+}
+
+.cs-ba[data-view="after"] .cs-ba__swap[data-view="after"],
+.cs-ba[data-view="before"] .cs-ba__swap[data-view="before"] {
+  display: inline;
+}
+
+@media (max-width: 1279px) {
+  .cs-ba__phone {
+    --phone-scale: 0.46;
+  }
+}
+
+/* Phone moves below the laptop on small screens */
+@media (max-width: 767px) {
+  .cs-ba__stage {
+    gap: var(--space-4);
+  }
+
+  .cs-ba__devices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    padding-right: 0;
+  }
+
+  /* Narrower than the stage so the wider base still fits */
+  .cs-device--laptop {
+    width: 86%;
+  }
+
+  .cs-device__bar {
+    height: 18px;
+    gap: 8px;
+    padding: 0 8px;
+  }
+
+  .cs-device__dots {
+    width: 26px;
+    height: 6px;
+    background:
+      radial-gradient(circle 3px at 3px 50%, #ff5f57 98%, transparent),
+      radial-gradient(circle 3px at 13px 50%, #febc2e 98%, transparent),
+      radial-gradient(circle 3px at 23px 50%, #28c840 98%, transparent);
+  }
+
+  .cs-device__url {
+    padding: 1px 8px;
+    font-size: 9px;
+  }
+
+  .cs-ba__phone {
+    --phone-scale: 0.58;
+    position: relative;
+    right: auto;
+    bottom: auto;
+  }
+
+  .cs-ba[data-view="before"] .cs-ba__phone {
+    display: none;
+  }
+
+  .cs-ba[data-view="before"] .cs-device--laptop {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-ba__thumb,
+  .cs-ba__option,
+  .cs-ba__before,
+  .cs-ba__phone,
+  .cs-ba .cs-device--laptop {
+    transition: none;
+  }
+}

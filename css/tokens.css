@@ -25,6 +25,26 @@
   --color-tops-body:       #334433;
   --color-tops-muted:      #5d6b5d;
 
+  /* TOPS redesign — interaction colours, matching tops.nl */
+  --color-tops-blue:       #0087ff;
+  --color-tops-sky:        #b3dbff;
+  --color-tops-forest:     #001f00;
+  --color-sector-groen:    #8ac652;
+  --color-sector-infra:    #e13320;
+  --color-sector-agri:     #e89245;
+  --color-sector-bouw:     #a5877e;
+
+  /* TOPS old website — yellow mockup and its Before / After stage */
+  --color-tops-yellow:     #f1be55;  /* sampled from tops-old-site.jpg */
+  --color-tops-yellow-ink: #1e3a40;
+
+  /* Device mockups (laptop / phone frames) */
+  --color-device-frame:    #121212;
+  --color-device-bar:      #ececec;
+  --color-device-url:      #ffffff;
+  --color-device-base-top: #e3e3e6;
+  --color-device-base-bot: #b4b4b9;
+
   /* ── Font families ─────────────────────────────────────── */
   --font-display: 'Cardo', Georgia, serif;        /* hero name */
   --font-sans:    'Montserrat', sans-serif;       /* labels, section headers */

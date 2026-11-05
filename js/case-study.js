@@ -129,3 +129,109 @@
 
   updateToggle();
 })();
+
+/**
+ * Before / After — the toggle switches the device stage between the
+ * original homepage and the scrollable redesign.
+ */
+(function () {
+  'use strict';
+
+  document.querySelectorAll('.cs-ba').forEach((stage) => {
+    const options = stage.querySelectorAll('.cs-ba__option');
+
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        stage.dataset.view = option.dataset.view;
+        options.forEach((o) => o.setAttribute('aria-pressed', String(o === option)));
+      });
+    });
+  });
+})();
+
+/**
+ * Prototype — scales each design page (laid out in design px) to its
+ * device screen, and runs its carousels: arrows, live dots, snap, and
+ * mouse drag (touch and trackpads scroll them natively).
+ */
+(function () {
+  'use strict';
+
+  const protos = document.querySelectorAll('.proto');
+  if (!protos.length) return;
+
+  const fit = (proto) => {
+    const width = Number(proto.dataset.protoWidth) || 1440;
+    proto.style.setProperty('--u', proto.clientWidth / width + 'px');
+  };
+
+  const observer = new ResizeObserver((entries) => entries.forEach((entry) => fit(entry.target)));
+  protos.forEach((proto) => {
+    fit(proto);
+    observer.observe(proto);
+  });
+
+  document.querySelectorAll('.proto__track').forEach((track) => {
+    const id = track.id;
+    const slides = track.children;
+    const prev = document.querySelector(`[data-proto-prev="${id}"]`);
+    const next = document.querySelector(`[data-proto-next="${id}"]`);
+    const dotsBox = document.querySelector(`[data-proto-dots="${id}"]`);
+    const dots = [];
+
+    if (dotsBox) {
+      for (let i = 0; i < 3; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'proto__dot';
+        dotsBox.appendChild(dot);
+        dots.push(dot);
+      }
+    }
+
+    const max = () => track.scrollWidth - track.clientWidth;
+    const step = () => (slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth);
+
+    const update = () => {
+      const progress = max() > 0 ? track.scrollLeft / max() : 0;
+      const active = Math.round(progress * (dots.length - 1));
+      dots.forEach((dot, i) => dot.classList.toggle('is-active', i === active));
+      if (prev) prev.disabled = track.scrollLeft <= 1;
+      if (next) next.disabled = track.scrollLeft >= max() - 1;
+    };
+
+    if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    if (next) next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+    track.addEventListener('scroll', update, { passive: true });
+    new ResizeObserver(update).observe(track);
+
+    // Mouse drag; on release, settle on the nearest slide
+    let startX = 0;
+    let startLeft = 0;
+    let dragging = false;
+
+    track.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      dragging = true;
+      startX = event.clientX;
+      startLeft = track.scrollLeft;
+      track.setPointerCapture(event.pointerId);
+      track.classList.add('is-dragging');
+    });
+
+    track.addEventListener('pointermove', (event) => {
+      if (dragging) track.scrollLeft = startLeft - (event.clientX - startX);
+    });
+
+    const release = () => {
+      if (!dragging) return;
+      dragging = false;
+      track.classList.remove('is-dragging');
+      const target = Math.round(track.scrollLeft / step()) * step();
+      track.scrollTo({ left: Math.min(target, max()), behavior: 'smooth' });
+    };
+
+    track.addEventListener('pointerup', release);
+    track.addEventListener('pointercancel', release);
+    update();
+  });
+})();
