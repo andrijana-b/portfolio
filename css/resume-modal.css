@@ -319,6 +319,7 @@ body .resume-modal.resume-modal--dark.resume-modal--dark.resume-modal--dark {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.65;
+  text-wrap: pretty;
   color: var(--resume-text-secondary);
 }
 
